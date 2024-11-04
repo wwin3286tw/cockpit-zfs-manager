@@ -1352,9 +1352,9 @@ function FnStoragePoolsGetCommand(process = { data, message }) {
                         <div id="listingcthead-storagepool-` + pool.id + `" class="listing-ct-head hidden">
                                                         <div class="listing-ct-actions"></div>
                                                         <ul class="nav nav-tabs nav-tabs-pf">
-                                                                <li><a id="tab-storagepool-filesystems-` + pool.id + `" class="nav-item" data-toggle="tab" href="#tabpanel-storagepool-filesystems-` + pool.id + `" tabIndex="-1">File Systems</a></li>
-                                                                <li><a id="tab-storagepool-snapshots-` + pool.id + `" class="nav-item" data-toggle="tab" href="#tabpanel-storagepool-snapshots-` + pool.id + `" tabIndex="-1">Snapshots</a></li>
-                                                                <li><a id="tab-storagepool-status-` + pool.id + `" class="nav-item" data-toggle="tab" href="#tabpanel-storagepool-status-` + pool.id + `" tabIndex="-1">Status</a></li>
+                                                                <li><a id="tab-storagepool-filesystems-` + pool.id + `" class="nav-item" data-toggle="tab" href="#tabpanel-storagepool-filesystems-` + pool.id + `" tabIndex="-1">檔案系統</a></li>
+                                                                <li><a id="tab-storagepool-snapshots-` + pool.id + `" class="nav-item" data-toggle="tab" href="#tabpanel-storagepool-snapshots-` + pool.id + `" tabIndex="-1">快照</a></li>
+                                                                <li><a id="tab-storagepool-status-` + pool.id + `" class="nav-item" data-toggle="tab" href="#tabpanel-storagepool-status-` + pool.id + `" tabIndex="-1">狀態</a></li>
                                                         </ul>
                                                 </div>
                         <div id="listingctbody-storagepool-` + pool.id + `" class="listing-ct-body hidden">
@@ -1363,12 +1363,12 @@ function FnStoragePoolsGetCommand(process = { data, message }) {
                                                                         <div id="panel-storagepool-filesystems-` + pool.id + `" class="panel panel-default">
                                                                                 <div class="panel-heading">
                                             <div class="panel-ct-heading">
-                                                                                        <h2 id="paneltitle-storagepool-filesystems-` + pool.id + `" class="panel-title">File Systems</h2>
+                                                                                        <h2 id="paneltitle-storagepool-filesystems-` + pool.id + `" class="panel-title">檔案系統</h2>
                                                 <div id="spinner-storagepool-filesystems-` + pool.id + `" class="spinner spinner-sm hidden"></div>
                                             </div>
                                                                                     <div class="panel-actions panel-ct-actions">
-                                                                                            <button id="btn-storagepool-filesystems-create-` + pool.id + `" class="btn btn-primary privileged` + (pool.readonly ? " disabled" : "") + `" data-target="#modal-storagepool-filesystems-create-` + pool.id + `" data-toggle="modal" tabIndex="-1" type="button">Create File System</button>
-                                                                                            <button id="btn-storagepool-filesystems-refresh-` + pool.id + `" class="btn btn-default" tabIndex="-1" type="button">Refresh</button>
+                                                                                            <button id="btn-storagepool-filesystems-create-` + pool.id + `" class="btn btn-primary privileged` + (pool.readonly ? " disabled" : "") + `" data-target="#modal-storagepool-filesystems-create-` + pool.id + `" data-toggle="modal" tabIndex="-1" type="button">建立檔案系統</button>
+                                                                                            <button id="btn-storagepool-filesystems-refresh-` + pool.id + `" class="btn btn-default" tabIndex="-1" type="button">刷新</button>
                                                                                     </div>
                                                                                 </div>
                                                                                 <table id="table-storagepool-filesystems-` + pool.id + `" class="table table-striped table-ct-filesystems">
@@ -1406,17 +1406,17 @@ function FnStoragePoolsGetCommand(process = { data, message }) {
                                                                                     </div>
                                                                                 </div>
                                                                                 <table id="table-storagepool-snapshots-` + pool.id + `-header" class="table table-striped table-ct-snapshots">
-                                                                                    <thead>
-                                                                                            <tr>
-                                                                                                <th colspan="2">Name</th>
-                                                                                                <th>Created</th>
-                                                                                                <th>Used</th>
-                                                                                                <th>Referenced</th>
-                                                                                                <th colspan="2">Clones</th>
-                                                                                                <th class="listing-ct-icon"></th>
-                                                                                                <th class="listing-ct-actionsmenu"></th>
-                                                                                            </tr>
-                                                                                    </thead>
+                                                                                              <thead>
+    <tr>
+        <th colspan="2">名稱</th>
+        <th>建立日期</th>
+        <th>已用空間</th>
+        <th>引用次數</th>
+        <th colspan="2">克隆</th>
+        <th class="listing-ct-icon"></th>
+        <th class="listing-ct-actionsmenu"></th>
+    </tr>
+</thead>
                                                                                     ` + (!zfsmanager.configuration.zfs.snapshot.filesystemlist ? `<tbody id="tbody-storagepool-snapshots-` + pool.id + `"></tbody>` : ``) + `
                                                                                 </table>
                                         ` + (zfsmanager.configuration.zfs.snapshot.filesystemlist ? `<div id="div-storagepool-snapshots-` + pool.id + `"></div>` : ``) + `
@@ -5218,18 +5218,18 @@ function FnFileSystemsGetCommand(pool = { name, id, altroot: false, boot: false,
                                 `;
 
                 //Configure File System
-                filesystem.actionsmenu.items.itemconfigure.push(`<li><a id="btn-storagepool-filesystem-configure-` + filesystem.id + `" data-toggle="modal" href="#modal-storagepool-filesystem-configure-` + filesystem.id + `" tabIndex="-1">Configure ` + filesystem.type + `</a></li>`);
+                filesystem.actionsmenu.items.itemconfigure.push(`<li><a id="btn-storagepool-filesystem-configure-` + filesystem.id + `" data-toggle="modal" href="#modal-storagepool-filesystem-configure-` + filesystem.id + `" tabIndex="-1">設定 ` + filesystem.type + `</a></li>`);
 
                 //Rename File System
                 if (!pool.readonly && (!filesystem.readonly || filesystem.readonly && !zfsmanager.configuration.zfs.filesystem.readonlylockdown) && filesystem.name != pool.name) {
-                    filesystem.actionsmenu.items.item.push(`<li><a id="btn-storagepool-filesystem-rename-` + filesystem.id + `" class="privileged` + (!zfsmanager.user.admin ? " disabled" : "") + `" data-toggle="modal" href="#modal-storagepool-filesystem-rename-` + filesystem.id + `" tabIndex="-1">Rename ` + filesystem.type + `</a></li>`);
+                    filesystem.actionsmenu.items.item.push(`<li><a id="btn-storagepool-filesystem-rename-` + filesystem.id + `" class="privileged` + (!zfsmanager.user.admin ? " disabled" : "") + `" data-toggle="modal" href="#modal-storagepool-filesystem-rename-` + filesystem.id + `" tabIndex="-1">重新命名 ` + filesystem.type + `</a></li>`);
 
                     filesystem.actionsmenu.register.rename = true;
                 }
 
                 //Promote Clone File System
                 if (!pool.readonly && (!filesystem.readonly || filesystem.readonly && !zfsmanager.configuration.zfs.filesystem.readonlylockdown) && filesystem.clone && filesystem.origin.replace(/^(.*)\@.*$/, "$1") != pool.name) {
-                    filesystem.actionsmenu.items.item.push(`<li><a id="btn-storagepool-filesystem-promote-` + filesystem.id + `" class="privileged` + (!zfsmanager.user.admin ? " disabled" : "") + `" data-toggle="modal" href="#modal-storagepool-filesystem-promote-` + filesystem.id + `" tabIndex="-1">Promote ` + filesystem.type + `</a></li>`);
+                    filesystem.actionsmenu.items.item.push(`<li><a id="btn-storagepool-filesystem-promote-` + filesystem.id + `" class="privileged` + (!zfsmanager.user.admin ? " disabled" : "") + `" data-toggle="modal" href="#modal-storagepool-filesystem-promote-` + filesystem.id + `" tabIndex="-1">提升 ` + filesystem.type + `</a></li>`);
 
                     filesystem.actionsmenu.register.promote = true;
                 }
@@ -5237,11 +5237,11 @@ function FnFileSystemsGetCommand(pool = { name, id, altroot: false, boot: false,
                 //Mount File System / Unmount File System
                 if (!pool.boot || pool.boot && !zfsmanager.configuration.zfs.storagepool.bootlockdown) {
                     if (!filesystem.mounted && filesystem.keystatus != "unavailable") {
-                        filesystem.actionsmenu.items.item.push(`<li><a id="btn-storagepool-filesystem-mount-` + filesystem.id + `" class="privileged` + (!zfsmanager.user.admin ? " disabled" : "") + `" data-toggle="modal" href="#modal-storagepool-filesystem-mount-` + filesystem.id + `" tabIndex="-1">Mount ` + filesystem.type + `</a></li>`);
+                        filesystem.actionsmenu.items.item.push(`<li><a id="btn-storagepool-filesystem-mount-` + filesystem.id + `" class="privileged` + (!zfsmanager.user.admin ? " disabled" : "") + `" data-toggle="modal" href="#modal-storagepool-filesystem-mount-` + filesystem.id + `" tabIndex="-1">掛載 ` + filesystem.type + `</a></li>`);
 
                         filesystem.actionsmenu.register.mount = true;
                     } else if (filesystem.mounted) {
-                        filesystem.actionsmenu.items.item.push(`<li><a id="btn-storagepool-filesystem-unmount-` + filesystem.id + `" class="privileged` + (!zfsmanager.user.admin ? " disabled" : "") + `" data-toggle="modal" href="#modal-storagepool-filesystem-unmount-` + filesystem.id + `" tabIndex="-1">Unmount ` + filesystem.type + `</a></li>`);
+                        filesystem.actionsmenu.items.item.push(`<li><a id="btn-storagepool-filesystem-unmount-` + filesystem.id + `" class="privileged` + (!zfsmanager.user.admin ? " disabled" : "") + `" data-toggle="modal" href="#modal-storagepool-filesystem-unmount-` + filesystem.id + `" tabIndex="-1">取消掛載 ` + filesystem.type + `</a></li>`);
 
                         filesystem.actionsmenu.register.unmount = true;
                     }
@@ -5249,18 +5249,18 @@ function FnFileSystemsGetCommand(pool = { name, id, altroot: false, boot: false,
 
                 //Unlock File System / Lock File System
                 if (filesystem.keystatus == "unavailable" && !filesystem.clone && filesystem.encryptionroot == filesystem.name) {
-                    filesystem.actionsmenu.items.item.push(`<li><a id="btn-storagepool-filesystem-unlock-` + filesystem.id + `" class="privileged` + (!zfsmanager.user.admin ? " disabled" : "") + `" data-toggle="modal" href="#modal-storagepool-filesystem-unlock-` + filesystem.id + `" tabIndex="-1"><strong class="` + (zfsmanager.user.admin ? `text-ct-locked` : ``) + `">Unlock File System</strong></a></li>`);
+                    filesystem.actionsmenu.items.item.push(`<li><a id="btn-storagepool-filesystem-unlock-` + filesystem.id + `" class="privileged` + (!zfsmanager.user.admin ? " disabled" : "") + `" data-toggle="modal" href="#modal-storagepool-filesystem-unlock-` + filesystem.id + `" tabIndex="-1"><strong class="` + (zfsmanager.user.admin ? `text-ct-locked` : ``) + `">解鎖檔案系統</strong></a></li>`);
 
                     filesystem.actionsmenu.register.unlock = true;
                 } else if (filesystem.keystatus == "available" && !filesystem.mounted && !filesystem.clone && filesystem.encryptionroot == filesystem.name) {
-                    filesystem.actionsmenu.items.item.push(`<li><a id="btn-storagepool-filesystem-lock-` + filesystem.id + `" class="privileged` + (!zfsmanager.user.admin ? " disabled" : "") + `" data-toggle="modal" href="#modal-storagepool-filesystem-lock-` + filesystem.id + `" tabIndex="-1">Lock File System</a></li>`);
+                    filesystem.actionsmenu.items.item.push(`<li><a id="btn-storagepool-filesystem-lock-` + filesystem.id + `" class="privileged` + (!zfsmanager.user.admin ? " disabled" : "") + `" data-toggle="modal" href="#modal-storagepool-filesystem-lock-` + filesystem.id + `" tabIndex="-1">鎖定檔案系統</a></li>`);
 
                     filesystem.actionsmenu.register.lock = true;
                 }
 
                 //Change Passphrase
                 if (!pool.readonly && (!filesystem.readonly || filesystem.readonly && !zfsmanager.configuration.zfs.filesystem.readonlylockdown) && filesystem.keystatus == "available" && !filesystem.clone && filesystem.encryptionroot == filesystem.name) {
-                    filesystem.actionsmenu.items.itemencrypted.push(`<li><a id="btn-storagepool-filesystem-changepassphrase-` + filesystem.id + `" class="privileged` + (!zfsmanager.user.admin ? " disabled" : "") + `" data-toggle="modal" href="#modal-storagepool-filesystem-changepassphrase-` + filesystem.id + `" tabIndex="-1">Change Passphrase</a></li>`);
+                    filesystem.actionsmenu.items.itemencrypted.push(`<li><a id="btn-storagepool-filesystem-changepassphrase-` + filesystem.id + `" class="privileged` + (!zfsmanager.user.admin ? " disabled" : "") + `" data-toggle="modal" href="#modal-storagepool-filesystem-changepassphrase-` + filesystem.id + `" tabIndex="-1">更改密碼</a></li>`);
 
                     filesystem.actionsmenu.register.changepassphrase = true;
                 }
@@ -5268,7 +5268,7 @@ function FnFileSystemsGetCommand(pool = { name, id, altroot: false, boot: false,
                 //Destroy File System
                 if (!pool.readonly && (!filesystem.readonly || filesystem.readonly && !zfsmanager.configuration.zfs.filesystem.readonlylockdown) && filesystem.name != pool.name) {
                     if (!filesystem.clone || filesystem.clone && new RegExp("^" + filesystem.name + "/").test(filesystem.origin.replace(/^(.*)\@.*$/, "$1")) == false) { //Do not display if clone origin is a child file system - will generate recursive dependency error
-                        filesystem.actionsmenu.items.item.push(`<li><a id="btn-storagepool-filesystem-destroy-` + filesystem.id + `" class="privileged` + (!zfsmanager.user.admin ? " disabled" : "") + `" data-toggle="modal" href="#modal-storagepool-filesystem-destroy-` + filesystem.id + `" tabIndex="-1">Destroy ` + filesystem.type + `</a></li>`);
+                        filesystem.actionsmenu.items.item.push(`<li><a id="btn-storagepool-filesystem-destroy-` + filesystem.id + `" class="privileged` + (!zfsmanager.user.admin ? " disabled" : "") + `" data-toggle="modal" href="#modal-storagepool-filesystem-destroy-` + filesystem.id + `" tabIndex="-1">摧毀 ` + filesystem.type + `</a></li>`);
 
                         filesystem.actionsmenu.register.destroy = true;
                     }
@@ -5276,28 +5276,28 @@ function FnFileSystemsGetCommand(pool = { name, id, altroot: false, boot: false,
 
                 //Enable Samba Share
                 if (!pool.readonly && (!filesystem.readonly || filesystem.readonly && !zfsmanager.configuration.zfs.filesystem.readonlylockdown) && !filesystem.sharesmb && zfsmanager.configuration.samba.manage) {
-                    filesystem.actionsmenu.items.itemsamba.push(`<li><a id="btn-storagepool-filesystem-samba-enable-` + filesystem.id + `" class="privileged` + (!zfsmanager.user.admin ? " disabled" : "") + `" data-toggle="modal" href="#modal-storagepool-filesystem-samba-enable-` + filesystem.id + `" tabIndex="-1">Enable Samba Share</a></li>`);
+                    filesystem.actionsmenu.items.itemsamba.push(`<li><a id="btn-storagepool-filesystem-samba-enable-` + filesystem.id + `" class="privileged` + (!zfsmanager.user.admin ? " disabled" : "") + `" data-toggle="modal" href="#modal-storagepool-filesystem-samba-enable-` + filesystem.id + `" tabIndex="-1">啟用Samba共享</a></li>`);
 
                     filesystem.actionsmenu.register.samba.enable = true;
                 }
 
                 //Configure Samba Share
                 if (filesystem.sharesmb && zfsmanager.configuration.samba.manage) {
-                    filesystem.actionsmenu.items.itemsamba.push(`<li><a id="btn-storagepool-filesystem-samba-configure-` + filesystem.id + `" class="privileged` + (!zfsmanager.user.admin ? " disabled" : "") + `" data-toggle="modal" href="#modal-storagepool-filesystem-samba-configure-` + filesystem.id + `" tabIndex="-1">Configure Samba Share</a></li>`);
+                    filesystem.actionsmenu.items.itemsamba.push(`<li><a id="btn-storagepool-filesystem-samba-configure-` + filesystem.id + `" class="privileged` + (!zfsmanager.user.admin ? " disabled" : "") + `" data-toggle="modal" href="#modal-storagepool-filesystem-samba-configure-` + filesystem.id + `" tabIndex="-1">設定Samba共享</a></li>`);
 
                     filesystem.actionsmenu.register.samba.configure = true;
                 }
 
                 //Disable Samba Share
                 if (!pool.readonly && (!filesystem.readonly || filesystem.readonly && !zfsmanager.configuration.zfs.filesystem.readonlylockdown) && filesystem.sharesmb && zfsmanager.configuration.samba.manage) {
-                    filesystem.actionsmenu.items.itemsamba.push(`<li><a id="btn-storagepool-filesystem-samba-disable-` + filesystem.id + `" class="privileged` + (!zfsmanager.user.admin ? " disabled" : "") + `" data-toggle="modal" href="#modal-storagepool-filesystem-samba-disable-` + filesystem.id + `" tabIndex="-1">Disable Samba Share</a></li>`);
+                    filesystem.actionsmenu.items.itemsamba.push(`<li><a id="btn-storagepool-filesystem-samba-disable-` + filesystem.id + `" class="privileged` + (!zfsmanager.user.admin ? " disabled" : "") + `" data-toggle="modal" href="#modal-storagepool-filesystem-samba-disable-` + filesystem.id + `" tabIndex="-1">停用 Samba 共享</a></li>`);
 
                     filesystem.actionsmenu.register.samba.disable = true;
                 }
 
                 //Create Snapshot
                 if (!pool.readonly && zfsmanager.configuration.zfs.filesystem.snapshotactions) {
-                    filesystem.actionsmenu.items.itemsnapshot.push(`<li><a id="btn-storagepool-filesystem-snapshot-create-` + filesystem.id + `" class="privileged` + (!zfsmanager.user.admin ? " disabled" : "") + `" data-toggle="modal" href="#modal-storagepool-filesystem-snapshot-create-` + filesystem.id + `" tabIndex="-1">Create Snapshot</a></li>`);
+                    filesystem.actionsmenu.items.itemsnapshot.push(`<li><a id="btn-storagepool-filesystem-snapshot-create-` + filesystem.id + `" class="privileged` + (!zfsmanager.user.admin ? " disabled" : "") + `" data-toggle="modal" href="#modal-storagepool-filesystem-snapshot-create-` + filesystem.id + `" tabIndex="-1">建立快照</a></li>`);
 
                     filesystem.actionsmenu.register.snapshot.create = true;
                 }
@@ -10187,17 +10187,17 @@ function FnStatusGetCommand(pool = { name, id, autotrim: false, boot: false, fea
     $("#td-storagepool-status-messages-remove-" + pool.id).append(pool.status.memory);
 
     pool.status.config.output = `
-        <tr class="table-ct-confighead">
-            <td colspan="3"><strong>Name</strong></td>
-            <td><strong>State</strong></td>
-            <td><strong>Read</strong></td>
-            <td><strong>Write</strong></td>
-            <td><strong>Checksum</strong></td>
-            <td colspan="3"><strong>Message</strong></td>
-            <td colspan="3"><strong>Product</strong></td>
-            <td class="listing-ct-spinner"></td>
-            <td class="listing-ct-actionsmenu"></td>
-        </tr>
+    <tr class="table-ct-confighead">
+        <td colspan="3"><strong>名稱</strong></td>
+        <td><strong>狀態</strong></td>
+        <td><strong>讀取</strong></td>
+        <td><strong>寫入</strong></td>
+        <td><strong>校驗</strong></td>
+        <td colspan="3"><strong>訊息</strong></td>
+        <td colspan="3"><strong>產品</strong></td>
+        <td class="listing-ct-spinner"></td>
+        <td class="listing-ct-actionsmenu"></td>
+    </tr>
     `;
 
     $("#tbody-storagepool-status-config-" + pool.id).html(pool.status.config.output);
@@ -10318,15 +10318,15 @@ function FnStatusGetCommand(pool = { name, id, autotrim: false, boot: false, fea
         }
 
         pool.status.config.output += `<tr>`;
-        pool.status.config.output += `<td class="config-level-` + pool.status.config.tier.level + (pool.status.config.tier.virtualdevice ? `-virtualdevice` : ``) + `" colspan="3"><span class="table-ct-head">` + (pool.status.config.tier.level == 0 && pool.status.config.tier.count == 1 && _value[0] == pool.name ? `Pool` : (pool.status.config.disk ? `Disk` : `Virtual Device`)) + `:</span>` + _value[0] + `</td>`; //Pool / Virtual Device / Disk
-        pool.status.config.output += `<td class="config-level-` + pool.status.config.tier.level + `-sub` + (pool.status.config.tier.virtualdevice ? `-hidden` : ``) + `"><span class="table-ct-head">State:</span>` + (_value[1] ? `<span class="` + FnStoragePoolHealthIcon({ health: _value[1] }) + `"></span> ` + _value[1] : ``) + `</td>`; //State
+        pool.status.config.output += `<td class="config-level-` + pool.status.config.tier.level + (pool.status.config.tier.virtualdevice ? `-virtualdevice` : ``) + `" colspan="3"><span class="table-ct-head">` + (pool.status.config.tier.level == 0 && pool.status.config.tier.count == 1 && _value[0] == pool.name ? `儲存池` : (pool.status.config.disk ? `磁碟` : `虛擬裝置`)) + `:</span>` + _value[0] + `</td>`; //Pool / Virtual Device / Disk
+        pool.status.config.output += `<td class="config-level-` + pool.status.config.tier.level + `-sub` + (pool.status.config.tier.virtualdevice ? `-hidden` : ``) + `"><span class="table-ct-head">狀態:</span>` + (_value[1] ? `<span class="` + FnStoragePoolHealthIcon({ health: _value[1] }) + `"></span> ` + _value[1] : ``) + `</td>`; //State
 
         if (_value[2] && /^spares/g.test(pool.status.config.tier.nametier0)) { //Read
             pool.status.disks.disk.messages.push(_value[2]);
 
             pool.status.config.output += `<td class="config-level-` + pool.status.config.tier.level + `-sub-hidden"></td>`;
         } else {
-            pool.status.config.output += `<td class="config-level-` + pool.status.config.tier.level + `-sub` + (pool.status.config.tier.virtualdevice ? `-hidden` : ``) + `">` + (_value[2] ? `<span class="table-ct-head">Read:</span>` + (zfsmanager.configuration.zfs.status.errorcolors ? FnStatusErrorColors({ count: _value[2] }) : _value[2]) : ``) + `</td>`;
+            pool.status.config.output += `<td class="config-level-` + pool.status.config.tier.level + `-sub` + (pool.status.config.tier.virtualdevice ? `-hidden` : ``) + `">` + (_value[2] ? `<span class="table-ct-head">讀取:</span>` + (zfsmanager.configuration.zfs.status.errorcolors ? FnStatusErrorColors({ count: _value[2] }) : _value[2]) : ``) + `</td>`;
         }
 
         if (_value[3] && /^spares/g.test(pool.status.config.tier.nametier0)) { //Write
@@ -10334,7 +10334,7 @@ function FnStatusGetCommand(pool = { name, id, autotrim: false, boot: false, fea
 
             pool.status.config.output += `<td class="config-level-` + pool.status.config.tier.level + `-sub-hidden"></td>`;
         } else {
-            pool.status.config.output += `<td class="config-level-` + pool.status.config.tier.level + `-sub` + (pool.status.config.tier.virtualdevice ? `-hidden` : ``) + `">` + (_value[3] ? `<span class="table-ct-head">Write:</span>` + (zfsmanager.configuration.zfs.status.errorcolors ? FnStatusErrorColors({ count: _value[3] }) : _value[3]) : ``) + `</td>`;
+            pool.status.config.output += `<td class="config-level-` + pool.status.config.tier.level + `-sub` + (pool.status.config.tier.virtualdevice ? `-hidden` : ``) + `">` + (_value[3] ? `<span class="table-ct-head">寫入:</span>` + (zfsmanager.configuration.zfs.status.errorcolors ? FnStatusErrorColors({ count: _value[3] }) : _value[3]) : ``) + `</td>`;
         }
 
         if (/^spares/g.test(pool.status.config.tier.nametier0)) { //Checksum
@@ -10344,7 +10344,7 @@ function FnStatusGetCommand(pool = { name, id, autotrim: false, boot: false, fea
 
             pool.status.config.output += `<td class="config-level-` + pool.status.config.tier.level + `-sub-hidden"></td>`;
         } else {
-            pool.status.config.output += `<td class="config-level-` + pool.status.config.tier.level + `-sub` + (pool.status.config.tier.virtualdevice ? `-hidden` : ``) + `">` + (_value[4] ? `<span class="table-ct-head">Checksum:</span>` + (zfsmanager.configuration.zfs.status.errorcolors ? FnStatusErrorColors({ count: _value[4] }) : _value[4]) : ``) + `</td>`;
+            pool.status.config.output += `<td class="config-level-` + pool.status.config.tier.level + `-sub` + (pool.status.config.tier.virtualdevice ? `-hidden` : ``) + `">` + (_value[4] ? `<span class="table-ct-head">校驗:</span>` + (zfsmanager.configuration.zfs.status.errorcolors ? FnStatusErrorColors({ count: _value[4] }) : _value[4]) : ``) + `</td>`;
         }
 
         for (let i = 5; i < _value.length; i++) { //Collect messages
