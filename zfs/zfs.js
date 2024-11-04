@@ -408,19 +408,19 @@ function FnDisplayAlert(notification = { status, title, description, breakword: 
                 </div>
             </div>
 
-		    \x3Cscript nonce="1t55lZ7tzuKTreHVNwE66Ox32Mc=">
+                    \x3Cscript nonce="1t55lZ7tzuKTreHVNwE66Ox32Mc=">
                 $("#alert-` + toast.name + (toast.id ? `-` + toast.id : ``) + `-` + toast.uniqueid + ` .pf-c-alert__action").on("click",".pf-c-button",function(){
                     $("#alert-` + toast.name + (toast.id ? `-` + toast.id : ``) + `-` + toast.uniqueid + `").fadeTo(150, 0).slideUp(150, function () {
                         $(this).remove();
                     });
                 });
 
-			    setTimeout(function () {
-				    $("#alert-` + toast.name + (toast.id ? `-` + toast.id : ``) + `-` + toast.uniqueid + `").fadeTo(500, 0).slideUp(500, function () {
-					    $(this).remove();
-				    });
-			    }, ` + toast.timeout + `000);
-		    \x3C/script>
+                            setTimeout(function () {
+                                    $("#alert-` + toast.name + (toast.id ? `-` + toast.id : ``) + `-` + toast.uniqueid + `").fadeTo(500, 0).slideUp(500, function () {
+                                            $(this).remove();
+                                    });
+                            }, ` + toast.timeout + `000);
+                    \x3C/script>
         </li>
     `;
 
@@ -443,7 +443,7 @@ function FnDisplayAlertLegacy(notification = { status, title, description, break
             break;
         default:
             notification.status = "info";
-            toast.icon = "pficon pficon-info";            
+            toast.icon = "pficon pficon-info";
             break;
     }
 
@@ -455,13 +455,13 @@ function FnDisplayAlertLegacy(notification = { status, title, description, break
             <span aria-hidden="true" class="` + toast.icon + `"></span>
             <span><strong>` + notification.title + (notification.description ? `:` : ``) + `</strong> <span class="toast-ct-description ` + (notification.breakword ? `break-word` : ``) + `">` + (notification.description ? notification.description : ``) + `</span></span>
 
-		    \x3Cscript nonce="1t55lZ7tzuKTreHVNwE66Ox32Mc=">
-			    setTimeout(function () {
-				    $("#toast-` + toast.name + (toast.id ? `-` + toast.id : ``) + `-` + toast.uniqueid + `").fadeTo(500, 0).slideUp(500, function () {
-					    $(this).remove();
-				    });
-			    }, ` + toast.timeout + `000);
-		    \x3C/script>
+                    \x3Cscript nonce="1t55lZ7tzuKTreHVNwE66Ox32Mc=">
+                            setTimeout(function () {
+                                    $("#toast-` + toast.name + (toast.id ? `-` + toast.id : ``) + `-` + toast.uniqueid + `").fadeTo(500, 0).slideUp(500, function () {
+                                            $(this).remove();
+                                    });
+                            }, ` + toast.timeout + `000);
+                    \x3C/script>
         </div>
     `;
 
@@ -499,10 +499,10 @@ function FnDisplayInlineAlert(notification = { status, title, description }, inl
 
     notification.output = `
         <div ` + (inline.name ? `id="alert-` + inline.name + (inline.id ? `-` + inline.id : ``) + `"` : ``) + ` class="pf-c-alert pf-m-inline ` + (notification.status ? `pf-m-` + notification.status : ``) + ` ` + (inline.hidden ? `hidden` : ``) + `" aria-label="Inline ` + inline.statusaria + ` alert">
-	        <div class="pf-c-alert__icon">
-		        <i class="` + inline.icon + `" aria-hidden="true"></i>
-	        </div>
-	        <h4 class="pf-c-alert__title"><span class="pf-screen-reader">` + inline.statusaria + ` inline alert:</span>` + notification.title + `</h4>
+                <div class="pf-c-alert__icon">
+                        <i class="` + inline.icon + `" aria-hidden="true"></i>
+                </div>
+                <h4 class="pf-c-alert__title"><span class="pf-screen-reader">` + inline.statusaria + ` inline alert:</span>` + notification.title + `</h4>
             ` + (notification.description ? `<div class="pf-c-alert__description"><p>` + notification.description + `</p></div>` : ``) + `
         </div>
     `;
@@ -1241,36 +1241,36 @@ function FnStoragePoolsGetCommand(process = { data, message }) {
         $("#modals").append(`<div id="modals-storagepool-` + pool.id + `"></div>`);
 
         pool.output = `
-			<tbody class="hidden">
-				<tr id="tr-storagepool-` + pool.id + `" class="listing-ct-item listing-ct-nonavigate" data-pool-altroot="` + pool.altroot + `" data-pool-autotrim="` + pool.autotrim + `" data-pool-boot="` + pool.boot + `" data-pool-feature-allocation_classes="` + pool.feature.allocation_classes + `" data-pool-feature-device_removal="` + pool.feature.device_removal + `" data-pool-feature-edonr="` + pool.feature.edonr + `" data-pool-feature-encryption="` + pool.feature.encryption + `" data-pool-feature-large_blocks="` + pool.feature.large_blocks + `" data-pool-feature-large_dnode="` + pool.feature.large_dnode + `" data-pool-feature-lz4_compress="` + pool.feature.lz4_compress + `" data-pool-feature-resilver_defer="` + pool.feature.resilver_defer + `" data-pool-feature-sha512="` + pool.feature.sha512 + `" data-pool-feature-skein="` + pool.feature.skein + `" data-pool-guid="` + pool.guid + `" data-pool-id="` + pool.id + `" data-pool-name="` + pool.name + `" data-pool-readonly="` + pool.readonly + `" data-pool-refresh-id="" data-pool-refresh-filesystems="false" data-pool-refresh-snapshots="false" data-pool-refresh-status="false" data-pool-root="` + pool.root + `" data-pool-special="false" data-pool-upgrade="` + pool.upgrade + `" data-pool-version="` + pool.version + `">
-					<td class="listing-ct-toggle"><i class="fa fa-fw"></i></td>
-					<td colspan="2"><span class="table-ct-head">Name:</span>` + pool.name + (pool.readonly ? ` <span class="pficon pficon-private pficon-ct-` + (pool.boot && zfsmanager.configuration.zfs.storagepool.bootlockdown ? `boot` : ``) + `readonly" data-placement="auto top" data-toggle="tooltip" title="` + (pool.boot && zfsmanager.configuration.zfs.storagepool.bootlockdown ? `The user <strong>` + zfsmanager.user.name + `</strong> is not permitted to manage this storage pool` : `Storage Pool is Read Only`) + `"></span>` : (pool.altroot ? ` <span class="pf-icon pficon-migration pficon-ct-altroot" data-placement="auto top" data-toggle="tooltip" title="Alternative Root is Enabled for Storage Pool"></span>` : ``)) + `</th>
-					<td>
-						<span class="table-ct-head">Health:</span><div id="div-storagepool-health-` + pool.id + `"><span class="` + pool.healthicon + `"></span> ` + pool.health + `</div>
-					</td>
-					<td>
-						<span class="table-ct-head">Size:</span><div id="div-storagepool-size-` + pool.id + `">` + pool.size + `</div>
-					</td>
-					<td>
-						<span class="table-ct-head">Allocated:</span><div id="div-storagepool-allocated-` + pool.id + `">` + pool.allocated + `</div>
-					</td>
-					<td>
-						<span class="table-ct-head">Free:</span><div id="div-storagepool-free-` + pool.id + `">` + pool.free + `</div>
-					</td>
-					<td>
-						<span class="table-ct-head">Fragmentation:</span><div id="div-storagepool-fragmentation-` + pool.id + `">` + pool.fragmentation + ` %</div>
-					</td>
-					<td>
+                        <tbody class="hidden">
+                                <tr id="tr-storagepool-` + pool.id + `" class="listing-ct-item listing-ct-nonavigate" data-pool-altroot="` + pool.altroot + `" data-pool-autotrim="` + pool.autotrim + `" data-pool-boot="` + pool.boot + `" data-pool-feature-allocation_classes="` + pool.feature.allocation_classes + `" data-pool-feature-device_removal="` + pool.feature.device_removal + `" data-pool-feature-edonr="` + pool.feature.edonr + `" data-pool-feature-encryption="` + pool.feature.encryption + `" data-pool-feature-large_blocks="` + pool.feature.large_blocks + `" data-pool-feature-large_dnode="` + pool.feature.large_dnode + `" data-pool-feature-lz4_compress="` + pool.feature.lz4_compress + `" data-pool-feature-resilver_defer="` + pool.feature.resilver_defer + `" data-pool-feature-sha512="` + pool.feature.sha512 + `" data-pool-feature-skein="` + pool.feature.skein + `" data-pool-guid="` + pool.guid + `" data-pool-id="` + pool.id + `" data-pool-name="` + pool.name + `" data-pool-readonly="` + pool.readonly + `" data-pool-refresh-id="" data-pool-refresh-filesystems="false" data-pool-refresh-snapshots="false" data-pool-refresh-status="false" data-pool-root="` + pool.root + `" data-pool-special="false" data-pool-upgrade="` + pool.upgrade + `" data-pool-version="` + pool.version + `">
+                                        <td class="listing-ct-toggle"><i class="fa fa-fw"></i></td>
+                                        <td colspan="2"><span class="table-ct-head">Name:</span>` + pool.name + (pool.readonly ? ` <span class="pficon pficon-private pficon-ct-` + (pool.boot && zfsmanager.configuration.zfs.storagepool.bootlockdown ? `boot` : ``) + `readonly" data-placement="auto top" data-toggle="tooltip" title="` + (pool.boot && zfsmanager.configuration.zfs.storagepool.bootlockdown ? `The user <strong>` + zfsmanager.user.name + `</strong> is not permitted to manage this storage pool` : `Storage Pool is Read Only`) + `"></span>` : (pool.altroot ? ` <span class="pf-icon pficon-migration pficon-ct-altroot" data-placement="auto top" data-toggle="tooltip" title="Alternative Root is Enabled for Storage Pool"></span>` : ``)) + `</th>
+                                        <td>
+                                                <span class="table-ct-head">Health:</span><div id="div-storagepool-health-` + pool.id + `"><span class="` + pool.healthicon + `"></span> ` + pool.health + `</div>
+                                        </td>
+                                        <td>
+                                                <span class="table-ct-head">Size:</span><div id="div-storagepool-size-` + pool.id + `">` + pool.size + `</div>
+                                        </td>
+                                        <td>
+                                                <span class="table-ct-head">Allocated:</span><div id="div-storagepool-allocated-` + pool.id + `">` + pool.allocated + `</div>
+                                        </td>
+                                        <td>
+                                                <span class="table-ct-head">Free:</span><div id="div-storagepool-free-` + pool.id + `">` + pool.free + `</div>
+                                        </td>
+                                        <td>
+                                                <span class="table-ct-head">Fragmentation:</span><div id="div-storagepool-fragmentation-` + pool.id + `">` + pool.fragmentation + ` %</div>
+                                        </td>
+                                        <td>
                         <span class="table-ct-head">Usage:</span>
-						<div class="progress progress-sm">
-							<div id="progressbar-storagepool-allocated-` + pool.id + `" aria-valuemax="100" aria-valuemin="0" aria-valuenow="` + pool.allocatedpercent + `" class="progress-bar" data-placement="auto top" data-toggle="tooltip" role="progressbar" title="` + pool.allocatedpercent + `% Allocated">
-								<span class="sr-only">` + pool.allocatedpercent + `% Allocated</span>
-							</div>
-							<div id="progressbar-storagepool-free-` + pool.id + `" aria-valuemax="100" aria-valuemin="0" aria-valuenow="` + pool.freepercent + `" class="progress-bar progress-bar-remaining" data-placement="auto top" data-toggle="tooltip" role="progressbar" title="` + pool.freepercent + `% Free">
-								<span class="sr-only">` + pool.freepercent + `% Free</span>
-							</div>
-						</div>
-					</td>
+                                                <div class="progress progress-sm">
+                                                        <div id="progressbar-storagepool-allocated-` + pool.id + `" aria-valuemax="100" aria-valuemin="0" aria-valuenow="` + pool.allocatedpercent + `" class="progress-bar" data-placement="auto top" data-toggle="tooltip" role="progressbar" title="` + pool.allocatedpercent + `% Allocated">
+                                                                <span class="sr-only">` + pool.allocatedpercent + `% Allocated</span>
+                                                        </div>
+                                                        <div id="progressbar-storagepool-free-` + pool.id + `" aria-valuemax="100" aria-valuemin="0" aria-valuenow="` + pool.freepercent + `" class="progress-bar progress-bar-remaining" data-placement="auto top" data-toggle="tooltip" role="progressbar" title="` + pool.freepercent + `% Free">
+                                                                <span class="sr-only">` + pool.freepercent + `% Free</span>
+                                                        </div>
+                                                </div>
+                                        </td>
                     <td class="listing-ct-icon">
                         <span class="table-ct-head">Upgrade Available:</span>
                         <span class="table-ct-text">` + (pool.upgrade ? `Yes` : `No`) + `</span>
@@ -1306,16 +1306,16 @@ function FnStoragePoolsGetCommand(process = { data, message }) {
             }
         };
         pool.actionsmenu.header = `
-			<div class="dropdown dropdown-kebab-pf">
-				<button id="btn-storagepool-dropdown-` + pool.id + `" aria-expanded="false" aria-haspopup="true" class="btn btn-default dropdown-toggle" data-toggle="dropdown" tabIndex="-1" type="button">
+                        <div class="dropdown dropdown-kebab-pf">
+                                <button id="btn-storagepool-dropdown-` + pool.id + `" aria-expanded="false" aria-haspopup="true" class="btn btn-default dropdown-toggle" data-toggle="dropdown" tabIndex="-1" type="button">
                     <span class="fa fa-ellipsis-v"></span>
-				</button>
-				<ul class="dropdown-menu dropdown-menu-right" aria-labelledby="btn-storagepool-dropdown-` + pool.id + `">
-		`;
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="btn-storagepool-dropdown-` + pool.id + `">
+                `;
         pool.actionsmenu.footer = `
-				</ul>
-			</div>
-		`;
+                                </ul>
+                        </div>
+                `;
 
         //Configure Storage Pool
         pool.actionsmenu.items.itemconfigure.push(`<li><a id="btn-storagepool-configure-` + pool.id + `" data-toggle="modal" href="#modal-storagepool-configure-` + pool.id + `" tabIndex="-1">Configure Storage Pool</a></li>`);
@@ -1346,90 +1346,90 @@ function FnStoragePoolsGetCommand(process = { data, message }) {
         }
 
         pool.output += `
-				</tr>
-				<tr class="listing-ct-panel">
-					<td colspan="11">
+                                </tr>
+                                <tr class="listing-ct-panel">
+                                        <td colspan="11">
                         <div id="listingcthead-storagepool-` + pool.id + `" class="listing-ct-head hidden">
-							<div class="listing-ct-actions"></div>
-							<ul class="nav nav-tabs nav-tabs-pf">
-								<li><a id="tab-storagepool-filesystems-` + pool.id + `" class="nav-item" data-toggle="tab" href="#tabpanel-storagepool-filesystems-` + pool.id + `" tabIndex="-1">File Systems</a></li>
-								<li><a id="tab-storagepool-snapshots-` + pool.id + `" class="nav-item" data-toggle="tab" href="#tabpanel-storagepool-snapshots-` + pool.id + `" tabIndex="-1">Snapshots</a></li>
-								<li><a id="tab-storagepool-status-` + pool.id + `" class="nav-item" data-toggle="tab" href="#tabpanel-storagepool-status-` + pool.id + `" tabIndex="-1">Status</a></li>
-							</ul>
-						</div>							
+                                                        <div class="listing-ct-actions"></div>
+                                                        <ul class="nav nav-tabs nav-tabs-pf">
+                                                                <li><a id="tab-storagepool-filesystems-` + pool.id + `" class="nav-item" data-toggle="tab" href="#tabpanel-storagepool-filesystems-` + pool.id + `" tabIndex="-1">File Systems</a></li>
+                                                                <li><a id="tab-storagepool-snapshots-` + pool.id + `" class="nav-item" data-toggle="tab" href="#tabpanel-storagepool-snapshots-` + pool.id + `" tabIndex="-1">Snapshots</a></li>
+                                                                <li><a id="tab-storagepool-status-` + pool.id + `" class="nav-item" data-toggle="tab" href="#tabpanel-storagepool-status-` + pool.id + `" tabIndex="-1">Status</a></li>
+                                                        </ul>
+                                                </div>
                         <div id="listingctbody-storagepool-` + pool.id + `" class="listing-ct-body hidden">
-							<div class="tab-content">
-								<div id="tabpanel-storagepool-filesystems-` + pool.id + `" class="tab-pane" role="tabpanel">
-									<div id="panel-storagepool-filesystems-` + pool.id + `" class="panel panel-default">
-										<div class="panel-heading">
+                                                        <div class="tab-content">
+                                                                <div id="tabpanel-storagepool-filesystems-` + pool.id + `" class="tab-pane" role="tabpanel">
+                                                                        <div id="panel-storagepool-filesystems-` + pool.id + `" class="panel panel-default">
+                                                                                <div class="panel-heading">
                                             <div class="panel-ct-heading">
-										        <h2 id="paneltitle-storagepool-filesystems-` + pool.id + `" class="panel-title">File Systems</h2>
+                                                                                        <h2 id="paneltitle-storagepool-filesystems-` + pool.id + `" class="panel-title">File Systems</h2>
                                                 <div id="spinner-storagepool-filesystems-` + pool.id + `" class="spinner spinner-sm hidden"></div>
                                             </div>
-										    <div class="panel-actions panel-ct-actions">
-											    <button id="btn-storagepool-filesystems-create-` + pool.id + `" class="btn btn-primary privileged` + (pool.readonly ? " disabled" : "") + `" data-target="#modal-storagepool-filesystems-create-` + pool.id + `" data-toggle="modal" tabIndex="-1" type="button">Create File System</button>
-											    <button id="btn-storagepool-filesystems-refresh-` + pool.id + `" class="btn btn-default" tabIndex="-1" type="button">Refresh</button>
-										    </div>
-										</div>
-										<table id="table-storagepool-filesystems-` + pool.id + `" class="table table-striped table-ct-filesystems">
-										    <thead>
-											    <tr>
-											        <th colspan="2">Name</th>
-											        <th>Available</th>
-											        <th>Used</th>
-											        <th>Snapshots</th>
-											        <th>Refreservation</th>
-											        <th>Record Size</th>
-											        <th>Compression</th>
-											        <th>Deduplication</th>
-											        <th>Share</th>
-											        <th>Mounted</th>
-											        <th class="listing-ct-icon"></th>
-											        <th class="listing-ct-icon"></th>
-											        <th class="listing-ct-actionsmenu"></th>
-											    </tr>
-										    </thead>
-										    <tbody id="tbody-storagepool-filesystems-` + pool.id + `"></tbody>
-										</table>
-									</div>
-								</div>
-								<div id="tabpanel-storagepool-snapshots-` + pool.id + `" class="tab-pane" role="tabpanel">
-									<div id="panel-storagepool-snapshots-` + pool.id + `" class="panel panel-default">
-										<div class="panel-heading">
-										    <div class="panel-ct-heading">
-										        <h2 id="paneltitle-storagepool-snapshots-` + pool.id + `" class="panel-title">Snapshots</h2>
+                                                                                    <div class="panel-actions panel-ct-actions">
+                                                                                            <button id="btn-storagepool-filesystems-create-` + pool.id + `" class="btn btn-primary privileged` + (pool.readonly ? " disabled" : "") + `" data-target="#modal-storagepool-filesystems-create-` + pool.id + `" data-toggle="modal" tabIndex="-1" type="button">Create File System</button>
+                                                                                            <button id="btn-storagepool-filesystems-refresh-` + pool.id + `" class="btn btn-default" tabIndex="-1" type="button">Refresh</button>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <table id="table-storagepool-filesystems-` + pool.id + `" class="table table-striped table-ct-filesystems">
+                                                                                    <thead>
+<tr>
+    <th colspan="2">名稱</th>
+    <th>可用空間</th>
+    <th>已用空間</th>
+    <th>快照</th>
+    <th>預留空間</th>
+    <th>記錄大小</th>
+    <th>壓縮</th>
+    <th>重複資料刪除</th>
+    <th>共享</th>
+    <th>已掛載</th>
+    <th class="listing-ct-icon"></th>
+    <th class="listing-ct-icon"></th>
+    <th class="listing-ct-actionsmenu"></th>
+</tr>
+                                                                                    </thead>
+                                                                                    <tbody id="tbody-storagepool-filesystems-` + pool.id + `"></tbody>
+                                                                                </table>
+                                                                        </div>
+                                                                </div>
+                                                                <div id="tabpanel-storagepool-snapshots-` + pool.id + `" class="tab-pane" role="tabpanel">
+                                                                        <div id="panel-storagepool-snapshots-` + pool.id + `" class="panel panel-default">
+                                                                                <div class="panel-heading">
+                                                                                    <div class="panel-ct-heading">
+                                                                                        <h2 id="paneltitle-storagepool-snapshots-` + pool.id + `" class="panel-title">Snapshots</h2>
                                                 <div id="spinner-storagepool-snapshots-` + pool.id + `" class="spinner spinner-sm hidden"></div>
                                             </div>
-										    <div class="panel-actions panel-ct-actions">
-											    <button id="btn-storagepool-snapshots-create-` + pool.id + `" class="btn btn-primary privileged` + (pool.readonly ? " disabled" : "") + `" data-target="#modal-storagepool-snapshots-create-` + pool.id + `" data-toggle="modal" tabIndex="-1" type="button">Create Snapshot</button>
-											    <button id="btn-storagepool-snapshots-refresh-` + pool.id + `" class="btn btn-default" tabIndex="-1">Refresh</button>
-										    </div>
-										</div>
-										<table id="table-storagepool-snapshots-` + pool.id + `-header" class="table table-striped table-ct-snapshots">
-										    <thead>
-											    <tr>
-											        <th colspan="2">Name</th>
-											        <th>Created</th>
-											        <th>Used</th>
-											        <th>Referenced</th>
-											        <th colspan="2">Clones</th>
-											        <th class="listing-ct-icon"></th>
-											        <th class="listing-ct-actionsmenu"></th>
-											    </tr>
-										    </thead>
-										    ` + (!zfsmanager.configuration.zfs.snapshot.filesystemlist ? `<tbody id="tbody-storagepool-snapshots-` + pool.id + `"></tbody>` : ``) + `
-										</table>
-                                        ` + (zfsmanager.configuration.zfs.snapshot.filesystemlist ? `<div id="div-storagepool-snapshots-` + pool.id + `"></div>` : ``) + `	
-									</div>
-								</div>
-								<div id="tabpanel-storagepool-status-` + pool.id + `" class="tab-pane" role="tabpanel">
-									<div id="panel-storagepool-status-` + pool.id + `" class="panel panel-default">
-										<div class="panel-heading">
-										    <div class="panel-ct-heading">
-										        <h2 id="paneltitle-storagepool-status-` + pool.id + `" class="panel-title">Status</h2>
+                                                                                    <div class="panel-actions panel-ct-actions">
+                                                                                            <button id="btn-storagepool-snapshots-create-` + pool.id + `" class="btn btn-primary privileged` + (pool.readonly ? " disabled" : "") + `" data-target="#modal-storagepool-snapshots-create-` + pool.id + `" data-toggle="modal" tabIndex="-1" type="button">Create Snapshot</button>
+                                                                                            <button id="btn-storagepool-snapshots-refresh-` + pool.id + `" class="btn btn-default" tabIndex="-1">Refresh</button>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <table id="table-storagepool-snapshots-` + pool.id + `-header" class="table table-striped table-ct-snapshots">
+                                                                                    <thead>
+                                                                                            <tr>
+                                                                                                <th colspan="2">Name</th>
+                                                                                                <th>Created</th>
+                                                                                                <th>Used</th>
+                                                                                                <th>Referenced</th>
+                                                                                                <th colspan="2">Clones</th>
+                                                                                                <th class="listing-ct-icon"></th>
+                                                                                                <th class="listing-ct-actionsmenu"></th>
+                                                                                            </tr>
+                                                                                    </thead>
+                                                                                    ` + (!zfsmanager.configuration.zfs.snapshot.filesystemlist ? `<tbody id="tbody-storagepool-snapshots-` + pool.id + `"></tbody>` : ``) + `
+                                                                                </table>
+                                        ` + (zfsmanager.configuration.zfs.snapshot.filesystemlist ? `<div id="div-storagepool-snapshots-` + pool.id + `"></div>` : ``) + `
+                                                                        </div>
+                                                                </div>
+                                                                <div id="tabpanel-storagepool-status-` + pool.id + `" class="tab-pane" role="tabpanel">
+                                                                        <div id="panel-storagepool-status-` + pool.id + `" class="panel panel-default">
+                                                                                <div class="panel-heading">
+                                                                                    <div class="panel-ct-heading">
+                                                                                        <h2 id="paneltitle-storagepool-status-` + pool.id + `" class="panel-title">Status</h2>
                                                 <div id="spinner-storagepool-status-` + pool.id + `" class="spinner spinner-sm hidden"></div>
                                             </div>
-										    <div class="panel-actions panel-ct-actions">
+                                                                                    <div class="panel-actions panel-ct-actions">
                                                 <div class="btn-group dropdown">
                                                     <button id="btn-storagepool-status-refresh-` + pool.id + `" class="btn btn-default" tabIndex="-1">Refresh</button>
                                                     <button id="btn-storagepool-status-refresh-auto-` + pool.id + `" class="btn btn-default dropdown-toggle" data-toggle="dropdown" tabindex="-1">
@@ -1443,42 +1443,42 @@ function FnStoragePoolsGetCommand(process = { data, message }) {
                                                         <li class="presentation"><a data-pool-refresh-interval="0"  href="#" tabindex="-1">Refresh: Off</a></li>
                                                     </ul>
                                                 </div>
-										    </div>
-										</div>
-										<table id="table-storagepool-status-messages-` + pool.id + `" class="table">
-										    <tbody id="tbody-storagepool-status-messages-` + pool.id + `"></tbody>
-										</table>
-										<table id="table-storagepool-status-config-` + pool.id + `" class="table table-ct-status-config">
-										    <tbody id="tbody-storagepool-status-config-` + pool.id + `"></tbody>
-										    <thead>
-											    <tr>
-											        <th colspan="3"></th>
-											        <th></th>
-											        <th></th>
-											        <th></th>
-											        <th></th>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <table id="table-storagepool-status-messages-` + pool.id + `" class="table">
+                                                                                    <tbody id="tbody-storagepool-status-messages-` + pool.id + `"></tbody>
+                                                                                </table>
+                                                                                <table id="table-storagepool-status-config-` + pool.id + `" class="table table-ct-status-config">
+                                                                                    <tbody id="tbody-storagepool-status-config-` + pool.id + `"></tbody>
+                                                                                    <thead>
+                                                                                            <tr>
+                                                                                                <th colspan="3"></th>
+                                                                                                <th></th>
+                                                                                                <th></th>
+                                                                                                <th></th>
+                                                                                                <th></th>
                                                     <th colspan="3"></th>
-											        <th colspan="3"></th>
-											        <th class="listing-ct-spinner"></th>
-											        <th class="listing-ct-actionsmenu"></th>
-											    </tr>
-										    </thead>
-										</table>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div id="spinner-storagepool-` + pool.id + `" class="listing-ct-body listing-ct-body-spinner col-md-12">
-							<div class="spinner spinner-lg"></div>
-						</div>
-					</td>
-				</tr>
+                                                                                                <th colspan="3"></th>
+                                                                                                <th class="listing-ct-spinner"></th>
+                                                                                                <th class="listing-ct-actionsmenu"></th>
+                                                                                            </tr>
+                                                                                    </thead>
+                                                                                </table>
+                                                                        </div>
+                                                                </div>
+                                                        </div>
+                                                </div>
+                                                <div id="spinner-storagepool-` + pool.id + `" class="listing-ct-body listing-ct-body-spinner col-md-12">
+                                                        <div class="spinner spinner-lg"></div>
+                                                </div>
+                                        </td>
+                                </tr>
 
-			    \x3Cscript nonce="1t55lZ7tzuKTreHVNwE66Ox32Mc=">
+                            \x3Cscript nonce="1t55lZ7tzuKTreHVNwE66Ox32Mc=">
                     //Set active tab
                     $("#tab-storagepool-` + pool.activetab + `-` + pool.id + `").tab("show");
 
-				    $("#btn-storagepool-filesystems-refresh-` + pool.id + `").on("click", function () {
+                                    $("#btn-storagepool-filesystems-refresh-` + pool.id + `").on("click", function () {
                         $("#btn-storagepool-filesystems-create-` + pool.id + `").prop("disabled", true);
                         $("#btn-storagepool-filesystems-refresh-` + pool.id + `").prop("disabled", true);
 
@@ -1487,7 +1487,7 @@ function FnStoragePoolsGetCommand(process = { data, message }) {
                         $("#spinner-storagepool-filesystems-` + pool.id + `").removeClass("hidden");
 
                         FnStoragePoolRefresh({ name: "` + pool.name + `", id: "` + pool.id + `" }, { storagepool: true, filesystems: true, snapshots: false, status: false });
-				    });
+                                    });
 
                     $("#btn-storagepool-snapshots-refresh-` + pool.id + `").on("click", function () {
                         $("#btn-storagepool-snapshots-create-` + pool.id + `").prop("disabled", true);
@@ -1498,9 +1498,9 @@ function FnStoragePoolsGetCommand(process = { data, message }) {
                         $("#spinner-storagepool-snapshots-` + pool.id + `").removeClass("hidden");
 
                         FnStoragePoolRefresh({ name: "` + pool.name + `", id: "` + pool.id + `" }, { storagepool: true, filesystems: false, snapshots: true, status: false });
-				    });
+                                    });
 
-				    $("#btn-storagepool-status-refresh-` + pool.id + `").on("click", function () {
+                                    $("#btn-storagepool-status-refresh-` + pool.id + `").on("click", function () {
                         FnStoragePoolRefreshAutoDisable({ name: "` + pool.name + `", id: "` + pool.id + `" });
 
                         $(this).text("Refresh").prop("disabled", true);
@@ -1512,9 +1512,9 @@ function FnStoragePoolsGetCommand(process = { data, message }) {
                         $("#spinner-storagepool-status-0-` + pool.id + `").removeClass("hidden");
 
                         FnStoragePoolRefresh({ name: "` + pool.name + `", id: "` + pool.id + `" }, { storagepool: true, filesystems: false, snapshots: false, status: true });
-				    });
+                                    });
 
-				    $("#dropdown-storagepool-status-refresh-` + pool.id + `").on("click", "li a", function () {
+                                    $("#dropdown-storagepool-status-refresh-` + pool.id + `").on("click", "li a", function () {
                         FnStoragePoolRefreshAutoDisable({ name: "` + pool.name + `", id: "` + pool.id + `" });
                         $("#btn-storagepool-status-refresh-` + pool.id + `").click();
 
@@ -1540,10 +1540,10 @@ function FnStoragePoolsGetCommand(process = { data, message }) {
 
                             FnConsole.log[2]("Storage Pools, Refresh, Auto: Enabled, Pool: ` + pool.name + `");
                         }
-				    });
-			    \x3C/script>
-			</tbody>
-		`;
+                                    });
+                            \x3C/script>
+                        </tbody>
+                `;
 
         $("#table-storagepools").append(pool.output);
 
@@ -5206,16 +5206,16 @@ function FnFileSystemsGetCommand(pool = { name, id, altroot: false, boot: false,
                     }
                 };
                 filesystem.actionsmenu.header = `
-					<div class="dropdown pull-right dropdown-kebab-pf">
-						<button id="btn-storagepool-filesystem-dropdown-` + filesystem.id + `" aria-expanded="false" aria-haspopup="true" class="btn btn-default dropdown-toggle" data-toggle="dropdown" tabIndex="-1" type="button">
+                                        <div class="dropdown pull-right dropdown-kebab-pf">
+                                                <button id="btn-storagepool-filesystem-dropdown-` + filesystem.id + `" aria-expanded="false" aria-haspopup="true" class="btn btn-default dropdown-toggle" data-toggle="dropdown" tabIndex="-1" type="button">
                             <span class="fa fa-ellipsis-v"></span>
-						</button>
-						<ul aria-labelledby="btn-storagepool-filesystem-dropdown-` + filesystem.id + `" class="dropdown-menu dropdown-menu-right">
-				`;
+                                                </button>
+                                                <ul aria-labelledby="btn-storagepool-filesystem-dropdown-` + filesystem.id + `" class="dropdown-menu dropdown-menu-right">
+                                `;
                 filesystem.actionsmenu.footer = `
-						</ul>
-					</div>
-				`;
+                                                </ul>
+                                        </div>
+                                `;
 
                 //Configure File System
                 filesystem.actionsmenu.items.itemconfigure.push(`<li><a id="btn-storagepool-filesystem-configure-` + filesystem.id + `" data-toggle="modal" href="#modal-storagepool-filesystem-configure-` + filesystem.id + `" tabIndex="-1">Configure ` + filesystem.type + `</a></li>`);
@@ -8958,27 +8958,27 @@ function FnSnapshotsGetCommand(pool = { name, id, altroot: false, readonly: fals
             if (_index == 0 || (snapshots.filesystemlist.name != "" && snapshots.filesystemlist.name != snapshot.properties[0].replace(/^(.*)\@.*$/, "$1"))) {
                 snapshot.output += `<table id="table-storagepool-snapshots-listing-` + snapshot.filesystem.id + `" class="listing listing-ct listing-ct-wide">
                                         \x3Cscript nonce="1t55lZ7tzuKTreHVNwE66Ox32Mc=">
-				                            $("#table-storagepool-snapshots-listing-` + snapshot.filesystem.id + ` > tbody > tr.listing-ct-item").on("click", function () {
+                                                            $("#table-storagepool-snapshots-listing-` + snapshot.filesystem.id + ` > tbody > tr.listing-ct-item").on("click", function () {
                                                 if (!$(this).parent().hasClass("open")) {
                                                     $(this).parent().addClass("open");
                                                 } else {
                                                     $(this).parent().removeClass("open");
                                                 }
-				                            });
-			                            \x3C/script>
+                                                            });
+                                                    \x3C/script>
                                         <tbody>
-				                            <tr id="tr-storagepool-snapshots-listing-` + snapshot.filesystem.id + `" class="listing-ct-item listing-ct-nonavigate listing-ct-item-snapshots">
+                                                            <tr id="tr-storagepool-snapshots-listing-` + snapshot.filesystem.id + `" class="listing-ct-item listing-ct-nonavigate listing-ct-item-snapshots">
                                                 <td class="listing-ct-toggle listing-ct-toggle-snapshots"><i class="fa fa-fw"></i></td>
                                                 <td colspan="10"><span class="table-ct-head">Name:</span>` + snapshot.properties[0].replace(/^(.*)\@.*$/, "$1") + (zfsmanager.configuration.zfs.storagepool.count ? ` <span id="span-storagepool-snapshots-listing-` + snapshot.filesystem.id + `-count" class="pf-c-badge pf-m-read"></span>` : ``) + `</td>
                                             </tr>
                                             <tr class="listing-ct-panel">
                                                 <td colspan="11">
                                                     <table class="table table-striped table-ct-snapshots">
-										                <tbody id="tbody-storagepool-snapshots-list-` + snapshot.filesystem.id + `"></tbody>
-										            </table>
-					                            </td>
-				                            </tr>
-			                            </tbody>
+                                                                                                <tbody id="tbody-storagepool-snapshots-list-` + snapshot.filesystem.id + `"></tbody>
+                                                                                            </table>
+                                                                    </td>
+                                                            </tr>
+                                                    </tbody>
                                     </table>
                 `;
 
@@ -8990,7 +8990,7 @@ function FnSnapshotsGetCommand(pool = { name, id, altroot: false, readonly: fals
 
             snapshots.filesystemlist.count++;
             $("#span-storagepool-snapshots-listing-" + snapshot.filesystem.id + "-count").html(snapshots.filesystemlist.count);
-        }        
+        }
 
         snapshot.output += `<tr>`;
 
@@ -9075,16 +9075,16 @@ function FnSnapshotsGetCommand(pool = { name, id, altroot: false, readonly: fals
                     }
                 };
                 snapshot.actionsmenu.header = `
-					<div class="dropdown pull-right dropdown-kebab-pf">
-						<button id="btn-storagepool-snapshot-dropdown-` + snapshot.id + `" aria-expanded="false" aria-haspopup="true" class="btn btn-default dropdown-toggle privileged` + ((!zfsmanager.user.admin || pool.readonly) ? " disabled" : "") + `" data-toggle="dropdown" tabIndex="-1" type="button">
+                                        <div class="dropdown pull-right dropdown-kebab-pf">
+                                                <button id="btn-storagepool-snapshot-dropdown-` + snapshot.id + `" aria-expanded="false" aria-haspopup="true" class="btn btn-default dropdown-toggle privileged` + ((!zfsmanager.user.admin || pool.readonly) ? " disabled" : "") + `" data-toggle="dropdown" tabIndex="-1" type="button">
                             <span class="fa fa-ellipsis-v"></span>
-						</button>
-						<ul aria-labelledby="btn-storagepool-snapshot-dropdown-` + snapshot.id + `" class="dropdown-menu dropdown-menu-right">
-				`;
+                                                </button>
+                                                <ul aria-labelledby="btn-storagepool-snapshot-dropdown-` + snapshot.id + `" class="dropdown-menu dropdown-menu-right">
+                                `;
                 snapshot.actionsmenu.footer = `
-						</ul>
-					</div>
-				`;
+                                                </ul>
+                                        </div>
+                                `;
 
                 //Clone Snapshot
                 if (!pool.readonly) {
@@ -9119,7 +9119,7 @@ function FnSnapshotsGetCommand(pool = { name, id, altroot: false, readonly: fals
         });
 
         snapshot.output += `</tr>`;
-        
+
         if (zfsmanager.configuration.zfs.snapshot.filesystemlist) {
             $("#tbody-storagepool-snapshots-list-" + snapshot.filesystem.id).append(snapshot.output);
 
@@ -10451,8 +10451,8 @@ function FnStatusGetCommand(pool = { name, id, autotrim: false, boot: false, fea
                 <ul aria-labelledby="btn-storagepool-status-dropdown-` + _index + `-` + pool.id + `" class="dropdown-menu dropdown-menu-right">
         `;
         pool.status.config.actionsmenu.footer = `
-		        </ul>
-	        </div>
+                        </ul>
+                </div>
         `;
         pool.status.config.actionsmenu.register = {
             storagepool: {
@@ -13016,7 +13016,7 @@ function FnDynamicStatusDiskTrimCancel(pool = { name, id, status: { config: { it
 
     dynamic.script = `
         \x3Cscript nonce="1t55lZ7tzuKTreHVNwE66Ox32Mc=">
-			$("#btn-storagepool-status-disk-trim-cancel-` + pool.status.config.items.index + `-` + pool.id + `").on("click", function () {
+                        $("#btn-storagepool-status-disk-trim-cancel-` + pool.status.config.items.index + `-` + pool.id + `").on("click", function () {
                 $("[id^=btn-storagepool-status-dropdown-][id$=` + pool.id + `]").addClass("disabled");
                 $("#spinner-storagepool-status-` + pool.status.config.items.index + `-` + pool.id + `").removeClass("hidden");
 
@@ -13035,7 +13035,7 @@ function FnDynamicStatusDiskTrimResume(pool = { name, id, status: { config: { it
 
     dynamic.script = `
         \x3Cscript nonce="1t55lZ7tzuKTreHVNwE66Ox32Mc=">
-			$("#btn-storagepool-status-disk-trim-resume-` + pool.status.config.items.index + `-` + pool.id + `").on("click", function () {
+                        $("#btn-storagepool-status-disk-trim-resume-` + pool.status.config.items.index + `-` + pool.id + `").on("click", function () {
                 $("[id^=btn-storagepool-status-dropdown-][id$=` + pool.id + `]").addClass("disabled");
                 $("#spinner-storagepool-status-` + pool.status.config.items.index + `-` + pool.id + `").removeClass("hidden");
 
@@ -13054,7 +13054,7 @@ function FnDynamicStatusDiskTrimSuspend(pool = { name, id, status: { config: { i
 
     dynamic.script = `
         \x3Cscript nonce="1t55lZ7tzuKTreHVNwE66Ox32Mc=">
-			$("#btn-storagepool-status-disk-trim-suspend-` + pool.status.config.items.index + `-` + pool.id + `").on("click", function () {
+                        $("#btn-storagepool-status-disk-trim-suspend-` + pool.status.config.items.index + `-` + pool.id + `").on("click", function () {
                 $("[id^=btn-storagepool-status-dropdown-][id$=` + pool.id + `]").addClass("disabled");
                 $("#spinner-storagepool-status-` + pool.status.config.items.index + `-` + pool.id + `").removeClass("hidden");
 
@@ -13073,7 +13073,7 @@ function FnDynamicStatusStoragePoolScrubPause(pool = { name, id, status: { confi
 
     dynamic.script = `
         \x3Cscript nonce="1t55lZ7tzuKTreHVNwE66Ox32Mc=">
-			$("#btn-storagepool-status-scrub-pause-` + pool.status.config.items.index + `-` + pool.id + `").on("click", function () {
+                        $("#btn-storagepool-status-scrub-pause-` + pool.status.config.items.index + `-` + pool.id + `").on("click", function () {
                 $("[id^=btn-storagepool-status-dropdown-][id$=` + pool.id + `]").addClass("disabled");
                 $("#spinner-storagepool-status-` + pool.status.config.items.index + `-` + pool.id + `").removeClass("hidden");
 
@@ -13092,7 +13092,7 @@ function FnDynamicStatusStoragePoolScrubResume(pool = { name, id, status: { conf
 
     dynamic.script = `
         \x3Cscript nonce="1t55lZ7tzuKTreHVNwE66Ox32Mc=">
-			$("#btn-storagepool-status-scrub-resume-` + pool.status.config.items.index + `-` + pool.id + `").on("click", function () {
+                        $("#btn-storagepool-status-scrub-resume-` + pool.status.config.items.index + `-` + pool.id + `").on("click", function () {
                 $("[id^=btn-storagepool-status-dropdown-][id$=` + pool.id + `]").addClass("disabled");
                 $("#spinner-storagepool-status-` + pool.status.config.items.index + `-` + pool.id + `").removeClass("hidden");
 
@@ -13111,7 +13111,7 @@ function FnDynamicStatusStoragePoolScrubStart(pool = { name, id, status: { confi
 
     dynamic.script = `
         \x3Cscript nonce="1t55lZ7tzuKTreHVNwE66Ox32Mc=">
-		    $("#btn-storagepool-status-scrub-start-` + pool.status.config.items.index + `-` + pool.id + `").on("click", function () {
+                    $("#btn-storagepool-status-scrub-start-` + pool.status.config.items.index + `-` + pool.id + `").on("click", function () {
                 $("[id^=btn-storagepool-status-dropdown-][id$=` + pool.id + `]").addClass("disabled");
                 $("#spinner-storagepool-status-` + pool.status.config.items.index + `-` + pool.id + `").removeClass("hidden");
 
@@ -13130,7 +13130,7 @@ function FnDynamicStatusStoragePoolScrubStop(pool = { name, id, status: { config
 
     dynamic.script = `
         \x3Cscript nonce="1t55lZ7tzuKTreHVNwE66Ox32Mc=">
-			$("#btn-storagepool-status-scrub-stop-` + pool.status.config.items.index + `-` + pool.id + `").on("click", function () {
+                        $("#btn-storagepool-status-scrub-stop-` + pool.status.config.items.index + `-` + pool.id + `").on("click", function () {
                 $("[id^=btn-storagepool-status-dropdown-][id$=` + pool.id + `]").addClass("disabled");
                 $("#spinner-storagepool-status-` + pool.status.config.items.index + `-` + pool.id + `").removeClass("hidden");
 
@@ -13149,7 +13149,7 @@ function FnDynamicStatusStoragePoolTrimCancel(pool = { name, id, status: { confi
 
     dynamic.script = `
         \x3Cscript nonce="1t55lZ7tzuKTreHVNwE66Ox32Mc=">
-			$("#btn-storagepool-status-trim-cancel-` + pool.status.config.items.index + `-` + pool.id + `").on("click", function () {
+                        $("#btn-storagepool-status-trim-cancel-` + pool.status.config.items.index + `-` + pool.id + `").on("click", function () {
                 $("[id^=btn-storagepool-status-dropdown-][id$=` + pool.id + `]").addClass("disabled");
                 $("#spinner-storagepool-status-` + pool.status.config.items.index + `-` + pool.id + `").removeClass("hidden");
 
@@ -13168,7 +13168,7 @@ function FnDynamicStatusStoragePoolTrimResume(pool = { name, id, status: { confi
 
     dynamic.script = `
         \x3Cscript nonce="1t55lZ7tzuKTreHVNwE66Ox32Mc=">
-			$("#btn-storagepool-status-trim-resume-` + pool.status.config.items.index + `-` + pool.id + `").on("click", function () {
+                        $("#btn-storagepool-status-trim-resume-` + pool.status.config.items.index + `-` + pool.id + `").on("click", function () {
                 $("[id^=btn-storagepool-status-dropdown-][id$=` + pool.id + `]").addClass("disabled");
                 $("#spinner-storagepool-status-` + pool.status.config.items.index + `-` + pool.id + `").removeClass("hidden");
 
@@ -13187,7 +13187,7 @@ function FnDynamicStatusStoragePoolTrimSuspend(pool = { name, id, status: { conf
 
     dynamic.script = `
         \x3Cscript nonce="1t55lZ7tzuKTreHVNwE66Ox32Mc=">
-			$("#btn-storagepool-status-trim-suspend-` + pool.status.config.items.index + `-` + pool.id + `").on("click", function () {
+                        $("#btn-storagepool-status-trim-suspend-` + pool.status.config.items.index + `-` + pool.id + `").on("click", function () {
                 $("[id^=btn-storagepool-status-dropdown-][id$=` + pool.id + `]").addClass("disabled");
                 $("#spinner-storagepool-status-` + pool.status.config.items.index + `-` + pool.id + `").removeClass("hidden");
 
@@ -13372,7 +13372,7 @@ function FnModalConfigureContent(modal = { id }) {
                     <div></div>
                     <div id="spinner-configure" class="dialog-wait-ct pull-left hidden">
                         <div class="spinner spinner-sm"></div><span></span>
-	                </div>
+                        </div>
                     <div class="modal-ct-buttons">
                         <button class="btn btn-default cancel" data-dismiss="modal" tabIndex="-1">Cancel</button>
                         <button id="btn-configure-apply" class="btn btn-primary apply" data-dismiss="modal" tabindex="-1">Configure</button>
@@ -13495,7 +13495,7 @@ function FnModalUpdateContent(modal = { id }) {
                     <div></div>
                     <div id="spinner-update" class="dialog-wait-ct pull-left">
                         <div class="spinner spinner-sm"></div><span></span>
-	                </div>
+                        </div>
                     <div class="modal-ct-buttons"></div>
                 </div>
             </div>
@@ -13573,7 +13573,7 @@ function FnModalWelcomeContent(modal = { id }) {
                     <div></div>
                     <div id="spinner-welcome" class="dialog-wait-ct pull-left hidden">
                         <div class="spinner spinner-sm"></div><span></span>
-	                </div>
+                        </div>
                     <div class="modal-ct-buttons">
                         <button id="btn-welcome-apply" class="btn btn-primary apply" data-dismiss="modal" tabindex="-1">Configure</button>
                     </div>
@@ -13784,7 +13784,7 @@ function FnModalStoragePoolsCreateContent(modal = { id }) {
                                 <ul id="dropdown-storagepools-create-dedup" class="dropdown-menu">
                                     <li value="on"><a tabindex="-1">On</a></li>
                                     <li class="active" value="off"><a tabindex="-1">Off</a></li>
-									<li value="edonr,verify"><a tabindex="-1">Edon-R + Verify</a></li>
+                                                                        <li value="edonr,verify"><a tabindex="-1">Edon-R + Verify</a></li>
                                     <li value="sha256"><a tabindex="-1">SHA-256</a></li>
                                     <li value="sha256,verify"><a tabindex="-1">SHA-256 + Verify</a></li>
                                     <li value="sha512"><a tabindex="-1">SHA-512</a></li>
@@ -13797,11 +13797,11 @@ function FnModalStoragePoolsCreateContent(modal = { id }) {
                         </div>
                         <label class="control-label">Refreservation</label>
                         <div id="validationwrapper-storagepools-create-refreservation" class="ct-validation-wrapper">
-	                        <div class="slider-pf">
-		                        <input id="slider-storagepools-create-refreservation" data-provide="slider" data-slider-max="20" data-slider-min="0" data-slider-tooltip="hide" data-slider-value="10" disabled="true" tabIndex="-1" type="text">
-		                        <input id="input-storagepools-create-refreservation" class="slider-input-pf size-ct-text form-control privileged-modal" maxlength="4" tabIndex="1004" type="text" value="10">
-		                        <span>%</span>
-	                        </div>
+                                <div class="slider-pf">
+                                        <input id="slider-storagepools-create-refreservation" data-provide="slider" data-slider-max="20" data-slider-min="0" data-slider-tooltip="hide" data-slider-value="10" disabled="true" tabIndex="-1" type="text">
+                                        <input id="input-storagepools-create-refreservation" class="slider-input-pf size-ct-text form-control privileged-modal" maxlength="4" tabIndex="1004" type="text" value="10">
+                                        <span>%</span>
+                                </div>
                         </div>
                         <label class="control-label">Options</label>
                         <div role="group">
@@ -13828,7 +13828,7 @@ function FnModalStoragePoolsCreateContent(modal = { id }) {
                     <div></div>
                     <div id="spinner-storagepools-create" class="dialog-wait-ct pull-left hidden">
                         <div class="spinner spinner-sm"></div><span></span>
-	                </div>
+                        </div>
                     <div class="modal-ct-buttons">
                         <button class="btn btn-default cancel" data-dismiss="modal" tabIndex="-1">Cancel</button>
                         <button id="btn-storagepools-create-apply" class="btn btn-primary apply privileged-modal" tabIndex="-1">Create</button>
@@ -13839,52 +13839,52 @@ function FnModalStoragePoolsCreateContent(modal = { id }) {
 
         \x3Cscript nonce="1t55lZ7tzuKTreHVNwE66Ox32Mc=">
             $("#input-storagepools-create-refreservation").tooltip({ trigger: "manual" })
-	            .on("keyup", function (element) {
-		            let $this = $(this);
-		            let sd = $this.siblings("[data-provide=slider]").slider();
+                    .on("keyup", function (element) {
+                            let $this = $(this);
+                            let sd = $this.siblings("[data-provide=slider]").slider();
 
-		            if ($this.val().trim() && !$.isNumeric(this.value)) {
-			            this.value = sd.slider("getValue");
-		            }
-	            })
-	            .on("keypress blur", function (element) {
-		            if (element.which == 13 || element.type === "blur") {
-			            element.preventDefault();
+                            if ($this.val().trim() && !$.isNumeric(this.value)) {
+                                    this.value = sd.slider("getValue");
+                            }
+                    })
+                    .on("keypress blur", function (element) {
+                            if (element.which == 13 || element.type === "blur") {
+                                    element.preventDefault();
 
-			            let $this = $(this);
-			            let sd = $this.siblings("[data-provide=slider]").slider();
-			            let max = sd.slider("getAttribute", "max");
-			            let min = sd.slider("getAttribute", "min");
+                                    let $this = $(this);
+                                    let sd = $this.siblings("[data-provide=slider]").slider();
+                                    let max = sd.slider("getAttribute", "max");
+                                    let min = sd.slider("getAttribute", "min");
 
-			            if (!$.isNumeric(this.value) || (this.value > max || this.value < min)) {
-				            let warningInfo = $.isNumeric(this.value) ? "Valid value should be between " + min + " and " + max : "Valid value should be number";
-				            $this.attr("data-original-title", warningInfo).tooltip("show").addClass("warning");
-				            this.value = sd.slider("getValue");
-				            setTimeout(function () {
-					            $this.tooltip("hide");
-				            }, 3000);
-			            } else {
-				            if ($this.is(".warning")) {
-					            $this.tooltip("hide");
-				            }
+                                    if (!$.isNumeric(this.value) || (this.value > max || this.value < min)) {
+                                            let warningInfo = $.isNumeric(this.value) ? "Valid value should be between " + min + " and " + max : "Valid value should be number";
+                                            $this.attr("data-original-title", warningInfo).tooltip("show").addClass("warning");
+                                            this.value = sd.slider("getValue");
+                                            setTimeout(function () {
+                                                    $this.tooltip("hide");
+                                            }, 3000);
+                                    } else {
+                                            if ($this.is(".warning")) {
+                                                    $this.tooltip("hide");
+                                            }
 
-				            this.value = $this.val().trim();
-				            sd.slider("setValue", this.value);
-			            }
-		            }
-	            })
-	            .siblings("[data-provide=slider]").each(function () {
-		            $("#input-storagepools-create-refreservation").val(this.value);
-		            $(this).slider().on("change", function (element) {
-			            $("#input-storagepools-create-refreservation").val(element.value.newValue);
-		            });
-	            });
+                                            this.value = $this.val().trim();
+                                            sd.slider("setValue", this.value);
+                                    }
+                            }
+                    })
+                    .siblings("[data-provide=slider]").each(function () {
+                            $("#input-storagepools-create-refreservation").val(this.value);
+                            $(this).slider().on("change", function (element) {
+                                    $("#input-storagepools-create-refreservation").val(element.value.newValue);
+                            });
+                    });
 
             $("#input-storagepools-create-refreservation").on("change textInput input", function (element) {
-	            if ($(this).val() > 20) { //Force reset to maximum allowed value
-		            $(this).val(20);
-	            } else if ($(this).val() < 0) { //Force reset to minimum allowed value
-		            $(this).val(0);
+                    if ($(this).val() > 20) { //Force reset to maximum allowed value
+                            $(this).val(20);
+                    } else if ($(this).val() < 0) { //Force reset to minimum allowed value
+                            $(this).val(0);
                 }
 
                 if ($.isNumeric($(this).val())) {
@@ -14059,7 +14059,7 @@ function FnModalStoragePoolsCreateContent(modal = { id }) {
 
                     FnStoragePoolCreate({ name: pool.name, ashift: pool.ashift, autoexpand: pool.autoexpand, autoreplace: pool.autoreplace, autotrim: pool.autotrim, force: pool.force, virtualdevice: pool.virtualdevice }, { compression: filesystem.compression, dedup: filesystem.dedup, recordsize: filesystem.recordsize, refreservationpercent: filesystem.refreservationpercent, selinux: filesystem.selinux }, { id: disks.id });
                 }
-			});
+                        });
 
             $("#dropdown-storagepools-create-virtualdevice").on("click", "li a", function () {
                 $("#btnspan-storagepools-create-virtualdevice").text($(this).text()).attr("data-field-value", $(this).parent().attr("value"));
@@ -14213,7 +14213,7 @@ function FnModalStoragePoolsImportContent(modal = { id }) {
                     <div></div>
                     <div id="spinner-storagepools-import" class="dialog-wait-ct pull-left hidden">
                         <div class="spinner spinner-sm"></div><span></span>
-	                </div>
+                        </div>
                     <div class="modal-ct-buttons">
                         <button class="btn btn-default cancel" data-dismiss="modal" tabIndex="-1">Cancel</button>
                         <button id="btn-storagepools-import-apply" class="btn btn-primary apply privileged-modal" tabIndex="-1">Import</button>
@@ -14319,45 +14319,45 @@ function FnModalStoragePoolsImportContent(modal = { id }) {
 
                 if (validation.storagepools && !$("#switch-storagepools-import-rename input").prop("checked")) {
                     if (pool.name.length == 0) {
-	                    $("#helpblock-storagepools-import-storagepools").removeClass("hidden").text("Storage pool name can not be empty. New name is needed.");
+                            $("#helpblock-storagepools-import-storagepools").removeClass("hidden").text("Storage pool name can not be empty. New name is needed.");
 
-	                    validation.name = false;
+                            validation.name = false;
                     } else if (/^[a-zA-Z0-9-_.: ]*$/.test(pool.name) == false) {
-	                    $("#helpblock-storagepools-import-storagepools").removeClass("hidden").text("Storage pool name contains invalid characters. New name is needed.");
+                            $("#helpblock-storagepools-import-storagepools").removeClass("hidden").text("Storage pool name contains invalid characters. New name is needed.");
 
-	                    validation.name = false;
+                            validation.name = false;
                     } else if (/^[0-9]/.test(pool.name)) {
-	                    $("#helpblock-storagepools-import-storagepools").removeClass("hidden").text("Storage pool name can not begin with numerical characters. New name is needed.");
+                            $("#helpblock-storagepools-import-storagepools").removeClass("hidden").text("Storage pool name can not begin with numerical characters. New name is needed.");
 
-	                    validation.name = false;
+                            validation.name = false;
                     } else if (/^[.]/.test(pool.name)) {
-	                    $("#helpblock-storagepools-import-storagepools").removeClass("hidden").text("Storage pool name can not begin with a period (.). New name is needed.");
+                            $("#helpblock-storagepools-import-storagepools").removeClass("hidden").text("Storage pool name can not begin with a period (.). New name is needed.");
 
-	                    validation.name = false;
+                            validation.name = false;
                     } else if (/^[_]/.test(pool.name)) {
-	                    $("#helpblock-storagepools-import-storagepools").removeClass("hidden").text("Storage pool name can not begin with an underscore (_). New name is needed.");
+                            $("#helpblock-storagepools-import-storagepools").removeClass("hidden").text("Storage pool name can not begin with an underscore (_). New name is needed.");
 
-	                    validation.name = false;
+                            validation.name = false;
                     } else if (/^[-]/.test(pool.name)) {
-	                    $("#helpblock-storagepools-import-storagepools").removeClass("hidden").text("Storage pool name can not begin with a hypen (-). New name is needed.");
+                            $("#helpblock-storagepools-import-storagepools").removeClass("hidden").text("Storage pool name can not begin with a hypen (-). New name is needed.");
 
-	                    validation.name = false;
+                            validation.name = false;
                     } else if (/^[:]/.test(pool.name)) {
-	                    $("#helpblock-storagepools-import-storagepools").removeClass("hidden").text("Storage pool name can not begin with an colon (:). New name is needed.");
+                            $("#helpblock-storagepools-import-storagepools").removeClass("hidden").text("Storage pool name can not begin with an colon (:). New name is needed.");
 
-	                    validation.name = false;
+                            validation.name = false;
                     } else if (/^[ ]/.test(pool.name)) {
-	                    $("#helpblock-storagepools-import-storagepools").removeClass("hidden").text("Storage pool name can not begin with whitespace ( ). New name is needed.");
+                            $("#helpblock-storagepools-import-storagepools").removeClass("hidden").text("Storage pool name can not begin with whitespace ( ). New name is needed.");
 
-	                    validation.name = false;
+                            validation.name = false;
                     } else if (/[ ]$/.test(pool.name)) {
-	                    $("#helpblock-storagepools-import-storagepools").removeClass("hidden").text("Storage pool name can not end with whitespace ( ). New name is needed.");
+                            $("#helpblock-storagepools-import-storagepools").removeClass("hidden").text("Storage pool name can not end with whitespace ( ). New name is needed.");
 
-	                    validation.name = false;
+                            validation.name = false;
                     } else if (/^c[0-9]|^log|^mirror|^raidz|^raidz1|^raidz2|^raidz3|^spare/.test(pool.name)) {
-	                    $("#helpblock-storagepools-import-storagepools").removeClass("hidden").text("Storage pool name can not begin with a reserved name. New name is needed.");
+                            $("#helpblock-storagepools-import-storagepools").removeClass("hidden").text("Storage pool name can not begin with a reserved name. New name is needed.");
 
-	                    validation.name = false;
+                            validation.name = false;
                     } else {
                         validation.name = true;
                     }
@@ -14427,50 +14427,50 @@ function FnModalStoragePoolsImportContent(modal = { id }) {
                 }
 
                 if (/^[a-zA-Z0-9-_.:/ ]*$/.test($("#input-storagepools-import-altroot").val()) == false) {
-	                $("#helpblock-storagepools-import-altroot").addClass("has-error").removeClass("hidden").text("Alt Root contains invalid characters.");
+                        $("#helpblock-storagepools-import-altroot").addClass("has-error").removeClass("hidden").text("Alt Root contains invalid characters.");
 
-	                validation.altroot = false;
+                        validation.altroot = false;
                 } else if ($("#input-storagepools-import-altroot").val() && /^[/]/.test($("#input-storagepools-import-altroot").val()) == false) {
-	                $("#helpblock-storagepools-import-altroot").addClass("has-error").removeClass("hidden").text("Alt Root is an absolute path and must begin with a forward slash (/).");
+                        $("#helpblock-storagepools-import-altroot").addClass("has-error").removeClass("hidden").text("Alt Root is an absolute path and must begin with a forward slash (/).");
 
-	                validation.altroot = false;
+                        validation.altroot = false;
                 } else if (/^[.]/.test($("#input-storagepools-import-altroot").val())) {
-	                $("#helpblock-storagepools-import-altroot").addClass("has-error").removeClass("hidden").text("Alt Root can not begin with a period (.).");
+                        $("#helpblock-storagepools-import-altroot").addClass("has-error").removeClass("hidden").text("Alt Root can not begin with a period (.).");
 
-	                validation.altroot = false;
+                        validation.altroot = false;
                 } else if (/[.]$/.test($("#input-storagepools-import-altroot").val())) {
-	                $("#helpblock-storagepools-import-altroot").addClass("has-error").removeClass("hidden").text("Alt Root can not end with a period (.).");
+                        $("#helpblock-storagepools-import-altroot").addClass("has-error").removeClass("hidden").text("Alt Root can not end with a period (.).");
 
-	                validation.altroot = false;
+                        validation.altroot = false;
                 } else if (/[/][.][/]/g.test($("#input-storagepools-import-altroot").val())) {
-	                $("#helpblock-storagepools-import-altroot").addClass("has-error").removeClass("hidden").text("Alt Root can not contain a period as a sub directory (/./).");
+                        $("#helpblock-storagepools-import-altroot").addClass("has-error").removeClass("hidden").text("Alt Root can not contain a period as a sub directory (/./).");
 
-	                validation.altroot = false;
+                        validation.altroot = false;
                 } else if (/[/][.][.][/]/g.test($("#input-storagepools-import-altroot").val())) {
-	                $("#helpblock-storagepools-import-altroot").addClass("has-error").removeClass("hidden").text("Alt Root can not contain a double period as a sub directory (/../).");
+                        $("#helpblock-storagepools-import-altroot").addClass("has-error").removeClass("hidden").text("Alt Root can not contain a double period as a sub directory (/../).");
 
-	                validation.altroot = false;
+                        validation.altroot = false;
                 } else if (/[/][/]/g.test($("#input-storagepools-import-altroot").val())) {
-	                $("#helpblock-storagepools-import-altroot").addClass("has-error").removeClass("hidden").text("Alt Root can not contain double forward slashes (//).");
+                        $("#helpblock-storagepools-import-altroot").addClass("has-error").removeClass("hidden").text("Alt Root can not contain double forward slashes (//).");
 
-	                validation.altroot = false;
+                        validation.altroot = false;
                 } else if (/[.][.]/g.test($("#input-storagepools-import-altroot").val())) {
-	                $("#helpblock-storagepools-import-altroot").addClass("has-error").removeClass("hidden").text("Alt Root can not contain a double period (..).");
+                        $("#helpblock-storagepools-import-altroot").addClass("has-error").removeClass("hidden").text("Alt Root can not contain a double period (..).");
 
-	                validation.altroot = false;
+                        validation.altroot = false;
                 } else if (/^[ ]/.test($("#input-storagepools-import-altroot").val())) {
-	                $("#helpblock-storagepools-import-altroot").addClass("has-error").removeClass("hidden").text("Alt Root can not begin with whitespace ( ).");
+                        $("#helpblock-storagepools-import-altroot").addClass("has-error").removeClass("hidden").text("Alt Root can not begin with whitespace ( ).");
 
-	                validation.altroot = false;
+                        validation.altroot = false;
                 } else if (/[ ]$/.test($("#input-storagepools-import-altroot").val())) {
-	                $("#helpblock-storagepools-import-altroot").addClass("has-error").removeClass("hidden").text("Alt Root can not end with whitespace ( ).");
+                        $("#helpblock-storagepools-import-altroot").addClass("has-error").removeClass("hidden").text("Alt Root can not end with whitespace ( ).");
 
-	                validation.altroot = false;
+                        validation.altroot = false;
                 } else {
-	                $("#validationwrapper-storagepools-import-altroot").removeClass("has-error");
-	                $("#helpblock-storagepools-import-altroot").addClass("hidden").text("");
+                        $("#validationwrapper-storagepools-import-altroot").removeClass("has-error");
+                        $("#helpblock-storagepools-import-altroot").addClass("hidden").text("");
 
-	                validation.altroot = true;
+                        validation.altroot = true;
                 }
 
                 if (!validation.altroot || !validation.name || !validation.namenew || !validation.storagepools) {
@@ -14506,7 +14506,7 @@ function FnModalStoragePoolsImportContent(modal = { id }) {
 
                     FnStoragePoolImport({ name: pool.name, altroot: pool.altroot, destroyed: pool.destroyed, force: pool.force, guid: pool.guid, ignoremissinglog: pool.ignoremissinglog, namenew: pool.namenew, readonly: pool.readonly, recoverymode: pool.recoverymode }, { mount: filesystem.mount, selinux: filesystem.selinux }, { id: { blockdevice: disks.id.blockdevice, disk: disks.id.disk, path: disks.id.path, vdev: disks.id.vdev }, identifier: disks.identifier });
                 }
-			});
+                        });
 
             $("#dropdown-storagepools-import-disks-identifier").on("click", "li a", function () {
                 $("#btnspan-storagepools-import-disks-identifier").text($(this).text()).attr("data-field-value", $(this).parent().attr("value"));
@@ -14635,7 +14635,7 @@ function FnModalStoragePoolConfigureContent(pool = { name, id, guid, readonly: f
                     <div></div>
                     <div id="spinner-storagepool-configure-` + pool.id + `" class="dialog-wait-ct pull-left hidden">
                         <div class="spinner spinner-sm"></div><span></span>
-	                </div>
+                        </div>
                     <div class="modal-ct-buttons">
                         <button class="btn btn-default cancel" data-dismiss="modal" tabindex="-1">Cancel</button>
                         <button id="btn-storagepool-configure-apply-` + pool.id + `" class="btn btn-primary apply privileged-modal" tabindex="-1">Configure</button>
@@ -14680,22 +14680,22 @@ function FnModalStoragePoolConfigureContent(pool = { name, id, guid, readonly: f
                 };
 
                 if ($("#input-storagepool-configure-comment-` + pool.id + `").val().length > 32) {
-	                $("#helpblock-storagepool-configure-comment-` + pool.id + `").addClass("has-error").removeClass("hidden").text("Comment can not be longer than 32 characters.");
+                        $("#helpblock-storagepool-configure-comment-` + pool.id + `").addClass("has-error").removeClass("hidden").text("Comment can not be longer than 32 characters.");
 
-	                validation.comment = false;
+                        validation.comment = false;
                 } else if (/^[ -~]*$/.test($("#input-storagepool-configure-comment-` + pool.id + `").val()) == false) {
-	                $("#helpblock-storagepool-configure-comment-` + pool.id + `").addClass("has-error").removeClass("hidden").text("Comment contains invalid characters.");
+                        $("#helpblock-storagepool-configure-comment-` + pool.id + `").addClass("has-error").removeClass("hidden").text("Comment contains invalid characters.");
 
-	                validation.comment = false;
+                        validation.comment = false;
                 } else {
-	                $("#validationwrapper-storagepool-configure-comment-` + pool.id + `").removeClass("has-error");
-	                $("#helpblock-storagepool-configure-comment-` + pool.id + `").addClass("hidden").text("");
+                        $("#validationwrapper-storagepool-configure-comment-` + pool.id + `").removeClass("has-error");
+                        $("#helpblock-storagepool-configure-comment-` + pool.id + `").addClass("hidden").text("");
 
-	                validation.comment = true;
+                        validation.comment = true;
                 }
 
                 if (!validation.comment) {
-    	            $("#validationwrapper-storagepool-configure-comment-` + pool.id + `").addClass("has-error");
+                    $("#validationwrapper-storagepool-configure-comment-` + pool.id + `").addClass("has-error");
                     $("#input-storagepool-configure-comment-` + pool.id + `").focus();
 
                     $("#spinner-storagepool-configure-` + pool.id + `").addClass("hidden");
@@ -14756,7 +14756,7 @@ function FnModalStoragePoolConfigureContent(pool = { name, id, guid, readonly: f
 
                     FnStoragePoolConfigure({ name: "` + pool.name + `", id: "` + pool.id + `", ashift: pool.ashift, autoexpand: pool.autoexpand, autoreplace: pool.autoreplace, autotrim: pool.autotrim, comment: pool.comment, delegation: pool.delegation, failmode: pool.failmode, listsnapshots: pool.listsnapshots, multihost: pool.multihost, readonly: ` + pool.readonly + ` }, { hostid: system.hostid }, { id: modal.id });
                 }
-			});
+                        });
 
             $("#dropdown-storagepool-configure-ashift-` + pool.id + `").on("click", "li a", function () {
                 $("#btnspan-storagepool-configure-ashift-` + pool.id + `").text($(this).text()).attr("data-field-value-new", $(this).parent().attr("value"));
@@ -14924,7 +14924,7 @@ function FnModalStoragePoolConfigureFeaturesContent(pool = { name, id, boot: fal
                     <div></div>
                     <div id="spinner-storagepool-configure-features-` + pool.id + `" class="dialog-wait-ct pull-left hidden">
                         <div class="spinner spinner-sm"></div><span></span>
-	                </div>
+                        </div>
                     <div class="modal-ct-buttons">
                         <button class="btn btn-default cancel" data-dismiss="modal" tabindex="-1">Cancel</button>
                         <button id="btn-storagepool-configure-features-apply-` + pool.id + `" class="btn btn-` + ($.isNumeric(pool.version) || pool.boot ? `danger` : `warning`) + ` apply privileged-modal" tabindex="-1">Configure</button>
@@ -14982,7 +14982,7 @@ function FnModalStoragePoolConfigureFeaturesContent(pool = { name, id, boot: fal
                 };
 
                 FnStoragePoolConfigureFeatures({ name: "` + pool.name + `", id: "` + pool.id + `", feature: { allocation_classes: pool.feature.allocation_classes, async_destroy: pool.feature.async_destroy, bookmark_v2: pool.feature.bookmark_v2, bookmarks: pool.feature.bookmarks, device_removal: pool.feature.device_removal, edonr: pool.feature.edonr, embedded_data: pool.feature.embedded_data, empty_bpobj: pool.feature.empty_bpobj, enabled_txg: pool.feature.enabled_txg, encryption: pool.feature.encryption, extensible_dataset: pool.feature.extensible_dataset, filesystem_limits: pool.feature.filesystem_limits, hole_birth: pool.feature.hole_birth, large_blocks: pool.feature.large_blocks, large_dnode: pool.feature.large_dnode, lz4_compress: pool.feature.lz4_compress, multi_vdev_crash_dump: pool.feature.multi_vdev_crash_dump, obsolete_counts: pool.feature.obsolete_counts, project_quota: pool.feature.project_quota, resilver_defer: pool.feature.resilver_defer, sha512: pool.feature.sha512, skein: pool.feature.skein, spacemap_histogram: pool.feature.spacemap_histogram, spacemap_v2: pool.feature.spacemap_v2, userobj_accounting: pool.feature.userobj_accounting, zpool_checkpoint: pool.feature.zpool_checkpoint }, readonly: ` + pool.readonly + ` }, { id: $("#modal-storagepool-configure-features-` + pool.id + `") });
-			});
+                        });
         \x3C/script>
     `;
 
@@ -15183,7 +15183,7 @@ function FnModalStoragePoolDestroyContent(pool = { name, id, altroot: false }, m
                     <div></div>
                     <div id="spinner-storagepool-destroy-` + pool.id + `" class="dialog-wait-ct pull-left hidden">
                         <div class="spinner spinner-sm"></div><span></span>
-	                </div>
+                        </div>
                     <div class="modal-ct-buttons">
                         <button class="btn btn-default cancel" data-dismiss="modal" tabindex="-1">Cancel</button>
                         <button id="btn-storagepool-destroy-apply-` + pool.id + `" class="btn btn-danger apply privileged-modal" tabindex="-1">Destroy</button>
@@ -15206,7 +15206,7 @@ function FnModalStoragePoolDestroyContent(pool = { name, id, altroot: false }, m
                 };
 
                 FnStoragePoolDestroy({ name: "` + pool.name + `", id: "` + pool.id + `", altroot: ` + pool.altroot + `, force: pool.force, labelclear: pool.labelclear }, { restart: samba.restart });
-			});
+                        });
         \x3C/script>
     `;
 
@@ -15254,7 +15254,7 @@ function FnModalStoragePoolExportContent(pool = { name, id, altroot: false, read
                     <div></div>
                     <div id="spinner-storagepool-export-` + pool.id + `" class="dialog-wait-ct pull-left hidden">
                         <div class="spinner spinner-sm"></div><span></span>
-	                </div>
+                        </div>
                     <div class="modal-ct-buttons">
                         <button class="btn btn-default cancel" data-dismiss="modal" tabindex="-1">Cancel</button>
                         <button id="btn-storagepool-export-apply-` + pool.id + `" class="btn btn-warning apply privileged-modal" tabindex="-1">Export</button>
@@ -15276,7 +15276,7 @@ function FnModalStoragePoolExportContent(pool = { name, id, altroot: false, read
                 };
 
                 FnStoragePoolExport({ name: "` + pool.name + `", id: "` + pool.id + `", altroot: ` + pool.altroot + `, force: pool.force, readonly: ` + pool.readonly + ` }, { restart: samba.restart });
-		    });
+                    });
         \x3C/script>
     `;
 
@@ -15296,7 +15296,7 @@ function FnModalFileSystemsCreate(pool = { name, id, altroot: false, feature: { 
         <div id="modal-storagepool-filesystems-create-` + pool.id + `" aria-hidden="true" class="modal fade" data-backdrop="static" role="dialog" tabindex="-1"></div>
 
         \x3Cscript nonce="1t55lZ7tzuKTreHVNwE66Ox32Mc=">
-			$("#btn-storagepool-filesystems-create-` + pool.id + `").on("click", function () {
+                        $("#btn-storagepool-filesystems-create-` + pool.id + `").on("click", function () {
                 FnModalFileSystemsCreateContent({ name: "` + pool.name + `", id: "` + pool.id + `", altroot: ` + pool.altroot + `, feature: { allocation_classes: ` + pool.feature.allocation_classes + `, edonr: ` + pool.feature.edonr + `, encryption: ` + pool.feature.encryption + `, large_blocks: ` + pool.feature.large_blocks + `, large_dnode: ` + pool.feature.large_dnode + `,  lz4_compress: ` + pool.feature.lz4_compress + `, sha512: ` + pool.feature.sha512 + `, skein: ` + pool.feature.skein + ` } }, { id: $("#modal-storagepool-filesystems-create-` + pool.id + `") });
                 FnFileSystemsNamesGet({ name: "` + pool.name + `", id: "` + pool.id + `" }, { existing: { name: null, clone: false, encryption: false, encryptionroot: null, origin: null}, override: true }, { dropdown: { id: $("#dropdown-storagepool-filesystems-create-parentfilesystem-` + pool.id + `"), selected: "` + pool.name + `" } });
                 FnFileSystemConfigurationInheritedGet({ name: "` + pool.name + `", id: "` + pool.id + `" }, { name: "` + pool.name + `" }, { name: "storagepool-filesystems-create", id: "` + pool.id + `" });
@@ -15306,7 +15306,7 @@ function FnModalFileSystemsCreate(pool = { name, id, altroot: false, feature: { 
                 setTimeout(function() {
                     $("#input-storagepool-filesystems-create-name-` + pool.id + `").focus();
                 }, 600);
-			});
+                        });
         \x3C/script>
     `;
 
@@ -15568,7 +15568,7 @@ function FnModalFileSystemsCreateContent(pool = { name, id, altroot: false, feat
                     <div></div>
                     <div id="spinner-storagepool-filesystems-create-` + pool.id + `" class="dialog-wait-ct pull-left hidden">
                         <div class="spinner spinner-sm"></div><span></span>
-	                </div>
+                        </div>
                     <div class="modal-ct-buttons">
                         <button class="btn btn-default cancel" data-dismiss="modal" tabindex="-1">Cancel</button>
                         <button id="btn-storagepool-filesystems-create-apply-` + pool.id + `" class="btn btn-primary apply privileged-modal" tabindex="-1">Create</button>
@@ -15787,11 +15787,11 @@ function FnModalFileSystemsCreateContent(pool = { name, id, altroot: false, feat
 
                 if ($("#switch-storagepool-filesystems-create-sharenfs-` + pool.id + ` input").prop("checked")) {
                     if (/^[a-zA-Z0-9-_.:/@#+=!&*(), ]*$/.test($("#input-storagepool-filesystems-create-sharenfs-options-` + pool.id + `").val()) == false) {
-	                    $("#validationwrapper-storagepool-filesystems-create-sharenfs-options-` + pool.id + `").addClass("has-error");
-	                    $("#helpblock-storagepool-filesystems-create-sharenfs-options-` + pool.id + `").addClass("has-error").removeClass("hidden").text("NFS Share options contain invalid characters.");
-	                    $("#input-storagepool-filesystems-create-sharenfs-options-` + pool.id + `").focus();
+                            $("#validationwrapper-storagepool-filesystems-create-sharenfs-options-` + pool.id + `").addClass("has-error");
+                            $("#helpblock-storagepool-filesystems-create-sharenfs-options-` + pool.id + `").addClass("has-error").removeClass("hidden").text("NFS Share options contain invalid characters.");
+                            $("#input-storagepool-filesystems-create-sharenfs-options-` + pool.id + `").focus();
 
-	                    validation.sharenfs = false;
+                            validation.sharenfs = false;
                     } else {
                         validation.sharenfs = true;
                     }
@@ -15845,7 +15845,7 @@ function FnModalFileSystemsCreateContent(pool = { name, id, altroot: false, feat
 
                     FnFileSystemCreate({ name: "` + pool.name + `", id: "` + pool.id + `", altroot: ` + pool.altroot + ` }, { name: filesystem.name, id: filesystem.id, atime: filesystem.atime, casesensitivity: filesystem.casesensitivity, cipher: filesystem.cipher, compression: filesystem.compression, dedup: filesystem.dedup, dnodesize: filesystem.dnodesize, encryption: filesystem.encryption, passphrase: filesystem.passphrase, quota: filesystem.quota, readonly: filesystem.readonly, recordsize: filesystem.recordsize, selinux: filesystem.selinux, sharenfs: filesystem.sharenfs, sharesmb: filesystem.sharesmb, special_small_blocks: filesystem.special_small_blocks, xattr: filesystem.xattr });
                 }
-			});
+                        });
 
             $("#dropdown-storagepool-filesystems-create-parentfilesystem-` + pool.id + `").on("click", "li a", function () {
                 $("#btnspan-storagepool-filesystems-create-parentfilesystem-` + pool.id + `").text($(this).text()).attr("data-field-value", $(this).parent().attr("value"));
@@ -15853,43 +15853,43 @@ function FnModalFileSystemsCreateContent(pool = { name, id, altroot: false, feat
                 $(this).parent().addClass("active");
 
                 FnFileSystemConfigurationInheritedGet({ name: "` + pool.name + `", id: "` + pool.id + `" }, { name: $(this).text() }, { name: "storagepool-filesystems-create", id: "` + pool.id + `" });
-			});
+                        });
 
             $("#dropdown-storagepool-filesystems-create-atime-` + pool.id + `").on("click", "li a", function () {
                 $("#btnspan-storagepool-filesystems-create-atime-` + pool.id + `").text($(this).text()).attr("data-field-value", $(this).parent().attr("value"));
                 $(this).parent().siblings().removeClass("active");
                 $(this).parent().addClass("active");
-			});
+                        });
 
             $("#dropdown-storagepool-filesystems-create-casesensitivity-` + pool.id + `").on("click", "li a", function () {
                 $("#btnspan-storagepool-filesystems-create-casesensitivity-` + pool.id + `").text($(this).text()).attr("data-field-value", $(this).parent().attr("value"));
                 $(this).parent().siblings().removeClass("active");
                 $(this).parent().addClass("active");
-			});
+                        });
 
             $("#dropdown-storagepool-filesystems-create-compression-` + pool.id + `").on("click", "li a", function () {
                 $("#btnspan-storagepool-filesystems-create-compression-` + pool.id + `").text($(this).text()).attr("data-field-value", $(this).parent().attr("value"));
                 $(this).parent().siblings().removeClass("active");
                 $(this).parent().addClass("active");
-			});
+                        });
 
             $("#dropdown-storagepool-filesystems-create-dedup-` + pool.id + `").on("click", "li a", function () {
                 $("#btnspan-storagepool-filesystems-create-dedup-` + pool.id + `").text($(this).text()).attr("data-field-value", $(this).parent().attr("value"));
                 $(this).parent().siblings().removeClass("active");
                 $(this).parent().addClass("active");
-			});
+                        });
 
             $("#dropdown-storagepool-filesystems-create-dnodesize-` + pool.id + `").on("click", "li a", function () {
                 $("#btnspan-storagepool-filesystems-create-dnodesize-` + pool.id + `").text($(this).text()).attr("data-field-value", $(this).parent().attr("value"));
                 $(this).parent().siblings().removeClass("active");
                 $(this).parent().addClass("active");
-			});
+                        });
 
             $("#dropdown-storagepool-filesystems-create-encryption-cipher-` + pool.id + `").on("click", "li a", function () {
                 $("#btnspan-storagepool-filesystems-create-encryption-cipher-` + pool.id + `").text($(this).text()).attr("data-field-value", $(this).parent().attr("value"));
                 $(this).parent().siblings().removeClass("active");
                 $(this).parent().addClass("active");
-			});
+                        });
 
             $("#dropdown-storagepool-filesystems-create-quota-` + pool.id + `").on("click", "li a", function () {
                 $("#btnspan-storagepool-filesystems-create-quota-` + pool.id + `").text($(this).text()).attr("data-field-value", $(this).text());
@@ -15908,25 +15908,25 @@ function FnModalFileSystemsCreateContent(pool = { name, id, altroot: false, feat
                 $("#slider-storagepool-filesystems-create-quota-` + pool.id + `").slider("setValue", 0); //Force display update
                 $("#slider-storagepool-filesystems-create-quota-` + pool.id + `").slider("setValue", size.slider.value);
                 $("#input-storagepool-filesystems-create-quota-` + pool.id + `").val($("#slider-storagepool-filesystems-create-quota-` + pool.id + `").data("slider").getValue());
-			});
+                        });
 
             $("#dropdown-storagepool-filesystems-create-recordsize-` + pool.id + `").on("click", "li a", function () {
                 $("#btnspan-storagepool-filesystems-create-recordsize-` + pool.id + `").text($(this).text()).attr("data-field-value", $(this).parent().attr("value"));
                 $(this).parent().siblings().removeClass("active");
                 $(this).parent().addClass("active");
-			});
+                        });
 
             $("#dropdown-storagepool-filesystems-create-special_small_blocks-` + pool.id + `").on("click", "li a", function () {
                 $("#btnspan-storagepool-filesystems-create-special_small_blocks-` + pool.id + `").text($(this).text()).attr("data-field-value", $(this).parent().attr("value"));
                 $(this).parent().siblings().removeClass("active");
                 $(this).parent().addClass("active");
-			});
+                        });
 
             $("#dropdown-storagepool-filesystems-create-xattr-` + pool.id + `").on("click", "li a", function () {
                 $("#btnspan-storagepool-filesystems-create-xattr-` + pool.id + `").text($(this).text()).attr("data-field-value", $(this).parent().attr("value"));
                 $(this).parent().siblings().removeClass("active");
                 $(this).parent().addClass("active");
-			});
+                        });
         \x3C/script>
     `;
 
@@ -15990,7 +15990,7 @@ function FnModalFileSystemsUnlockContent(modal = { id }) {
                     <div></div>
                     <div id="spinner-storagepools-filesystems-unlock" class="dialog-wait-ct pull-left hidden">
                         <div class="spinner spinner-sm"></div><span></span>
-	                </div>
+                        </div>
                     <div class="modal-ct-buttons">
                         <button class="btn btn-default cancel" data-dismiss="modal" tabindex="-1">Cancel</button>
                         <button id="btn-storagepools-filesystems-unlock-apply" class="btn btn-primary apply privileged-modal" tabindex="-1">Unlock</button>
@@ -16083,7 +16083,7 @@ function FnModalFileSystemsUnlockContent(modal = { id }) {
 
                     FnFileSystemsUnlock({ id: filesystems.id }, { mount: filesystem.mount, overlay: filesystem.overlay, passphrase: filesystem.passphrase }, { name: modal.name, id: modal.id });
                 }
-		    });
+                    });
         \x3C/script>
     `;
 
@@ -16109,7 +16109,7 @@ function FnModalFileSystemChangePassphrase(pool = { name, id }, filesystem = { n
                 setTimeout(function() {
                     $("#input-storagepool-filesystem-changepassphrase-passphrase-` + filesystem.id + `").focus();
                 }, 600);
-			});
+                        });
         \x3C/script>
     `;
 
@@ -16146,7 +16146,7 @@ function FnModalFileSystemChangePassphraseContent(pool = { name, id }, filesyste
                     <div></div>
                     <div id="spinner-storagepool-filesystem-changepassphrase-` + filesystem.id + `" class="dialog-wait-ct pull-left hidden">
                         <div class="spinner spinner-sm"></div><span></span>
-	                </div>
+                        </div>
                     <div class="modal-ct-buttons">
                         <button class="btn btn-default cancel" data-dismiss="modal" tabindex="-1">Cancel</button>
                         <button id="btn-storagepool-filesystem-changepassphrase-apply-` + filesystem.id + `" class="btn btn-primary apply privileged-modal" tabindex="-1">Change</button>
@@ -16215,7 +16215,7 @@ function FnModalFileSystemChangePassphraseContent(pool = { name, id }, filesyste
 
                     FnFileSystemChangePassphrase({ name: "` + pool.name + `", id: "` + pool.id + `" }, { name: "` + filesystem.name + `", id: "` + filesystem.id + `", passphrase: filesystem.passphrase });
                 }
-			});
+                        });
         \x3C/script>
     `;
 
@@ -16228,10 +16228,10 @@ function FnModalFileSystemConfigure(pool = { name, id, altroot: false, feature: 
     };
 
     modal.window = `
-	    <div id="modal-storagepool-filesystem-configure-` + filesystem.id + `" aria-hidden="true" class="modal fade" data-backdrop="static" role="dialog" tabindex="-1">
-	    </div>
+            <div id="modal-storagepool-filesystem-configure-` + filesystem.id + `" aria-hidden="true" class="modal fade" data-backdrop="static" role="dialog" tabindex="-1">
+            </div>
 
-	    \x3Cscript nonce="1t55lZ7tzuKTreHVNwE66Ox32Mc=">
+            \x3Cscript nonce="1t55lZ7tzuKTreHVNwE66Ox32Mc=">
             $("#btn-storagepool-filesystem-configure-` + filesystem.id + `").on("click", function () {
                 FnModalFileSystemConfigureContent({ name: "` + pool.name + `", id: "` + pool.id + `", altroot: ` + pool.altroot + `, feature: { allocation_classes: ` + pool.feature.allocation_classes + `, edonr: ` + pool.feature.edonr + `, large_blocks: ` + pool.feature.large_blocks + `, large_dnode: ` + pool.feature.large_dnode + `, lz4_compress: ` + pool.feature.lz4_compress + `, sha512: ` + pool.feature.sha512 + `, skein: ` + pool.feature.skein + ` }, readonly: ` + pool.readonly + ` }, { name: "` + filesystem.name + `", id: "` + filesystem.id + `", origin: "` + filesystem.origin + `", type: "` + filesystem.type + `" }, { id: $("#modal-storagepool-filesystem-configure-` + filesystem.id + `") });
                 FnFileSystemConfigurationGet({ name: "` + pool.name + `", id: "` + pool.id + `", readonly: ` + pool.readonly + ` }, { name: "` + filesystem.name + `", id: "` + filesystem.id + `" }, { name: "storagepool-filesystem-configure", id: "` + filesystem.id + `" });
@@ -16242,7 +16242,7 @@ function FnModalFileSystemConfigure(pool = { name, id, altroot: false, feature: 
                 $("#input-storagepool-filesystem-configure-refreservation-` + filesystem.id + `").val("0");
                 $("#validationwrapper-storagepool-filesystem-configure-refreservation-` + filesystem.id + ` .min-slider-handle").attr("tabindex", "18");
             });
-	    \x3C/script>
+            \x3C/script>
     `;
 
     $("#modals-storagepool-filesystem-" + pool.id).append(modal.window);
@@ -16250,15 +16250,15 @@ function FnModalFileSystemConfigure(pool = { name, id, altroot: false, feature: 
 
 function FnModalFileSystemConfigureContent(pool = { name, id, altroot: false, feature: { allocation_classes: true, edonr: true, large_blocks: true, large_dnode: true, lz4_compress: true, sha512: true, skein: true }, readonly: false }, filesystem = { name, id, origin, type }, modal = { id }) {
     modal.content = `
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h4 class="modal-title">Configure ` + filesystem.type + `</h4>
-				</div>
-				<div class="modal-body">
-					<form class="ct-form">
-						<label class="control-label">` + filesystem.type + `</label>
-						<div>` + filesystem.name + `</div>
+                <div class="modal-dialog">
+                        <div class="modal-content">
+                                <div class="modal-header">
+                                        <h4 class="modal-title">Configure ` + filesystem.type + `</h4>
+                                </div>
+                                <div class="modal-body">
+                                        <form class="ct-form">
+                                                <label class="control-label">` + filesystem.type + `</label>
+                                                <div>` + filesystem.name + `</div>
                         ` + (filesystem.origin ? `<label class="control-label">Clone Origin</label><div>` + filesystem.origin + `</div>` : ``) + `
                         <label class="control-label">GUID</label>
                         <div id="div-storagepool-filesystem-configure-guid-` + filesystem.id + `"></div>
@@ -16552,21 +16552,21 @@ function FnModalFileSystemConfigureContent(pool = { name, id, altroot: false, fe
                             <label id="switch-storagepool-filesystem-configure-samba-restart-` + filesystem.id + `" class="onoff-ct privileged-modal"><input tabIndex="24" type="checkbox"><span class="switch-toggle"></span></label><span>Restart Samba service</span>
                         </div>
                     </form>
-				</div>
-				<div class="modal-footer">
-					<div></div>
-					<div id="spinner-storagepool-filesystem-configure-` + filesystem.id + `" class="dialog-wait-ct pull-left hidden">
-						<div class="spinner spinner-sm"></div><span></span>
-					</div>
-					<div class="modal-ct-buttons">
+                                </div>
+                                <div class="modal-footer">
+                                        <div></div>
+                                        <div id="spinner-storagepool-filesystem-configure-` + filesystem.id + `" class="dialog-wait-ct pull-left hidden">
+                                                <div class="spinner spinner-sm"></div><span></span>
+                                        </div>
+                                        <div class="modal-ct-buttons">
                         <button class="btn btn-default cancel" data-dismiss="modal" tabindex="-1">Cancel</button>
-					    <button id="btn-storagepool-filesystem-configure-apply-` + filesystem.id + `" class="btn btn-primary apply privileged-modal" tabindex="-1">Configure</button>
+                                            <button id="btn-storagepool-filesystem-configure-apply-` + filesystem.id + `" class="btn btn-primary apply privileged-modal" tabindex="-1">Configure</button>
                     </div>
-				</div>
-			</div>
-		</div>
+                                </div>
+                        </div>
+                </div>
 
-	    \x3Cscript nonce="1t55lZ7tzuKTreHVNwE66Ox32Mc=">
+            \x3Cscript nonce="1t55lZ7tzuKTreHVNwE66Ox32Mc=">
             $("#input-storagepool-filesystem-configure-quota-` + filesystem.id + `").tooltip({ trigger: "manual" })
                 .on("keyup", function (element) {
                     let $this = $(this);
@@ -16701,8 +16701,8 @@ function FnModalFileSystemConfigureContent(pool = { name, id, altroot: false, fe
             });
 
             $("#btn-storagepool-filesystem-configure-apply-` + filesystem.id + `").on("click",function () {
-			    $("#spinner-storagepool-filesystem-configure-` + filesystem.id + `").removeClass("hidden");
-			    $(this).prop("disabled", true);
+                            $("#spinner-storagepool-filesystem-configure-` + filesystem.id + `").removeClass("hidden");
+                            $(this).prop("disabled", true);
 
                 let filesystem = {
                     aclinherit: "",
@@ -16740,63 +16740,63 @@ function FnModalFileSystemConfigureContent(pool = { name, id, altroot: false, fe
                 };
 
                 if ($("#input-storagepool-filesystem-configure-mountpoint-` + filesystem.id + `").val().length == 0) {
-	                $("#helpblock-storagepool-filesystem-configure-mountpoint-` + filesystem.id + `").addClass("has-error").removeClass("hidden").text("Mountpoint can not be empty.");
+                        $("#helpblock-storagepool-filesystem-configure-mountpoint-` + filesystem.id + `").addClass("has-error").removeClass("hidden").text("Mountpoint can not be empty.");
 
-	                validation.mountpoint = false;
+                        validation.mountpoint = false;
                 } else if (/^[a-zA-Z0-9-_.:/ ]*$/.test($("#input-storagepool-filesystem-configure-mountpoint-` + filesystem.id + `").val()) == false) {
-	                $("#helpblock-storagepool-filesystem-configure-mountpoint-` + filesystem.id + `").addClass("has-error").removeClass("hidden").text("Mountpoint contains invalid characters.");
+                        $("#helpblock-storagepool-filesystem-configure-mountpoint-` + filesystem.id + `").addClass("has-error").removeClass("hidden").text("Mountpoint contains invalid characters.");
 
-	                validation.mountpoint = false;
+                        validation.mountpoint = false;
                 } else if ($("#input-storagepool-filesystem-configure-mountpoint-` + filesystem.id + `").val() && /^[/]/.test($("#input-storagepool-filesystem-configure-mountpoint-` + filesystem.id + `").val()) == false) {
-	                $("#helpblock-storagepool-filesystem-configure-mountpoint-` + filesystem.id + `").addClass("has-error").removeClass("hidden").text("Mountpoint is an absolute path and must begin with a forward slash (/).");
+                        $("#helpblock-storagepool-filesystem-configure-mountpoint-` + filesystem.id + `").addClass("has-error").removeClass("hidden").text("Mountpoint is an absolute path and must begin with a forward slash (/).");
 
-	                validation.mountpoint = false;
+                        validation.mountpoint = false;
                 } else if (/^[.]/.test($("#input-storagepool-filesystem-configure-mountpoint-` + filesystem.id + `").val())) {
-	                $("#helpblock-storagepool-filesystem-configure-mountpoint-` + filesystem.id + `").addClass("has-error").removeClass("hidden").text("Mountpoint can not begin with a period (.).");
+                        $("#helpblock-storagepool-filesystem-configure-mountpoint-` + filesystem.id + `").addClass("has-error").removeClass("hidden").text("Mountpoint can not begin with a period (.).");
 
-	                validation.mountpoint = false;
+                        validation.mountpoint = false;
                 } else if (/[.]$/.test($("#input-storagepool-filesystem-configure-mountpoint-` + filesystem.id + `").val())) {
-	                $("#helpblock-storagepool-filesystem-configure-mountpoint-` + filesystem.id + `").addClass("has-error").removeClass("hidden").text("Mountpoint can not end with a period (.).");
+                        $("#helpblock-storagepool-filesystem-configure-mountpoint-` + filesystem.id + `").addClass("has-error").removeClass("hidden").text("Mountpoint can not end with a period (.).");
 
-	                validation.mountpoint = false;
+                        validation.mountpoint = false;
                 } else if (/[/][.][/]/g.test($("#input-storagepool-filesystem-configure-mountpoint-` + filesystem.id + `").val())) {
-	                $("#helpblock-storagepool-filesystem-configure-mountpoint-` + filesystem.id + `").addClass("has-error").removeClass("hidden").text("Mountpoint can not contain a period as a sub directory (/./).");
+                        $("#helpblock-storagepool-filesystem-configure-mountpoint-` + filesystem.id + `").addClass("has-error").removeClass("hidden").text("Mountpoint can not contain a period as a sub directory (/./).");
 
-	                validation.mountpoint = false;
+                        validation.mountpoint = false;
                 } else if (/[/][.][.][/]/g.test($("#input-storagepool-filesystem-configure-mountpoint-` + filesystem.id + `").val())) {
-	                $("#helpblock-storagepool-filesystem-configure-mountpoint-` + filesystem.id + `").addClass("has-error").removeClass("hidden").text("Mountpoint can not contain a double period as a sub directory (/../).");
+                        $("#helpblock-storagepool-filesystem-configure-mountpoint-` + filesystem.id + `").addClass("has-error").removeClass("hidden").text("Mountpoint can not contain a double period as a sub directory (/../).");
 
-	                validation.mountpoint = false;
+                        validation.mountpoint = false;
                 } else if (/[/][/]/g.test($("#input-storagepool-filesystem-configure-mountpoint-` + filesystem.id + `").val())) {
-	                $("#helpblock-storagepool-filesystem-configure-mountpoint-` + filesystem.id + `").addClass("has-error").removeClass("hidden").text("Mountpoint can not contain double forward slashes (//).");
+                        $("#helpblock-storagepool-filesystem-configure-mountpoint-` + filesystem.id + `").addClass("has-error").removeClass("hidden").text("Mountpoint can not contain double forward slashes (//).");
 
-	                validation.mountpoint = false;
+                        validation.mountpoint = false;
                 } else if (/[.][.]/g.test($("#input-storagepool-filesystem-configure-mountpoint-` + filesystem.id + `").val())) {
-	                $("#helpblock-storagepool-filesystem-configure-mountpoint-` + filesystem.id + `").addClass("has-error").removeClass("hidden").text("Mountpoint can not contain a double period (..).");
+                        $("#helpblock-storagepool-filesystem-configure-mountpoint-` + filesystem.id + `").addClass("has-error").removeClass("hidden").text("Mountpoint can not contain a double period (..).");
 
-	                validation.mountpoint = false;
+                        validation.mountpoint = false;
                 } else if (/^[ ]/.test($("#input-storagepool-filesystem-configure-mountpoint-` + filesystem.id + `").val())) {
-	                $("#helpblock-storagepool-filesystem-configure-mountpoint-` + filesystem.id + `").addClass("has-error").removeClass("hidden").text("Mountpoint can not begin with whitespace ( ).");
+                        $("#helpblock-storagepool-filesystem-configure-mountpoint-` + filesystem.id + `").addClass("has-error").removeClass("hidden").text("Mountpoint can not begin with whitespace ( ).");
 
-	                validation.mountpoint = false;
+                        validation.mountpoint = false;
                 } else if (/[ ]$/.test($("#input-storagepool-filesystem-configure-mountpoint-` + filesystem.id + `").val())) {
-	                $("#helpblock-storagepool-filesystem-configure-mountpoint-` + filesystem.id + `").addClass("has-error").removeClass("hidden").text("Mountpoint can not end with whitespace ( ).");
+                        $("#helpblock-storagepool-filesystem-configure-mountpoint-` + filesystem.id + `").addClass("has-error").removeClass("hidden").text("Mountpoint can not end with whitespace ( ).");
 
-	                validation.mountpoint = false;
+                        validation.mountpoint = false;
                 } else {
-	                $("#validationwrapper-storagepool-filesystem-configure-mountpoint-` + filesystem.id + `").removeClass("has-error");
-	                $("#helpblock-storagepool-filesystem-configure-mountpoint-` + filesystem.id + `").addClass("hidden").text("");
+                        $("#validationwrapper-storagepool-filesystem-configure-mountpoint-` + filesystem.id + `").removeClass("has-error");
+                        $("#helpblock-storagepool-filesystem-configure-mountpoint-` + filesystem.id + `").addClass("hidden").text("");
 
-	                validation.mountpoint = true;
+                        validation.mountpoint = true;
                 }
 
                 if ($("#switch-storagepool-filesystem-configure-sharenfs-` + filesystem.id + ` input").prop("checked")) {
                     if (/^[a-zA-Z0-9-_.:/@#+=!&*(), ]*$/.test($("#input-storagepool-filesystem-configure-sharenfs-options-` + filesystem.id + `").val()) == false) {
-	                    $("#validationwrapper-storagepool-filesystem-configure-sharenfs-options-` + filesystem.id + `").addClass("has-error");
-	                    $("#helpblock-storagepool-filesystem-configure-sharenfs-options-` + filesystem.id + `").addClass("has-error").removeClass("hidden").text("NFS Share options contain invalid characters.");
-	                    $("#input-storagepool-filesystem-configure-sharenfs-options-` + filesystem.id + `").focus();
+                            $("#validationwrapper-storagepool-filesystem-configure-sharenfs-options-` + filesystem.id + `").addClass("has-error");
+                            $("#helpblock-storagepool-filesystem-configure-sharenfs-options-` + filesystem.id + `").addClass("has-error").removeClass("hidden").text("NFS Share options contain invalid characters.");
+                            $("#input-storagepool-filesystem-configure-sharenfs-options-` + filesystem.id + `").focus();
 
-	                    validation.sharenfs = false;
+                            validation.sharenfs = false;
                     } else {
                         validation.sharenfs = true;
                     }
@@ -16979,55 +16979,55 @@ function FnModalFileSystemConfigureContent(pool = { name, id, altroot: false, fe
                 }
             });
 
-			$("#dropdown-storagepool-filesystem-configure-aclinherit-` + filesystem.id + `").on("click", "li a", function () {
+                        $("#dropdown-storagepool-filesystem-configure-aclinherit-` + filesystem.id + `").on("click", "li a", function () {
                 $("#btnspan-storagepool-filesystem-configure-aclinherit-` + filesystem.id + `").text($(this).text()).attr("data-field-value-new", (/^Default/.test($(this).text()) ? "Default" : $(this).parent().attr("value")));
                 $(this).parent().siblings().removeClass("active");
                 $(this).parent().addClass("active");
-			});
+                        });
 
-			$("#dropdown-storagepool-filesystem-configure-acltype-` + filesystem.id + `").on("click", "li a", function () {
+                        $("#dropdown-storagepool-filesystem-configure-acltype-` + filesystem.id + `").on("click", "li a", function () {
                 $("#btnspan-storagepool-filesystem-configure-acltype-` + filesystem.id + `").text($(this).text()).attr("data-field-value-new", (/^Default/.test($(this).text()) ? "Default" : $(this).parent().attr("value")));
                 $(this).parent().siblings().removeClass("active");
                 $(this).parent().addClass("active");
-			});
+                        });
 
-			$("#dropdown-storagepool-filesystem-configure-atime-` + filesystem.id + `").on("click", "li a", function () {
+                        $("#dropdown-storagepool-filesystem-configure-atime-` + filesystem.id + `").on("click", "li a", function () {
                 $("#btnspan-storagepool-filesystem-configure-atime-` + filesystem.id + `").text($(this).text()).attr("data-field-value-new", (/^Default/.test($(this).text()) ? "Default" : $(this).parent().attr("value")));
                 $(this).parent().siblings().removeClass("active");
                 $(this).parent().addClass("active");
-			});
+                        });
 
-			$("#dropdown-storagepool-filesystem-configure-canmount-` + filesystem.id + `").on("click", "li a", function () {
+                        $("#dropdown-storagepool-filesystem-configure-canmount-` + filesystem.id + `").on("click", "li a", function () {
                 $("#btnspan-storagepool-filesystem-configure-canmount-` + filesystem.id + `").text($(this).text()).attr("data-field-value-new", (/^Default/.test($(this).text()) ? "Default" : $(this).parent().attr("value")));
                 $(this).parent().siblings().removeClass("active");
                 $(this).parent().addClass("active");
-			});
+                        });
 
-			$("#dropdown-storagepool-filesystem-configure-checksum-` + filesystem.id + `").on("click", "li a", function () {
+                        $("#dropdown-storagepool-filesystem-configure-checksum-` + filesystem.id + `").on("click", "li a", function () {
                 $("#btnspan-storagepool-filesystem-configure-checksum-` + filesystem.id + `").text($(this).text()).attr("data-field-value-new", (/^Default/.test($(this).text()) ? "Default" : $(this).parent().attr("value")));
                 $(this).parent().siblings().removeClass("active");
                 $(this).parent().addClass("active");
-			});
+                        });
 
-			$("#dropdown-storagepool-filesystem-configure-compression-` + filesystem.id + `").on("click", "li a", function () {
+                        $("#dropdown-storagepool-filesystem-configure-compression-` + filesystem.id + `").on("click", "li a", function () {
                 $("#btnspan-storagepool-filesystem-configure-compression-` + filesystem.id + `").text($(this).text()).attr("data-field-value-new", (/^Default/.test($(this).text()) ? "Default" : $(this).parent().attr("value")));
                 $(this).parent().siblings().removeClass("active");
                 $(this).parent().addClass("active");
-			});
+                        });
 
-			$("#dropdown-storagepool-filesystem-configure-dedup-` + filesystem.id + `").on("click", "li a", function () {
+                        $("#dropdown-storagepool-filesystem-configure-dedup-` + filesystem.id + `").on("click", "li a", function () {
                 $("#btnspan-storagepool-filesystem-configure-dedup-` + filesystem.id + `").text($(this).text()).attr("data-field-value-new", (/^Default/.test($(this).text()) ? "Default" : $(this).parent().attr("value")));
                 $(this).parent().siblings().removeClass("active");
                 $(this).parent().addClass("active");
-			});
+                        });
 
-			$("#dropdown-storagepool-filesystem-configure-dnodesize-` + filesystem.id + `").on("click", "li a", function () {
+                        $("#dropdown-storagepool-filesystem-configure-dnodesize-` + filesystem.id + `").on("click", "li a", function () {
                 $("#btnspan-storagepool-filesystem-configure-dnodesize-` + filesystem.id + `").text($(this).text()).attr("data-field-value-new", (/^Default/.test($(this).text()) ? "Default" : $(this).parent().attr("value")));
                 $(this).parent().siblings().removeClass("active");
                 $(this).parent().addClass("active");
-			});
+                        });
 
-			$("#dropdown-storagepool-filesystem-configure-quota-` + filesystem.id + `").on("click", "li a", function () {
+                        $("#dropdown-storagepool-filesystem-configure-quota-` + filesystem.id + `").on("click", "li a", function () {
                 $("#btnspan-storagepool-filesystem-configure-quota-` + filesystem.id + `").text($(this).text()).attr("data-field-value", $(this).text());
                 $(this).parent().siblings().removeClass("active");
                 $(this).parent().addClass("active");
@@ -17044,15 +17044,15 @@ function FnModalFileSystemConfigureContent(pool = { name, id, altroot: false, fe
                 $("#slider-storagepool-filesystem-configure-quota-` + filesystem.id + `").slider("setValue", 0); //Force display update
                 $("#slider-storagepool-filesystem-configure-quota-` + filesystem.id + `").slider("setValue", size.slider.value);
                 $("#input-storagepool-filesystem-configure-quota-` + filesystem.id + `").val($("#slider-storagepool-filesystem-configure-quota-` + filesystem.id + `").data("slider").getValue());
-			});
+                        });
 
-			$("#dropdown-storagepool-filesystem-configure-recordsize-` + filesystem.id + `").on("click", "li a", function () {
+                        $("#dropdown-storagepool-filesystem-configure-recordsize-` + filesystem.id + `").on("click", "li a", function () {
                 $("#btnspan-storagepool-filesystem-configure-recordsize-` + filesystem.id + `").text($(this).text()).attr("data-field-value-new", (/^Default/.test($(this).text()) ? "Default" : $(this).parent().attr("value")));
                 $(this).parent().siblings().removeClass("active");
                 $(this).parent().addClass("active");
-			});
+                        });
 
-			$("#dropdown-storagepool-filesystem-configure-refreservation-` + filesystem.id + `").on("click", "li a", function () {
+                        $("#dropdown-storagepool-filesystem-configure-refreservation-` + filesystem.id + `").on("click", "li a", function () {
                 $("#btnspan-storagepool-filesystem-configure-refreservation-` + filesystem.id + `").text($(this).text()).attr("data-field-value", $(this).text());
                 $(this).parent().siblings().removeClass("active");
                 $(this).parent().addClass("active");
@@ -17069,20 +17069,20 @@ function FnModalFileSystemConfigureContent(pool = { name, id, altroot: false, fe
                 $("#slider-storagepool-filesystem-configure-refreservation-` + filesystem.id + `").slider("setValue", 0); //Force display update
                 $("#slider-storagepool-filesystem-configure-refreservation-` + filesystem.id + `").slider("setValue", size.slider.value);
                 $("#input-storagepool-filesystem-configure-refreservation-` + filesystem.id + `").val($("#slider-storagepool-filesystem-configure-refreservation-` + filesystem.id + `").data("slider").getValue());
-			});
+                        });
 
-			$("#dropdown-storagepool-filesystem-configure-special_small_blocks-` + filesystem.id + `").on("click", "li a", function () {
+                        $("#dropdown-storagepool-filesystem-configure-special_small_blocks-` + filesystem.id + `").on("click", "li a", function () {
                 $("#btnspan-storagepool-filesystem-configure-special_small_blocks-` + filesystem.id + `").text($(this).text()).attr("data-field-value-new", (/^Default/.test($(this).text()) ? "Default" : $(this).parent().attr("value")));
                 $(this).parent().siblings().removeClass("active");
                 $(this).parent().addClass("active");
-			});
+                        });
 
-			$("#dropdown-storagepool-filesystem-configure-xattr-` + filesystem.id + `").on("click", "li a", function () {
+                        $("#dropdown-storagepool-filesystem-configure-xattr-` + filesystem.id + `").on("click", "li a", function () {
                 $("#btnspan-storagepool-filesystem-configure-xattr-` + filesystem.id + `").text($(this).text()).attr("data-field-value-new", (/^Default/.test($(this).text()) ? "Default" : $(this).parent().attr("value")));
                 $(this).parent().siblings().removeClass("active");
                 $(this).parent().addClass("active");
-			});
-	    \x3C/script>
+                        });
+            \x3C/script>
     `;
 
     modal.id.empty().append(modal.content);
@@ -17186,7 +17186,7 @@ function FnModalFileSystemDestroyContent(pool = { name, id, altroot: false, read
                     <div></div>
                     <div id="spinner-storagepool-filesystem-destroy-` + filesystem.id + `" class="dialog-wait-ct pull-left hidden">
                         <div class="spinner spinner-sm"></div><span></span>
-	                </div>
+                        </div>
                     <div class="modal-ct-buttons">
                         <button class="btn btn-default cancel" data-dismiss="modal" tabindex="-1">Cancel</button>
                         <button id="btn-storagepool-filesystem-destroy-apply-` + filesystem.id + `" class="btn btn-danger apply privileged-modal" tabindex="-1">Destroy</button>
@@ -17268,7 +17268,7 @@ function FnModalFileSystemDestroyContent(pool = { name, id, altroot: false, read
                 };
 
                 FnFileSystemDestroy({ name: "` + pool.name + `", id: "` + pool.id + `", altroot: ` + pool.altroot + `, readonly: ` + pool.readonly + ` }, { name: "` + filesystem.name + `", id: "` + filesystem.id + `", force: filesystem.force, recursive: filesystem.recursive, recursiveall: filesystem.recursiveall, sharesmb: ` + filesystem.sharesmb + `, type: "` + filesystem.type + `" }, { restart: samba.restart });
-			});
+                        });
         \x3C/script>
     `;
 
@@ -17287,7 +17287,7 @@ function FnModalFileSystemLock(pool = { name, id }, filesystem = { name, id, typ
         \x3Cscript nonce="1t55lZ7tzuKTreHVNwE66Ox32Mc=">
             $("#btn-storagepool-filesystem-lock-` + filesystem.id + `").on("click", function () {
                 FnModalFileSystemLockContent({ name: "` + pool.name + `", id: "` + pool.id + `" }, { name: "` + filesystem.name + `", id: "` + filesystem.id + `", type: "` + filesystem.type + `" }, { id: $("#modal-storagepool-filesystem-lock-` + filesystem.id + `") });
-			});
+                        });
         \x3C/script>
     `;
 
@@ -17308,7 +17308,7 @@ function FnModalFileSystemLockContent(pool = { name, id }, filesystem = { name, 
                     <div></div>
                     <div id="spinner-storagepool-filesystem-lock-` + filesystem.id + `" class="dialog-wait-ct pull-left hidden">
                         <div class="spinner spinner-sm"></div><span></span>
-	                </div>
+                        </div>
                     <div class="modal-ct-buttons">
                         <button class="btn btn-default cancel" data-dismiss="modal" tabindex="-1">Cancel</button>
                         <button id="btn-storagepool-filesystem-lock-apply-` + filesystem.id + `" class="btn btn-primary apply privileged-modal" tabindex="-1">Lock</button>
@@ -17323,7 +17323,7 @@ function FnModalFileSystemLockContent(pool = { name, id }, filesystem = { name, 
                 $(this).prop("disabled", true);
 
                 FnFileSystemLock({ name: "` + pool.name + `", id: "` + pool.id + `" }, { name: "` + filesystem.name + `", id: "` + filesystem.id + `", type: "` + filesystem.type + `" }, { refresh: true });
-			});
+                        });
         \x3C/script>
     `;
 
@@ -17374,7 +17374,7 @@ function FnModalFileSystemMountContent(pool = { name, id, altroot: false, readon
                     <div></div>
                     <div id="spinner-storagepool-filesystem-mount-` + filesystem.id + `" class="dialog-wait-ct pull-left hidden">
                         <div class="spinner spinner-sm"></div><span></span>
-	                </div>
+                        </div>
                     <div class="modal-ct-buttons">
                         <button class="btn btn-default cancel" data-dismiss="modal" tabindex="-1">Cancel</button>
                         <button id="btn-storagepool-filesystem-mount-apply-` + filesystem.id + `" class="btn btn-warning apply privileged-modal" tabindex="-1">Mount</button>
@@ -17404,7 +17404,7 @@ function FnModalFileSystemMountContent(pool = { name, id, altroot: false, readon
                 };
 
                 FnFileSystemMount({ name: "` + pool.name + `", id: "` + pool.id + `", altroot: ` + pool.altroot + `, readonly: ` + pool.readonly + ` }, { name: "` + filesystem.name + `", id: "` + filesystem.id + `", overlay: filesystem.overlay, type: "` + filesystem.type + `" }, { enable: samba.enable }, { refresh: true });
-			});
+                        });
         \x3C/script>
     `;
 
@@ -17422,7 +17422,7 @@ function FnModalFileSystemPromote(pool = { name, id }, filesystem = { name, id, 
         \x3Cscript nonce="1t55lZ7tzuKTreHVNwE66Ox32Mc=">
             $("#btn-storagepool-filesystem-promote-` + filesystem.id + `").on("click", function () {
                 FnModalFileSystemPromoteContent({ name: "` + pool.name + `", id: "` + pool.id + `" }, { name: "` + filesystem.name + `", id: "` + filesystem.id + `", origin: "` + filesystem.origin + `", type: "` + filesystem.type + `" }, { id: $("#modal-storagepool-filesystem-promote-` + filesystem.id + `") });
-			});
+                        });
         \x3C/script>
     `;
 
@@ -17446,7 +17446,7 @@ function FnModalFileSystemPromoteContent(pool = { name, id }, filesystem = { nam
                     <div></div>
                     <div id="spinner-storagepool-filesystem-promote-` + filesystem.id + `" class="dialog-wait-ct pull-left hidden">
                         <div class="spinner spinner-sm"></div><span></span>
-	                </div>
+                        </div>
                     <div class="modal-ct-buttons">
                         <button class="btn btn-default cancel" data-dismiss="modal" tabindex="-1">Cancel</button>
                         <button id="btn-storagepool-filesystem-promote-apply-` + filesystem.id + `" class="btn btn-warning apply privileged-modal" tabindex="-1">Promote</button>
@@ -17461,7 +17461,7 @@ function FnModalFileSystemPromoteContent(pool = { name, id }, filesystem = { nam
                 $(this).prop("disabled", true);
 
                 FnFileSystemPromote({ name: "` + pool.name + `", id: "` + pool.id + `" }, { name: "` + filesystem.name + `", id: "` + filesystem.id + `", type: "` + filesystem.type + `" });
-			});
+                        });
         \x3C/script>
     `;
 
@@ -17484,9 +17484,9 @@ function FnModalFileSystemRename(pool = { name, id, altroot: false }, filesystem
                 setTimeout(function() {
                     $("#input-storagepool-filesystem-rename-name-` + filesystem.id + `").focus();
                 }, 600);
-			});
+                        });
         \x3C/script>
-	`;
+        `;
 
     $("#modals-storagepool-filesystem-" + pool.id).append(modal.window);
 }
@@ -17533,7 +17533,7 @@ function FnModalFileSystemRenameContent(pool = { name, id, altroot: false }, fil
                     <div></div>
                     <div id="spinner-storagepool-filesystem-rename-` + filesystem.id + `" class="dialog-wait-ct pull-left hidden">
                         <div class="spinner spinner-sm"></div><span></span>
-	                </div>
+                        </div>
                     <div class="modal-ct-buttons">
                         <button class="btn btn-default cancel" data-dismiss="modal" tabindex="-1">Cancel</button>
                         <button id="btn-storagepool-filesystem-rename-apply-` + filesystem.id + `" class="btn btn-primary apply privileged-modal" tabindex="-1">Rename</button>
@@ -17633,15 +17633,15 @@ function FnModalFileSystemRenameContent(pool = { name, id, altroot: false }, fil
 
                     FnFileSystemRename({ name: "` + pool.name + `", id: "` + pool.id + `", altroot: ` + pool.altroot + ` }, { name: "` + filesystem.name + `", id: "` + filesystem.id + `", createnonexistparents: filesystem.createnonexistparents, force: filesystem.force, namenew: filesystem.namenew, parent: filesystem.parent, sharesmb: ` + filesystem.sharesmb + `, type: "` + filesystem.type + `" }, { restart: samba.restart });
                 }
-			});
+                        });
 
-			$("#dropdown-storagepool-filesystem-rename-parentfilesystem-` + filesystem.id + `").on("click", "li a", function () {
+                        $("#dropdown-storagepool-filesystem-rename-parentfilesystem-` + filesystem.id + `").on("click", "li a", function () {
                 $("#btnspan-storagepool-filesystem-rename-parentfilesystem-` + filesystem.id + `").text($(this).text()).attr("data-field-value", $(this).parent().attr("value"));
                 $(this).parent().siblings().removeClass("active");
                 $(this).parent().addClass("active");
-			});
+                        });
         \x3C/script>
-	`;
+        `;
 
     modal.id.empty().append(modal.content);
 }
@@ -17721,7 +17721,7 @@ function FnModalFileSystemSambaConfigureContent(pool = { name, id, altroot: fals
                     <div></div>
                     <div id="spinner-storagepool-filesystem-samba-configure-` + filesystem.id + `" class="dialog-wait-ct pull-left hidden">
                         <div class="spinner spinner-sm"></div><span></span>
-	                </div>
+                        </div>
                     <div class="modal-ct-buttons">
                         <button class="btn btn-default cancel" data-dismiss="modal" tabindex="-1">Cancel</button>
                         <button id="btn-storagepool-filesystem-samba-configure-apply-` + filesystem.id + `" class="btn btn-primary apply privileged-modal" tabindex="-1">Configure</button>
@@ -17817,7 +17817,7 @@ function FnModalFileSystemSambaConfigureContent(pool = { name, id, altroot: fals
 
                             validation.additional = false;
                             return;
-	                    } else if (/^[#]/.test(_value) == false && /[=]/.test(_value) && /(path|comment|browseable|read only|guest ok).*=/gi.test(_value)) {
+                            } else if (/^[#]/.test(_value) == false && /[=]/.test(_value) && /(path|comment|browseable|read only|guest ok).*=/gi.test(_value)) {
                             $("#helpblock-storagepool-filesystem-samba-configure-additional-` + filesystem.id + `").addClass("has-error").removeClass("hidden").text("Additional must not contain duplicate properties. Line: " + (_index + 1));
 
                             validation.additional = false;
@@ -17868,7 +17868,7 @@ function FnModalFileSystemSambaConfigureContent(pool = { name, id, altroot: fals
 
                     FnSambaZfsShareConfigure({ name: "` + pool.name + `", id: "` + pool.id + `" }, { name: "` + filesystem.name + `", id: "` + filesystem.id + `", mountpoint: "` + filesystem.mountpoint + `" }, { share: { additional: samba.share.additional, administrative: samba.share.administrative, browseable: samba.share.browseable, guestok: samba.share.guestok, name: samba.share.name, comment: samba.share.comment, nameexisting: samba.share.nameexisting, readonly: samba.share.readonly, temporary: ` + (pool.altroot || pool.readonly ? true : false) + ` }, restart: samba.restart });
                 }
-			});
+                        });
         \x3C/script>
     `;
 
@@ -17913,7 +17913,7 @@ function FnModalFileSystemSambaDisableContent(pool = { name, id, altroot: false,
                     <div></div>
                     <div id="spinner-storagepool-filesystem-samba-disable-` + filesystem.id + `" class="dialog-wait-ct pull-left hidden">
                         <div class="spinner spinner-sm"></div><span></span>
-	                </div>
+                        </div>
                     <div class="modal-ct-buttons">
                         <button class="btn btn-default cancel" data-dismiss="modal" tabindex="-1">Cancel</button>
                         <button id="btn-storagepool-filesystem-samba-disable-apply-` + filesystem.id + `" class="btn btn-warning apply privileged-modal" tabindex="-1">Disable</button>
@@ -17932,7 +17932,7 @@ function FnModalFileSystemSambaDisableContent(pool = { name, id, altroot: false,
                 };
 
                 FnSambaShareDisable({ name: "` + pool.name + `", id: "` + pool.id + `", altroot: ` + pool.altroot + `, readonly: ` + pool.readonly + ` }, { name: "` + filesystem.name + `", id: "` + filesystem.id + `" }, { restart: samba.restart }, { modal: true, silent: false });
-			});
+                        });
         \x3C/script>
     `;
 
@@ -18009,7 +18009,7 @@ function FnModalFileSystemSambaEnableContent(pool = { name, id, altroot: false, 
                     <div></div>
                     <div id="spinner-storagepool-filesystem-samba-enable-` + filesystem.id + `" class="dialog-wait-ct pull-left hidden">
                         <div class="spinner spinner-sm"></div><span></span>
-	                </div>
+                        </div>
                     <div class="modal-ct-buttons">
                         <button class="btn btn-default cancel" data-dismiss="modal" tabindex="-1">Cancel</button>
                         <button id="btn-storagepool-filesystem-samba-enable-apply-` + filesystem.id + `" class="btn btn-primary apply privileged-modal" tabindex="-1">Enable</button>
@@ -18100,7 +18100,7 @@ function FnModalFileSystemSambaEnableContent(pool = { name, id, altroot: false, 
 
                             validation.additional = false;
                             return;
-	                    } else if (/^[#]/.test(_value) == false && /[=]/.test(_value) && /(path|comment|browseable|read only|guest ok).*=/gi.test(_value)) {
+                            } else if (/^[#]/.test(_value) == false && /[=]/.test(_value) && /(path|comment|browseable|read only|guest ok).*=/gi.test(_value)) {
                             $("#helpblock-storagepool-filesystem-samba-enable-additional-` + filesystem.id + `").addClass("has-error").removeClass("hidden").text("Additional must not contain duplicate properties. Line: " + (_index + 1));
 
                             validation.additional = false;
@@ -18149,7 +18149,7 @@ function FnModalFileSystemSambaEnableContent(pool = { name, id, altroot: false, 
 
                     FnSambaShareEnable({ name: "` + pool.name + `", id: "` + pool.id + `", readonly: ` + pool.readonly + ` }, { name: "` + filesystem.name + `", id: "` + filesystem.id + `", mounted: ` + filesystem.mounted + `, mountpoint: "` + filesystem.mountpoint + `" }, { share: { additional: samba.share.additional, administrative: samba.share.administrative, browseable: samba.share.browseable, guestok: samba.share.guestok, name: samba.share.name, comment: samba.share.comment, readonly: samba.share.readonly, temporary: ` + (pool.altroot || pool.readonly ? true : false) + ` } }, { silent: false });
                 }
-			});
+                        });
         \x3C/script>
     `;
 
@@ -18165,9 +18165,9 @@ function FnModalFileSystemSnapshotCreate(pool = { name, id }, filesystem = { nam
         <div id="modal-storagepool-filesystem-snapshot-create-` + filesystem.id + `" aria-hidden="true" class="modal fade" data-backdrop="static" role="dialog" tabindex="-1"></div>
 
         \x3Cscript nonce="1t55lZ7tzuKTreHVNwE66Ox32Mc=">
-			$("#btn-storagepool-filesystem-snapshot-create-` + filesystem.id + `").on("click", function () {
+                        $("#btn-storagepool-filesystem-snapshot-create-` + filesystem.id + `").on("click", function () {
                 FnModalFileSystemSnapshotCreateContent({ name: "` + pool.name + `", id: "` + pool.id + `" }, { name: "` + filesystem.name + `", id: "` + filesystem.id + `" }, { id: $("#modal-storagepool-filesystem-snapshot-create-` + filesystem.id + `") });
-			});
+                        });
         \x3C/script>
     `;
 
@@ -18204,7 +18204,7 @@ function FnModalFileSystemSnapshotCreateContent(pool = { name, id }, filesystem 
                     <div></div>
                     <div id="spinner-storagepool-filesystem-snapshot-create-` + filesystem.id + `" class="dialog-wait-ct pull-left hidden">
                         <div class="spinner spinner-sm"></div><span></span>
-	                </div>
+                        </div>
                     <div class="modal-ct-buttons">
                         <button class="btn btn-default cancel" data-dismiss="modal" tabindex="-1">Cancel</button>
                         <button id="btn-storagepool-filesystem-snapshot-create-apply-` + filesystem.id + `" class="btn btn-primary apply privileged-modal" tabindex="-1">Create</button>
@@ -18357,7 +18357,7 @@ function FnModalFileSystemUnlockContent(pool = { name, id, altroot: false, reado
                     <div></div>
                     <div id="spinner-storagepool-filesystem-unlock-` + filesystem.id + `" class="dialog-wait-ct pull-left hidden">
                         <div class="spinner spinner-sm"></div><span></span>
-	                </div>
+                        </div>
                     <div class="modal-ct-buttons">
                         <button class="btn btn-default cancel" data-dismiss="modal" tabindex="-1">Cancel</button>
                         <button id="btn-storagepool-filesystem-unlock-apply-` + filesystem.id + `" class="btn btn-primary apply privileged-modal" tabindex="-1">Unlock</button>
@@ -18426,7 +18426,7 @@ function FnModalFileSystemUnlockContent(pool = { name, id, altroot: false, reado
 
                     FnFileSystemUnlock({ name: "` + pool.name + `", id: "` + pool.id + `", altroot: ` + pool.altroot + `, readonly: ` + pool.readonly + ` }, { name: "` + filesystem.name + `", id: "` + filesystem.id + `", mount: filesystem.mount, overlay: filesystem.overlay, passphrase: filesystem.passphrase, type: "` + filesystem.type + `" }, { enable: samba.enable }, { name: "storagepool-filesystem-unlock", id: "` + filesystem.id + `" }, { refresh: true });
                 }
-		    });
+                    });
         \x3C/script>
     `;
 
@@ -18482,7 +18482,7 @@ function FnModalFileSystemUnmountContent(pool = { name, id, altroot: false, read
                     <div></div>
                     <div id="spinner-storagepool-filesystem-unmount-` + filesystem.id + `" class="dialog-wait-ct pull-left hidden">
                         <div class="spinner spinner-sm"></div><span></span>
-	                </div>
+                        </div>
                     <div class="modal-ct-buttons">
                         <button class="btn btn-default cancel" data-dismiss="modal" tabindex="-1">Cancel</button>
                         <button id="btn-storagepool-filesystem-unmount-apply-` + filesystem.id + `" class="btn btn-warning apply privileged-modal" tabindex="-1">Unmount</button>
@@ -18506,7 +18506,7 @@ function FnModalFileSystemUnmountContent(pool = { name, id, altroot: false, read
                 };
 
                 FnFileSystemUnmount({ name: "` + pool.name + `", id: "` + pool.id + `", altroot: ` + pool.altroot + `, readonly: ` + pool.readonly + ` }, { name: "` + filesystem.name + `", id: "` + filesystem.id + `", force: filesystem.force, lock: filesystem.lock, type: "` + filesystem.type + `" }, { disable: samba.disable, restart: samba.restart });
-			});
+                        });
         \x3C/script>
     `;
 
@@ -18526,10 +18526,10 @@ function FnModalSnaphshotsCreate(pool = { name, id }) {
         <div id="modal-storagepool-snapshots-create-` + pool.id + `" aria-hidden="true" class="modal fade" data-backdrop="static" role="dialog" tabindex="-1"></div>
 
         \x3Cscript nonce="1t55lZ7tzuKTreHVNwE66Ox32Mc=">
-			$("#btn-storagepool-snapshots-create-` + pool.id + `").on("click", function () {
+                        $("#btn-storagepool-snapshots-create-` + pool.id + `").on("click", function () {
                 FnModalSnaphshotsCreateContent({ name: "` + pool.name + `", id: "` + pool.id + `" }, { id: $("#modal-storagepool-snapshots-create-` + pool.id + `") });
                 FnFileSystemsNamesGet({ name: "` + pool.name + `", id: "` + pool.id + `" }, { existing: { name: null, clone: false, encryption: false, encryptionroot: null, origin: null }, override: true }, { dropdown: { id: $("#dropdown-storagepool-snapshots-create-filesystem-` + pool.id + `"), selected: "` + pool.name + `" } });
-			});
+                        });
         \x3C/script>
     `;
 
@@ -18576,7 +18576,7 @@ function FnModalSnaphshotsCreateContent(pool = { name, id }, modal = { id }) {
                     <div></div>
                     <div id="spinner-storagepool-snapshots-create-` + pool.id + `" class="dialog-wait-ct pull-left hidden">
                         <div class="spinner spinner-sm"></div><span></span>
-	                </div>
+                        </div>
                     <div class="modal-ct-buttons">
                         <button class="btn btn-default cancel" data-dismiss="modal" tabindex="-1">Cancel</button>
                         <button id="btn-storagepool-snapshots-create-apply-` + pool.id + `" class="btn btn-primary apply privileged-modal" tabindex="-1">Create</button>
@@ -18674,7 +18674,7 @@ function FnModalSnaphshotsCreateContent(pool = { name, id }, modal = { id }) {
                 $("#btnspan-storagepool-snapshots-create-filesystem-` + pool.id + `").text($(this).text()).attr("data-field-value", $(this).parent().attr("value"));
                 $(this).parent().siblings().removeClass("active");
                 $(this).parent().addClass("active");
-		    });
+                    });
         \x3C/script>
     `;
 
@@ -18694,16 +18694,16 @@ function FnModalSnapshotClone(pool = { name, id, altroot: false }, snapshot = { 
         <div id="modal-storagepool-snapshot-clone-` + snapshot.id + `" aria-hidden="true" class="modal fade" data-backdrop="static" role="dialog" tabindex="-1"></div>
 
         \x3Cscript nonce="1t55lZ7tzuKTreHVNwE66Ox32Mc=">
-			$("#btn-storagepool-snapshot-clone-` + snapshot.id + `").on("click", function () {
+                        $("#btn-storagepool-snapshot-clone-` + snapshot.id + `").on("click", function () {
                 FnModalSnapshotCloneContent({ name: "` + pool.name + `", id: "` + pool.id + `", altroot: ` + pool.altroot + ` }, { name: "` + snapshot.name + `", id: "` + snapshot.id + `", encryption: ` + snapshot.encryption + ` }, { id: $("#modal-storagepool-snapshot-clone-` + snapshot.id + `") });
                 FnFileSystemsNamesGet({ name: "` + pool.name + `", id: "` + pool.id + `" }, { existing: { name: null, clone: false, encryption: ` + snapshot.encryption + `, encryptionroot: "` + snapshot.encryptionroot + `", origin: null }, override: false }, { dropdown: { id: $("#dropdown-storagepool-snapshot-clone-parentfilesystem-` + snapshot.id + `"), selected: "` + snapshot.name.replace(/^(.*)\@.*$/, "$1") + `" } });
 
                 setTimeout(function() {
                     $("#input-storagepool-snapshot-clone-name-` + snapshot.id + `").focus();
                 }, 600);
-			});
+                        });
         \x3C/script>
-	`;
+        `;
 
     $("#modals-storagepool-snapshot-" + pool.id).append(modal.window);
 }
@@ -18744,7 +18744,7 @@ function FnModalSnapshotCloneContent(pool = { name, id, altroot: false }, snapsh
                     <div></div>
                     <div id="spinner-storagepool-snapshot-clone-` + snapshot.id + `" class="dialog-wait-ct pull-left hidden">
                         <div class="spinner spinner-sm"></div><span></span>
-	                </div>
+                        </div>
                     <div class="modal-ct-buttons">
                         <button class="btn btn-default cancel" data-dismiss="modal" tabindex="-1">Cancel</button>
                         <button id="btn-storagepool-snapshot-clone-apply-` + snapshot.id + `" class="btn btn-primary apply privileged-modal" tabindex="-1">Clone</button>
@@ -18755,7 +18755,7 @@ function FnModalSnapshotCloneContent(pool = { name, id, altroot: false }, snapsh
 
         \x3Cscript nonce="1t55lZ7tzuKTreHVNwE66Ox32Mc=">
             $("#btn-storagepool-snapshot-clone-apply-` + snapshot.id + `").on("click", function () {
-				$("#spinner-storagepool-snapshot-clone-` + snapshot.id + `").removeClass("hidden");
+                                $("#spinner-storagepool-snapshot-clone-` + snapshot.id + `").removeClass("hidden");
                 $(this).prop("disabled", true);
 
                 let snapshot = {
@@ -18831,15 +18831,15 @@ function FnModalSnapshotCloneContent(pool = { name, id, altroot: false }, snapsh
 
                     FnSnapshotClone({ name: "` + pool.name + `", id: "` + pool.id + `", altroot: ` + pool.altroot + ` }, { name: "` + snapshot.name + `", id: "` + snapshot.id + `", clone: { name: snapshot.clone.name, createnonexistparents: snapshot.clone.createnonexistparents, parent: snapshot.clone.parent } });
                 }
-			});
+                        });
 
-			$("#dropdown-storagepool-snapshot-clone-parentfilesystem-` + snapshot.id + `").on("click", "li a", function () {
+                        $("#dropdown-storagepool-snapshot-clone-parentfilesystem-` + snapshot.id + `").on("click", "li a", function () {
                 $("#btnspan-storagepool-snapshot-clone-parentfilesystem-` + snapshot.id + `").text($(this).text()).attr("data-field-value", $(this).parent().attr("value"));
                 $(this).parent().siblings().removeClass("active");
                 $(this).parent().addClass("active");
-			});
+                        });
         \x3C/script>
-	`;
+        `;
 
     modal.id.empty().append(modal.content);
 }
@@ -18853,11 +18853,11 @@ function FnModalSnapshotDestroy(pool = { name, id, altroot: false, readonly: fal
         <div id="modal-storagepool-snapshot-destroy-` + snapshot.id + `" aria-hidden="true" class="modal fade" data-backdrop="static" role="dialog" tabindex="-1"></div>
 
         \x3Cscript nonce="1t55lZ7tzuKTreHVNwE66Ox32Mc=">
-			$("#btn-storagepool-snapshot-destroy-` + snapshot.id + `").on("click", function () {
+                        $("#btn-storagepool-snapshot-destroy-` + snapshot.id + `").on("click", function () {
                 FnModalSnapshotDestroyContent({ name: "` + pool.name + `", id: "` + pool.id + `", altroot: ` + pool.altroot + `, readonly: ` + pool.readonly + ` }, { name: "` + snapshot.name + `", id: "` + snapshot.id + `", clones: [` + (snapshot.clones.length > 0 ? `"` + snapshot.clones.join(`","`) + `"` : ``) + `] }, { id: $("#modal-storagepool-snapshot-destroy-` + snapshot.id + `") });
                 ` + (snapshot.clones.length > 0 ? `FnSnapshotChildFileSystemsGet({ name: "` + pool.name + `", id: "` + pool.id + `" }, { name: "` + snapshot.name + `", id: "` + snapshot.id + `" }, { id: ` + (snapshot.clones.length > 0 ? `["` + snapshot.clones.join(`", "`) + `"]` : `[]`) + ` }, { name: "storagepool-snapshot-destroy", id: "` + snapshot.id + `" });` : ``) + `
                 FnSnapshotChildSnapshotsGet({ name: "` + pool.name + `", id: "` + pool.id + `" }, { name: "` + snapshot.name + `", id: "` + snapshot.id + `", exclude: false }, { id: ` + (snapshot.clones.length > 0 ? `["` + snapshot.clones.join(`", "`) + `"]` : `[]`) + ` }, { name: "storagepool-snapshot-destroy", id: "` + snapshot.id + `" });
-			});
+                        });
         \x3C/script>
     `;
 
@@ -18928,7 +18928,7 @@ function FnModalSnapshotDestroyContent(pool = { name, id, altroot: false, readon
                     <div></div>
                     <div id="spinner-storagepool-snapshot-destroy-` + snapshot.id + `" class="dialog-wait-ct pull-left hidden">
                         <div class="spinner spinner-sm"></div><span></span>
-	                </div>
+                        </div>
                     <div class="modal-ct-buttons">
                         <button class="btn btn-default cancel" data-dismiss="modal" tabindex="-1">Cancel</button>
                         <button id="btn-storagepool-snapshot-destroy-apply-` + snapshot.id + `" class="btn btn-danger apply privileged-modal" tabindex="-1">Destroy</button>
@@ -18938,7 +18938,7 @@ function FnModalSnapshotDestroyContent(pool = { name, id, altroot: false, readon
         </div>
 
         \x3Cscript nonce="1t55lZ7tzuKTreHVNwE66Ox32Mc=">
-			$("#switch-storagepool-snapshot-destroy-recursive-` + snapshot.id + ` input").on("click", function () {
+                        $("#switch-storagepool-snapshot-destroy-recursive-` + snapshot.id + ` input").on("click", function () {
                 if ($(this).prop("checked") && $("#switch-storagepool-snapshot-destroy-recursiveall-` + snapshot.id + ` input").prop("checked")) {
                     $("#switch-storagepool-snapshot-destroy-recursiveall-` + snapshot.id + ` input").click();
                 }
@@ -19003,7 +19003,7 @@ function FnModalSnapshotDestroyContent(pool = { name, id, altroot: false, readon
                 };
 
                 FnSnapshotDestroy({ name: "` + pool.name + `", id: "` + pool.id + `", altroot: ` + pool.altroot + `, readonly: ` + pool.readonly + ` }, { name: "` + snapshot.name + `", id: "` + snapshot.id + `", clones: ` + (snapshot.clones.length > 0 ? `["` + snapshot.clones.join(`", "`) + `"]` : `[]`) + `, recursive: snapshot.recursive, recursiveall: snapshot.recursiveall }, { restart: samba.restart });
-			});
+                        });
         \x3C/script>
     `;
 
@@ -19016,17 +19016,17 @@ function FnModalSnapshotRename(pool = { name, id }, snapshot = { name, id, creat
     };
 
     modal.window = `
-	    <div id="modal-storagepool-snapshot-rename-` + snapshot.id + `" aria-hidden="true" class="modal fade" data-backdrop="static" role="dialog" tabindex="-1"></div>
+            <div id="modal-storagepool-snapshot-rename-` + snapshot.id + `" aria-hidden="true" class="modal fade" data-backdrop="static" role="dialog" tabindex="-1"></div>
 
-	    \x3Cscript nonce="1t55lZ7tzuKTreHVNwE66Ox32Mc=">
-		    $("#btn-storagepool-snapshot-rename-` + snapshot.id + `").on("click", function () {
+            \x3Cscript nonce="1t55lZ7tzuKTreHVNwE66Ox32Mc=">
+                    $("#btn-storagepool-snapshot-rename-` + snapshot.id + `").on("click", function () {
                 FnModalSnapshotRenameContent({ name: "` + pool.name + `", id: "` + pool.id + `" }, { name: "` + snapshot.name + `", id: "` + snapshot.id + `", creation: "` + snapshot.creation + `" }, { id: $("#modal-storagepool-snapshot-rename-` + snapshot.id + `") });
 
                 setTimeout(function() {
                     $("#input-storagepool-snapshot-rename-name-` + snapshot.id + `").focus();
                 }, 600);
-		    });
-	    \x3C/script>
+                    });
+            \x3C/script>
     `;
 
     $("#modals-storagepool-snapshot-" + pool.id).append(modal.window);
@@ -19034,47 +19034,47 @@ function FnModalSnapshotRename(pool = { name, id }, snapshot = { name, id, creat
 
 function FnModalSnapshotRenameContent(pool = { name, id }, snapshot = { name, id, creation }, modal = { id }) {
     modal.content = `
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h4 class="modal-title">Rename Snapshot</h4>
-				</div>
-				<div class="modal-body">
-					<form class="ct-form">
-						<label class="control-label">File System</label>
-						<div class="ct-validation-wrapper">
-							<div>` + snapshot.name.replace(/^(.*)\@.*$/, "$1") + `</div>
-						</div>
+                <div class="modal-dialog">
+                        <div class="modal-content">
+                                <div class="modal-header">
+                                        <h4 class="modal-title">Rename Snapshot</h4>
+                                </div>
+                                <div class="modal-body">
+                                        <form class="ct-form">
+                                                <label class="control-label">File System</label>
+                                                <div class="ct-validation-wrapper">
+                                                        <div>` + snapshot.name.replace(/^(.*)\@.*$/, "$1") + `</div>
+                                                </div>
                         <label class="control-label">Creation Date</label>
                         <div role="group">
                             <label id="switch-storagepool-snapshot-rename-creationdate-` + snapshot.id + `" class="onoff-ct privileged-modal"><input tabIndex="1" type="checkbox"><span class="switch-toggle"></span></label><span></span>
                         </div>
-						<label class="control-label">Name <a data-placement="right" data-toggle="tooltip" tabindex="-1" title="Alphanumerical characters are allowed with the addition of colon (:), hypen (-), underscore (_), period (.) and whitespace ( ) special characters.<br><br>Name can not begin with special characters."><span class="fa fa-lg fa-info-circle"></span></a></label>
-						<div id="validationwrapper-storagepool-snapshot-rename-name-` + snapshot.id + `" class="ct-validation-wrapper">
-							<input id="input-storagepool-snapshot-rename-name-` + snapshot.id + `" class="form-control privileged-modal" data-field="name" data-field-type="text-input" tabindex="2" type="text" value="` + snapshot.name.replace(/^.*\@(.*)$/, "$1") + `">
-							<span id="helpblock-storagepool-snapshot-rename-name-` + snapshot.id + `" class="help-block"></span>
-						</div>
-						<label class="control-label">Options</label>
+                                                <label class="control-label">Name <a data-placement="right" data-toggle="tooltip" tabindex="-1" title="Alphanumerical characters are allowed with the addition of colon (:), hypen (-), underscore (_), period (.) and whitespace ( ) special characters.<br><br>Name can not begin with special characters."><span class="fa fa-lg fa-info-circle"></span></a></label>
+                                                <div id="validationwrapper-storagepool-snapshot-rename-name-` + snapshot.id + `" class="ct-validation-wrapper">
+                                                        <input id="input-storagepool-snapshot-rename-name-` + snapshot.id + `" class="form-control privileged-modal" data-field="name" data-field-type="text-input" tabindex="2" type="text" value="` + snapshot.name.replace(/^.*\@(.*)$/, "$1") + `">
+                                                        <span id="helpblock-storagepool-snapshot-rename-name-` + snapshot.id + `" class="help-block"></span>
+                                                </div>
+                                                <label class="control-label">Options</label>
                         <div role="group">
-						    <label id="switch-storagepool-snapshot-rename-recursive-` + snapshot.id + `" class="onoff-ct privileged-modal"><input tabIndex="3" type="checkbox"><span class="switch-toggle"></span></label><span>Rename snapshots of child file systems with this name</span>
+                                                    <label id="switch-storagepool-snapshot-rename-recursive-` + snapshot.id + `" class="onoff-ct privileged-modal"><input tabIndex="3" type="checkbox"><span class="switch-toggle"></span></label><span>Rename snapshots of child file systems with this name</span>
                         </div>
-					</form>
-				</div>
-				<div class="modal-footer">
-					<div></div>
-					<div id="spinner-storagepool-snapshot-rename-` + snapshot.id + `" class="dialog-wait-ct pull-left hidden">
-						<div class="spinner spinner-sm"></div><span></span>
-					</div>
-					<div class="modal-ct-buttons">
+                                        </form>
+                                </div>
+                                <div class="modal-footer">
+                                        <div></div>
+                                        <div id="spinner-storagepool-snapshot-rename-` + snapshot.id + `" class="dialog-wait-ct pull-left hidden">
+                                                <div class="spinner spinner-sm"></div><span></span>
+                                        </div>
+                                        <div class="modal-ct-buttons">
                         <button class="btn btn-default cancel" data-dismiss="modal" tabindex="-1">Cancel</button>
-					    <button id="btn-storagepool-snapshot-rename-apply-` + snapshot.id + `" class="btn btn-primary apply privileged-modal" tabindex="-1">Rename</button>
+                                            <button id="btn-storagepool-snapshot-rename-apply-` + snapshot.id + `" class="btn btn-primary apply privileged-modal" tabindex="-1">Rename</button>
                     </div>
-				</div>
-			</div>
-		</div>
+                                </div>
+                        </div>
+                </div>
 
-	    \x3Cscript nonce="1t55lZ7tzuKTreHVNwE66Ox32Mc=">
-		    $("#switch-storagepool-snapshot-rename-creationdate-` + snapshot.id + ` input").on("click", function () {
+            \x3Cscript nonce="1t55lZ7tzuKTreHVNwE66Ox32Mc=">
+                    $("#switch-storagepool-snapshot-rename-creationdate-` + snapshot.id + ` input").on("click", function () {
                 if ($(this).prop("checked")) {
                     $("#input-storagepool-snapshot-rename-name-` + snapshot.id + `").val("` + FnDateTimeSnapshot({ date: new Date(snapshot.creation * 1000) }) + `").prop("readonly", true);
                 } else {
@@ -19082,9 +19082,9 @@ function FnModalSnapshotRenameContent(pool = { name, id }, snapshot = { name, id
                 }
             });
 
-		    $("#btn-storagepool-snapshot-rename-apply-` + snapshot.id + `").on("click", function () {
-			    $("#spinner-storagepool-snapshot-rename-` + snapshot.id + `").removeClass("hidden");
-			    $(this).prop("disabled", true);
+                    $("#btn-storagepool-snapshot-rename-apply-` + snapshot.id + `").on("click", function () {
+                            $("#spinner-storagepool-snapshot-rename-` + snapshot.id + `").removeClass("hidden");
+                            $(this).prop("disabled", true);
 
                 let snapshot = {
                     namenew: "",
@@ -19094,65 +19094,65 @@ function FnModalSnapshotRenameContent(pool = { name, id }, snapshot = { name, id
                     name: false
                 };
 
-			    if ("` + snapshot.name.replace(/^(.*)\@.*$/, "$1") + `" + "@" + $("#input-storagepool-snapshot-rename-name-` + snapshot.id + `").val() == "` + snapshot.name + `") {
-				    $("#helpblock-storagepool-snapshot-rename-name-` + snapshot.id + `").addClass("has-error").removeClass("hidden").text("Name must be different.");
+                            if ("` + snapshot.name.replace(/^(.*)\@.*$/, "$1") + `" + "@" + $("#input-storagepool-snapshot-rename-name-` + snapshot.id + `").val() == "` + snapshot.name + `") {
+                                    $("#helpblock-storagepool-snapshot-rename-name-` + snapshot.id + `").addClass("has-error").removeClass("hidden").text("Name must be different.");
 
-				    validation.name = false;
-			    } else if ($("#input-storagepool-snapshot-rename-name-` + snapshot.id + `").val().length == 0) {
-				    $("#helpblock-storagepool-snapshot-rename-name-` + snapshot.id + `").addClass("has-error").removeClass("hidden").text("Name can not be empty.");
+                                    validation.name = false;
+                            } else if ($("#input-storagepool-snapshot-rename-name-` + snapshot.id + `").val().length == 0) {
+                                    $("#helpblock-storagepool-snapshot-rename-name-` + snapshot.id + `").addClass("has-error").removeClass("hidden").text("Name can not be empty.");
 
-				    validation.name = false;
-			    } else if (/^[a-zA-Z0-9-_.: ]*$/.test($("#input-storagepool-snapshot-rename-name-` + snapshot.id + `").val()) == false) {
-				    $("#helpblock-storagepool-snapshot-rename-name-` + snapshot.id + `").addClass("has-error").removeClass("hidden").text("Name contains invalid characters.");
+                                    validation.name = false;
+                            } else if (/^[a-zA-Z0-9-_.: ]*$/.test($("#input-storagepool-snapshot-rename-name-` + snapshot.id + `").val()) == false) {
+                                    $("#helpblock-storagepool-snapshot-rename-name-` + snapshot.id + `").addClass("has-error").removeClass("hidden").text("Name contains invalid characters.");
 
-				    validation.name = false;
-			    } else if (/^[.]/.test($("#input-storagepool-snapshot-rename-name-` + snapshot.id + `").val())) {
-				    $("#helpblock-storagepool-snapshot-rename-name-` + snapshot.id + `").addClass("has-error").removeClass("hidden").text("Name can not begin with a period (.).");
+                                    validation.name = false;
+                            } else if (/^[.]/.test($("#input-storagepool-snapshot-rename-name-` + snapshot.id + `").val())) {
+                                    $("#helpblock-storagepool-snapshot-rename-name-` + snapshot.id + `").addClass("has-error").removeClass("hidden").text("Name can not begin with a period (.).");
 
-				    validation.name = false;
-			    } else if (/^[_]/.test($("#input-storagepool-snapshot-rename-name-` + snapshot.id + `").val())) {
-				    $("#helpblock-storagepool-snapshot-rename-name-` + snapshot.id + `").addClass("has-error").removeClass("hidden").text("Name can not begin with an underscore (_).");
+                                    validation.name = false;
+                            } else if (/^[_]/.test($("#input-storagepool-snapshot-rename-name-` + snapshot.id + `").val())) {
+                                    $("#helpblock-storagepool-snapshot-rename-name-` + snapshot.id + `").addClass("has-error").removeClass("hidden").text("Name can not begin with an underscore (_).");
 
-				    validation.name = false;
-			    } else if (/^[-]/.test($("#input-storagepool-snapshot-rename-name-` + snapshot.id + `").val())) {
-				    $("#helpblock-storagepool-snapshot-rename-name-` + snapshot.id + `").addClass("has-error").removeClass("hidden").text("Name can not begin with a hypen (-).");
+                                    validation.name = false;
+                            } else if (/^[-]/.test($("#input-storagepool-snapshot-rename-name-` + snapshot.id + `").val())) {
+                                    $("#helpblock-storagepool-snapshot-rename-name-` + snapshot.id + `").addClass("has-error").removeClass("hidden").text("Name can not begin with a hypen (-).");
 
-				    validation.name = false;
-			    } else if (/^[:]/.test($("#input-storagepool-snapshot-rename-name-` + snapshot.id + `").val())) {
-				    $("#helpblock-storagepool-snapshot-rename-name-` + snapshot.id + `").addClass("has-error").removeClass("hidden").text("Name can not begin with an colon (:).");
+                                    validation.name = false;
+                            } else if (/^[:]/.test($("#input-storagepool-snapshot-rename-name-` + snapshot.id + `").val())) {
+                                    $("#helpblock-storagepool-snapshot-rename-name-` + snapshot.id + `").addClass("has-error").removeClass("hidden").text("Name can not begin with an colon (:).");
 
-				    validation.name = false;
-			    } else if (/^[ ]/.test($("#input-storagepool-snapshot-rename-name-` + snapshot.id + `").val())) {
-				    $("#helpblock-storagepool-snapshot-rename-name-` + snapshot.id + `").addClass("has-error").removeClass("hidden").text("Name can not begin with whitespace ( ).");
+                                    validation.name = false;
+                            } else if (/^[ ]/.test($("#input-storagepool-snapshot-rename-name-` + snapshot.id + `").val())) {
+                                    $("#helpblock-storagepool-snapshot-rename-name-` + snapshot.id + `").addClass("has-error").removeClass("hidden").text("Name can not begin with whitespace ( ).");
 
-				    validation.name = false;
-			    } else if (/[ ]$/.test($("#input-storagepool-snapshot-rename-name-` + snapshot.id + `").val())) {
-				    $("#helpblock-storagepool-snapshot-rename-name-` + snapshot.id + `").addClass("has-error").removeClass("hidden").text("Name can not end with whitespace ( ).");
+                                    validation.name = false;
+                            } else if (/[ ]$/.test($("#input-storagepool-snapshot-rename-name-` + snapshot.id + `").val())) {
+                                    $("#helpblock-storagepool-snapshot-rename-name-` + snapshot.id + `").addClass("has-error").removeClass("hidden").text("Name can not end with whitespace ( ).");
 
-				    validation.name = false;
-			    } else {
-				    $("#validationwrapper-storagepool-snapshot-rename-name-` + snapshot.id + `").removeClass("has-error");
-				    $("#helpblock-storagepool-snapshot-rename-name-` + snapshot.id + `").removeClass("has-error").addClass("hidden").text("");
+                                    validation.name = false;
+                            } else {
+                                    $("#validationwrapper-storagepool-snapshot-rename-name-` + snapshot.id + `").removeClass("has-error");
+                                    $("#helpblock-storagepool-snapshot-rename-name-` + snapshot.id + `").removeClass("has-error").addClass("hidden").text("");
 
-				    validation.name = true;
-			    }
+                                    validation.name = true;
+                            }
 
-			    if (!validation.name) {
+                            if (!validation.name) {
                     $("#validationwrapper-storagepool-snapshot-rename-name-` + snapshot.id + `").addClass("has-error");
                     $("#input-storagepool-snapshot-rename-name-` + snapshot.id + `").focus();
 
-				    $("#spinner-storagepool-snapshot-rename-` + snapshot.id + `").addClass("hidden");
-				    $(this).prop("disabled", false);
-			    }
+                                    $("#spinner-storagepool-snapshot-rename-` + snapshot.id + `").addClass("hidden");
+                                    $(this).prop("disabled", false);
+                            }
 
-			    if (validation.name) {
-				    snapshot.namenew = "` + snapshot.name.replace(/^(.*)\@.*$/, "$1") + `" + "@" + $("#input-storagepool-snapshot-rename-name-` + snapshot.id + `").val();
+                            if (validation.name) {
+                                    snapshot.namenew = "` + snapshot.name.replace(/^(.*)\@.*$/, "$1") + `" + "@" + $("#input-storagepool-snapshot-rename-name-` + snapshot.id + `").val();
                     snapshot.recursive = $("#switch-storagepool-snapshot-rename-recursive-` + snapshot.id + ` input").prop("checked");
 
-				    FnSnapshotRename({ name: "` + pool.name + `", id: "` + pool.id + `" }, { name: "` + snapshot.name + `", id: "` + snapshot.id + `", namenew: snapshot.namenew, recursive: snapshot.recursive });
-			    }
-		    });
-	    \x3C/script>
+                                    FnSnapshotRename({ name: "` + pool.name + `", id: "` + pool.id + `" }, { name: "` + snapshot.name + `", id: "` + snapshot.id + `", namenew: snapshot.namenew, recursive: snapshot.recursive });
+                            }
+                    });
+            \x3C/script>
     `;
 
     modal.id.empty().append(modal.content);
@@ -19167,10 +19167,10 @@ function FnModalSnapshotRollBack(pool = { name, id, altroot: false, readonly: fa
         <div id="modal-storagepool-snapshot-rollback-` + snapshot.id + `" aria-hidden="true" class="modal fade" data-backdrop="static" role="dialog" tabindex="-1"></div>
 
         \x3Cscript nonce="1t55lZ7tzuKTreHVNwE66Ox32Mc=">
-			$("#btn-storagepool-snapshot-rollback-` + snapshot.id + `").on("click", function () {
+                        $("#btn-storagepool-snapshot-rollback-` + snapshot.id + `").on("click", function () {
                 FnModalSnapshotRollBackContent({ name: "` + pool.name + `", id: "` + pool.id + `", altroot: ` + pool.altroot + `, readonly: ` + pool.readonly + ` }, { name: "` + snapshot.name + `", id: "` + snapshot.id + `", creation: "` + snapshot.creation + `" }, { id: $("#modal-storagepool-snapshot-rollback-` + snapshot.id + `") });
                 FnSnapshotRollBackSnapshotsGet({ name: "` + pool.name + `", id: "` + pool.id + `" }, { name: "` + snapshot.name + `", id: "` + snapshot.id + `", creation: "` + snapshot.creation + `" }, { name: "storagepool-snapshot-rollback", id: "` + snapshot.id + `" });
-			});
+                        });
         \x3C/script>
     `;
 
@@ -19245,7 +19245,7 @@ function FnModalSnapshotRollBackContent(pool = { name, id, altroot: false, reado
                     <div></div>
                     <div id="spinner-storagepool-snapshot-rollback-` + snapshot.id + `" class="dialog-wait-ct pull-left hidden">
                         <div class="spinner spinner-sm"></div><span></span>
-	                </div>
+                        </div>
                     <div class="modal-ct-buttons">
                         <button class="btn btn-default cancel" data-dismiss="modal" tabindex="-1">Cancel</button>
                         <button id="btn-storagepool-snapshot-rollback-apply-` + snapshot.id + `" class="btn btn-danger apply privileged-modal" tabindex="-1">Roll Back</button>
@@ -19255,7 +19255,7 @@ function FnModalSnapshotRollBackContent(pool = { name, id, altroot: false, reado
         </div>
 
         \x3Cscript nonce="1t55lZ7tzuKTreHVNwE66Ox32Mc=">
-			$("#switch-storagepool-snapshot-rollback-recursive-` + snapshot.id + ` input").on("click", function () {
+                        $("#switch-storagepool-snapshot-rollback-recursive-` + snapshot.id + ` input").on("click", function () {
                 if ($(this).prop("checked") && $("#switch-storagepool-snapshot-rollback-recursiveall-` + snapshot.id + ` input").prop("checked")) {
                     $("#switch-storagepool-snapshot-rollback-recursiveall-` + snapshot.id + ` input").click();
                 }
@@ -19321,7 +19321,7 @@ function FnModalSnapshotRollBackContent(pool = { name, id, altroot: false, reado
                 };
 
                 FnSnapshotRollBack({ name: "` + pool.name + `", id: "` + pool.id + `", altroot: ` + pool.altroot + `, readonly: ` + pool.readonly + ` }, { name: "` + snapshot.name + `", id: "` + snapshot.id + `", creation: "` + snapshot.creation + `", force: snapshot.force, recursive: snapshot.recursive, recursiveall: snapshot.recursiveall }, { restart: samba.restart });
-			});
+                        });
         \x3C/script>
     `;
 
@@ -19404,7 +19404,7 @@ function FnModalStatusDiskAttachContent(pool = { name, id, status: { config: { i
                     <div></div>
                     <div id="spinner-storagepool-status-disk-attach-` + pool.status.config.items.index + `-` + pool.id + `" class="dialog-wait-ct pull-left hidden">
                         <div class="spinner spinner-sm"></div><span></span>
-	                </div>
+                        </div>
                     <div class="modal-ct-buttons">
                         <button class="btn btn-default cancel" data-dismiss="modal" tabIndex="-1">Cancel</button>
                         <button id="btn-storagepool-status-disk-attach-apply-` + pool.status.config.items.index + `-` + pool.id + `" class="btn btn-primary apply privileged-modal" tabIndex="-1">Attach</button>
@@ -19497,7 +19497,7 @@ function FnModalStatusDiskAttachContent(pool = { name, id, status: { config: { i
 
                     FnStoragePoolDiskAttach({ name: "` + pool.name + `", id: "` + pool.id + `", force: pool.force }, { id: "` + virtualdevice.id + `", disk: ` + virtualdevice.disk + ` }, { idnew: disk.idnew }, { name: modal.name, id: modal.id });
                 }
-			});
+                        });
 
             $("#dropdown-storagepool-status-disk-attach-disks-identifier-` + pool.status.config.items.index + `-` + pool.id + `").on("click", "li a", function () {
                 $("#btnspan-storagepool-status-disk-attach-disks-identifier-` + pool.status.config.items.index + `-` + pool.id + `").text($(this).text()).attr("data-field-value", $(this).parent().attr("value"));
@@ -19568,7 +19568,7 @@ function FnModalStatusDiskClearContent(pool = { name, id, status: { config: { it
                     <div></div>
                     <div id="spinner-storagepool-status-disk-clear-` + pool.status.config.items.index + `-` + pool.id + `" class="dialog-wait-ct pull-left hidden">
                         <div class="spinner spinner-sm"></div><span></span>
-	                </div>
+                        </div>
                     <div class="modal-ct-buttons">
                         <button class="btn btn-default cancel" data-dismiss="modal" tabindex="-1">Cancel</button>
                         <button id="btn-storagepool-status-disk-clear-apply-` + pool.status.config.items.index + `-` + pool.id + `" class="btn btn-primary apply privileged-modal" tabindex="-1">Clear</button>
@@ -19591,7 +19591,7 @@ function FnModalStatusDiskClearContent(pool = { name, id, status: { config: { it
                 $("#spinner-storagepool-status-` + pool.status.config.items.index + `-` + pool.id + `").removeClass("hidden");
 
                 FnStoragePoolDiskClear({ name: "` + pool.name + `", id: "` + pool.id + `" }, { id: "` + disk.id + `" }, { name: modal.name, id: modal.id });
-			});
+                        });
         \x3C/script>
     `;
 
@@ -19637,7 +19637,7 @@ function FnModalStatusDiskDetachContent(pool = { name, id, status: { config: { i
                     <div></div>
                     <div id="spinner-storagepool-status-disk-detach-` + pool.status.config.items.index + `-` + pool.id + `" class="dialog-wait-ct pull-left hidden">
                         <div class="spinner spinner-sm"></div><span></span>
-	                </div>
+                        </div>
                     <div class="modal-ct-buttons">
                         <button class="btn btn-default cancel" data-dismiss="modal" tabindex="-1">Cancel</button>
                         <button id="btn-storagepool-status-disk-detach-apply-` + pool.status.config.items.index + `-` + pool.id + `" class="btn btn-danger apply privileged-modal" tabindex="-1">Detach</button>
@@ -19663,7 +19663,7 @@ function FnModalStatusDiskDetachContent(pool = { name, id, status: { config: { i
                 $("#spinner-storagepool-status-` + pool.status.config.items.index + `-` + pool.id + `").removeClass("hidden");
 
                 FnStoragePoolDiskDetach({ name: "` + pool.name + `", id: "` + pool.id + `"}, { id: "` + disk.id + `", labelclear: disk.labelclear }, { name: modal.name, id: modal.id });
-			});
+                        });
         \x3C/script>
     `;
 
@@ -19712,7 +19712,7 @@ function FnModalStatusDiskOfflineContent(pool = { name, id, status: { config: { 
                     <div></div>
                     <div id="spinner-storagepool-status-disk-offline-` + pool.status.config.items.index + `-` + pool.id + `" class="dialog-wait-ct pull-left hidden">
                         <div class="spinner spinner-sm"></div><span></span>
-	                </div>
+                        </div>
                     <div class="modal-ct-buttons">
                         <button class="btn btn-default cancel" data-dismiss="modal" tabindex="-1">Cancel</button>
                         <button id="btn-storagepool-status-disk-offline-apply-` + pool.status.config.items.index + `-` + pool.id + `" class="btn btn-warning apply privileged-modal" tabindex="-1">Offline</button>
@@ -19739,7 +19739,7 @@ function FnModalStatusDiskOfflineContent(pool = { name, id, status: { config: { 
                 $("#spinner-storagepool-status-` + pool.status.config.items.index + `-` + pool.id + `").removeClass("hidden");
 
                 FnStoragePoolDiskOffline({ name: "` + pool.name + `", id: "` + pool.id + `" }, { id: "` + disk.id + `", force: disk.force, temporary: disk.temporary }, { name: modal.name, id: modal.id });
-			});
+                        });
         \x3C/script>
     `;
 
@@ -19789,7 +19789,7 @@ function FnModalStatusDiskOnlineContent(pool = { name, id, status: { config: { i
                     <div></div>
                     <div id="spinner-storagepool-status-disk-online-` + pool.status.config.items.index + `-` + pool.id + `" class="dialog-wait-ct pull-left hidden">
                         <div class="spinner spinner-sm"></div><span></span>
-	                </div>
+                        </div>
                     <div class="modal-ct-buttons">
                         <button class="btn btn-default cancel" data-dismiss="modal" tabindex="-1">Cancel</button>
                         <button id="btn-storagepool-status-disk-online-apply-` + pool.status.config.items.index + `-` + pool.id + `" class="btn btn-warning apply privileged-modal" tabindex="-1">Online</button>
@@ -19818,7 +19818,7 @@ function FnModalStatusDiskOnlineContent(pool = { name, id, status: { config: { i
                 $("#spinner-storagepool-status-` + pool.status.config.items.index + `-` + pool.id + `").removeClass("hidden");
 
                 FnStoragePoolDiskOnline({ name: "` + pool.name + `", id: "` + pool.id + `", scrub: pool.scrub }, { id: "` + disk.id + `", expand: disk.expand }, { name: modal.name, id: modal.id });
-			});
+                        });
         \x3C/script>
     `;
 
@@ -19895,7 +19895,7 @@ function FnModalStatusDiskReplaceContent(pool = { name, id, status: { config: { 
                     <div></div>
                     <div id="spinner-storagepool-status-disk-replace-` + pool.status.config.items.index + `-` + pool.id + `" class="dialog-wait-ct pull-left hidden">
                         <div class="spinner spinner-sm"></div><span></span>
-	                </div>
+                        </div>
                     <div class="modal-ct-buttons">
                         <button class="btn btn-default cancel" data-dismiss="modal" tabIndex="-1">Cancel</button>
                         <button id="btn-storagepool-status-disk-replace-apply-` + pool.status.config.items.index + `-` + pool.id + `" class="btn btn-warning apply privileged-modal" tabIndex="-1">Replace</button>
@@ -19988,7 +19988,7 @@ function FnModalStatusDiskReplaceContent(pool = { name, id, status: { config: { 
 
                     FnStoragePoolDiskReplace({ name: "` + pool.name + `", id: "` + pool.id + `", force: pool.force }, { id: "` + disk.id + `", idnew: disk.idnew }, { name: modal.name, id: modal.id });
                 }
-			});
+                        });
 
             $("#dropdown-storagepool-status-disk-replace-disks-identifier-` + pool.status.config.items.index + `-` + pool.id + `").on("click", "li a", function () {
                 $("#btnspan-storagepool-status-disk-replace-disks-identifier-` + pool.status.config.items.index + `-` + pool.id + `").text($(this).text()).attr("data-field-value", $(this).parent().attr("value"));
@@ -20065,7 +20065,7 @@ function FnModalStatusDiskTrimStartContent(pool = { name, id, status: { config: 
                     <div></div>
                     <div id="spinner-storagepool-status-disk-trim-start-` + pool.status.config.items.index + `-` + pool.id + `" class="dialog-wait-ct pull-left hidden">
                         <div class="spinner spinner-sm"></div><span></span>
-	                </div>
+                        </div>
                     <div class="modal-ct-buttons">
                         <button class="btn btn-default cancel" data-dismiss="modal" tabindex="-1">Cancel</button>
                         <button id="btn-storagepool-status-disk-trim-start-apply-` + pool.status.config.items.index + `-` + pool.id + `" class="btn btn-primary apply privileged-modal" tabindex="-1">TRIM</button>
@@ -20091,7 +20091,7 @@ function FnModalStatusDiskTrimStartContent(pool = { name, id, status: { config: 
                 $("#spinner-storagepool-status-` + pool.status.config.items.index + `-` + pool.id + `").removeClass("hidden");
 
                 FnStoragePoolTrimStart({ name: "` + pool.name + `", id: "` + pool.id + `" }, { id: "` + disk.id + `" }, { resume: false, secure: trim.secure }, { name: modal.name, id: modal.id });
-			});
+                        });
         \x3C/script>
     `;
 
@@ -20132,7 +20132,7 @@ function FnModalStatusStoragePoolClearContent(pool = { name, id, status: { confi
                     <div></div>
                     <div id="spinner-storagepool-status-clear-` + pool.status.config.items.index + `-` + pool.id + `" class="dialog-wait-ct pull-left hidden">
                         <div class="spinner spinner-sm"></div><span></span>
-	                </div>
+                        </div>
                     <div class="modal-ct-buttons">
                         <button class="btn btn-default cancel" data-dismiss="modal" tabindex="-1">Cancel</button>
                         <button id="btn-storagepool-status-clear-apply-` + pool.status.config.items.index + `-` + pool.id + `" class="btn btn-primary apply privileged-modal" tabindex="-1">Clear</button>
@@ -20155,7 +20155,7 @@ function FnModalStatusStoragePoolClearContent(pool = { name, id, status: { confi
                 $("#spinner-storagepool-status-` + pool.status.config.items.index + `-` + pool.id + `").removeClass("hidden");
 
                 FnStoragePoolClear({ name: "` + pool.name + `", id: "` + pool.id + `" }, { name: modal.name, id: modal.id });
-			});
+                        });
         \x3C/script>
     `;
 
@@ -20196,7 +20196,7 @@ function FnModalStatusStoragePoolRegenerateGuidContent(pool = { name, id, guid, 
                     <div></div>
                     <div id="spinner-storagepool-status-regenerateguid-` + pool.status.config.items.index + `-` + pool.id + `" class="dialog-wait-ct pull-left hidden">
                         <div class="spinner spinner-sm"></div><span></span>
-	                </div>
+                        </div>
                     <div class="modal-ct-buttons">
                         <button class="btn btn-default cancel" data-dismiss="modal" tabindex="-1">Cancel</button>
                         <button id="btn-storagepool-status-regenerateguid-apply-` + pool.status.config.items.index + `-` + pool.id + `" class="btn btn-warning apply privileged-modal" tabindex="-1">Regenerate</button>
@@ -20219,7 +20219,7 @@ function FnModalStatusStoragePoolRegenerateGuidContent(pool = { name, id, guid, 
                 $("#spinner-storagepool-status-` + pool.status.config.items.index + `-` + pool.id + `").removeClass("hidden");
 
                 FnStoragePoolRegenerateGuid({ name: "` + pool.name + `", id: "` + pool.id + `" }, { name: modal.name, id: modal.id });
-			});
+                        });
         \x3C/script>
     `;
 
@@ -20261,7 +20261,7 @@ function FnModalStatusStoragePoolResilverContent(pool = { name, id, status: { co
                     <div></div>
                     <div id="spinner-storagepool-status-resilver-` + pool.status.config.items.index + `-` + pool.id + `" class="dialog-wait-ct pull-left hidden">
                         <div class="spinner spinner-sm"></div><span></span>
-	                </div>
+                        </div>
                     <div class="modal-ct-buttons">
                         <button class="btn btn-default cancel" data-dismiss="modal" tabindex="-1">Cancel</button>
                         <button id="btn-storagepool-status-resilver-apply-` + pool.status.config.items.index + `-` + pool.id + `" class="btn btn-warning apply privileged-modal" tabindex="-1">Resilver</button>
@@ -20284,7 +20284,7 @@ function FnModalStatusStoragePoolResilverContent(pool = { name, id, status: { co
                 $("#spinner-storagepool-status-` + pool.status.config.items.index + `-` + pool.id + `").removeClass("hidden");
 
                 FnStoragePoolResilver({ name: "` + pool.name + `", id: "` + pool.id + `" }, { name: modal.name, id: modal.id });
-			});
+                        });
         \x3C/script>
     `;
 
@@ -20331,7 +20331,7 @@ function FnModalStatusStoragePoolTrimStartContent(pool = { name, id, autotrim: f
                     <div></div>
                     <div id="spinner-storagepool-status-trim-start-` + pool.status.config.items.index + `-` + pool.id + `" class="dialog-wait-ct pull-left hidden">
                         <div class="spinner spinner-sm"></div><span></span>
-	                </div>
+                        </div>
                     <div class="modal-ct-buttons">
                         <button class="btn btn-default cancel" data-dismiss="modal" tabindex="-1">Cancel</button>
                         <button id="btn-storagepool-status-trim-start-apply-` + pool.status.config.items.index + `-` + pool.id + `" class="btn btn-primary apply privileged-modal" tabindex="-1">TRIM</button>
@@ -20357,7 +20357,7 @@ function FnModalStatusStoragePoolTrimStartContent(pool = { name, id, autotrim: f
                 $("#spinner-storagepool-status-` + pool.status.config.items.index + `-` + pool.id + `").removeClass("hidden");
 
                 FnStoragePoolTrimStart({ name: "` + pool.name + `", id: "` + pool.id + `" }, { id: null }, { resume: false, secure: trim.secure }, { name: modal.name, id: modal.id });
-			});
+                        });
         \x3C/script>
     `;
 
@@ -20414,7 +20414,7 @@ function FnModalStatusStoragePoolUpgradeContent(pool = { name, id, status: { con
                     <div></div>
                     <div id="spinner-storagepool-status-upgrade-` + pool.status.config.items.index + `-` + pool.id + `" class="dialog-wait-ct pull-left hidden">
                         <div class="spinner spinner-sm"></div><span></span>
-	                </div>
+                        </div>
                     <div class="modal-ct-buttons">
                         <button class="btn btn-default cancel" data-dismiss="modal" tabindex="-1">Cancel</button>
                         <button id="btn-storagepool-status-upgrade-apply-` + pool.status.config.items.index + `-` + pool.id + `" class="btn btn-` + ($.isNumeric(pool.version) ? `danger` : `warning`) + ` apply privileged-modal" tabindex="-1">Upgrade</button>
@@ -20437,7 +20437,7 @@ function FnModalStatusStoragePoolUpgradeContent(pool = { name, id, status: { con
                 $("#spinner-storagepool-status-` + pool.status.config.items.index + `-` + pool.id + `").removeClass("hidden");
 
                 FnStoragePoolUpgrade({ name: "` + pool.name + `", id: "` + pool.id + `" }, { name: modal.name, id: modal.id });
-			});
+                        });
         \x3C/script>
     `;
 
@@ -20543,7 +20543,7 @@ function FnModalStatusVirtualDeviceAddContent(pool = { name, id, feature: { allo
                     <div></div>
                     <div id="spinner-storagepool-status-virtualdevice-add-` + pool.status.config.items.index + `-` + pool.id + `" class="dialog-wait-ct pull-left hidden">
                         <div class="spinner spinner-sm"></div><span></span>
-	                </div>
+                        </div>
                     <div class="modal-ct-buttons">
                         <button class="btn btn-default cancel" data-dismiss="modal" tabIndex="-1">Cancel</button>
                         <button id="btn-storagepool-status-virtualdevice-add-apply-` + pool.status.config.items.index + `-` + pool.id + `" class="btn btn-primary apply privileged-modal" tabIndex="-1">Add</button>
@@ -20694,7 +20694,7 @@ function FnModalStatusVirtualDeviceAddContent(pool = { name, id, feature: { allo
 
                     FnStoragePoolVirtualDeviceAdd({ name: "` + pool.name + `", id: "` + pool.id + `", force: pool.force, virtualdevice: pool.virtualdevice }, { id: disks.id }, { name: modal.name, id: modal.id });
                 }
-		    });
+                    });
 
             $("#dropdown-storagepool-status-virtualdevice-add-disks-identifier-` + pool.status.config.items.index + `-` + pool.id + `").on("click", "li a", function () {
                 $("#btnspan-storagepool-status-virtualdevice-add-disks-identifier-` + pool.status.config.items.index + `-` + pool.id + `").text($(this).text()).attr("data-field-value", $(this).parent().attr("value"));
@@ -20805,7 +20805,7 @@ function FnModalStatusVirtualDeviceClearContent(pool = { name, id, status: { con
                     <div></div>
                     <div id="spinner-storagepool-status-virtualdevice-clear-` + pool.status.config.items.index + `-` + pool.id + `" class="dialog-wait-ct pull-left hidden">
                         <div class="spinner spinner-sm"></div><span></span>
-	                </div>
+                        </div>
                     <div class="modal-ct-buttons">
                         <button class="btn btn-default cancel" data-dismiss="modal" tabindex="-1">Cancel</button>
                         <button id="btn-storagepool-status-virtualdevice-clear-apply-` + pool.status.config.items.index + `-` + pool.id + `" class="btn btn-primary apply privileged-modal" tabindex="-1">Clear</button>
@@ -20828,7 +20828,7 @@ function FnModalStatusVirtualDeviceClearContent(pool = { name, id, status: { con
                 $("#spinner-storagepool-status-` + pool.status.config.items.index + `-` + pool.id + `").removeClass("hidden");
 
                 FnStoragePoolVirtualDeviceClear({ name: "` + pool.name + `", id: "` + pool.id + `" }, { id: "` + virtualdevice.id + `" }, { name: modal.name, id: modal.id });
-			});
+                        });
         \x3C/script>
     `;
 
@@ -20874,7 +20874,7 @@ function FnModalStatusVirtualDeviceRemoveContent(pool = { name, id, status: { co
                     <div></div>
                     <div id="spinner-storagepool-status-virtualdevice-remove-` + pool.status.config.items.index + `-` + pool.id + `" class="dialog-wait-ct pull-left hidden">
                         <div class="spinner spinner-sm"></div><span></span>
-	                </div>
+                        </div>
                     <div class="modal-ct-buttons">
                         <button class="btn btn-default cancel" data-dismiss="modal" tabindex="-1">Cancel</button>
                         <button id="btn-storagepool-status-virtualdevice-remove-apply-` + pool.status.config.items.index + `-` + pool.id + `" class="btn btn-danger apply privileged-modal" tabindex="-1">Remove</button>
@@ -20900,7 +20900,7 @@ function FnModalStatusVirtualDeviceRemoveContent(pool = { name, id, status: { co
                 $("#spinner-storagepool-status-` + pool.status.config.items.index + `-` + pool.id + `").removeClass("hidden");
 
                 FnStoragePoolVirtualDeviceRemove({ name: "` + pool.name + `", id: "` + pool.id + `"} , { id: "` + virtualdevice.id + `", labelclear: virtualdevice.labelclear }, { name: modal.name, id: modal.id });
-			});
+                        });
         \x3C/script>
     `;
 
