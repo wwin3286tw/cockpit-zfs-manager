@@ -9088,28 +9088,28 @@ function FnSnapshotsGetCommand(pool = { name, id, altroot: false, readonly: fals
 
                 //Clone Snapshot
                 if (!pool.readonly) {
-                    snapshot.actionsmenu.items.item.push(`<li><a id="btn-storagepool-snapshot-clone-` + snapshot.id + `" class="privileged` + (!zfsmanager.user.admin ? " disabled" : "") + `" data-toggle="modal" href="#modal-storagepool-snapshot-clone-` + snapshot.id + `" tabIndex="-1">Clone Snapshot</a></li>`);
+                    snapshot.actionsmenu.items.item.push(`<li><a id="btn-storagepool-snapshot-clone-` + snapshot.id + `" class="privileged` + (!zfsmanager.user.admin ? " disabled" : "") + `" data-toggle="modal" href="#modal-storagepool-snapshot-clone-` + snapshot.id + `" tabIndex="-1">克隆快照</a></li>`);
 
                     snapshot.actionsmenu.register.clone = true;
                 }
 
                 //Rename Snapshot
                 if (!pool.readonly && snapshot.name != pool.name) {
-                    snapshot.actionsmenu.items.item.push(`<li><a id="btn-storagepool-snapshot-rename-` + snapshot.id + `" class="privileged` + (!zfsmanager.user.admin ? " disabled" : "") + `" data-toggle="modal" href="#modal-storagepool-snapshot-rename-` + snapshot.id + `" tabIndex="-1">Rename Snapshot</a></li>`);
+                    snapshot.actionsmenu.items.item.push(`<li><a id="btn-storagepool-snapshot-rename-` + snapshot.id + `" class="privileged` + (!zfsmanager.user.admin ? " disabled" : "") + `" data-toggle="modal" href="#modal-storagepool-snapshot-rename-` + snapshot.id + `" tabIndex="-1">重新命名快照</a></li>`);
 
                     snapshot.actionsmenu.register.rename = true;
                 }
 
                 //Roll Back Snapshot
                 if (!pool.readonly) {
-                    snapshot.actionsmenu.items.item.push(`<li><a id="btn-storagepool-snapshot-rollback-` + snapshot.id + `" class="privileged` + (!zfsmanager.user.admin ? " disabled" : "") + `" data-toggle="modal" href="#modal-storagepool-snapshot-rollback-` + snapshot.id + `" tabIndex="-1">Roll Back Snapshot</a></li>`);
+                    snapshot.actionsmenu.items.item.push(`<li><a id="btn-storagepool-snapshot-rollback-` + snapshot.id + `" class="privileged` + (!zfsmanager.user.admin ? " disabled" : "") + `" data-toggle="modal" href="#modal-storagepool-snapshot-rollback-` + snapshot.id + `" tabIndex="-1">回滾快照</a></li>`);
 
                     snapshot.actionsmenu.register.rollback = true;
                 }
 
                 //Destroy Snapshot
                 if (!pool.readonly) {
-                    snapshot.actionsmenu.items.itemdestroy.push(`<li><a id="btn-storagepool-snapshot-destroy-` + snapshot.id + `" class="privileged` + (!zfsmanager.user.admin ? " disabled" : "") + `" data-toggle="modal" href="#modal-storagepool-snapshot-destroy-` + snapshot.id + `" tabIndex="-1">Destroy Snapshot</a></li>`);
+                    snapshot.actionsmenu.items.itemdestroy.push(`<li><a id="btn-storagepool-snapshot-destroy-` + snapshot.id + `" class="privileged` + (!zfsmanager.user.admin ? " disabled" : "") + `" data-toggle="modal" href="#modal-storagepool-snapshot-destroy-` + snapshot.id + `" tabIndex="-1">摧毀快照</a></li>`);
 
                     snapshot.actionsmenu.register.destroy = true;
                 }
@@ -10087,7 +10087,7 @@ function FnStatusGetCommand(pool = { name, id, autotrim: false, boot: false, fea
     $("#dynamics-storagepool-status-" + pool.id).remove();
     $("#dynamics").append(`<div id="dynamics-storagepool-status-` + pool.id + `"></div>`);
 
-    pool.status.output = `<tr><td><strong>Pool:</strong> ` + pool.name + `</td></tr>`;
+    pool.status.output = `<tr><td><strong>儲存池:</strong> ` + pool.name + `</td></tr>`;
 
     process.data.forEach((_value, _index) => {
         if (/^(?: )+pool:/g.test(_value)) {
@@ -10097,7 +10097,7 @@ function FnStatusGetCommand(pool = { name, id, autotrim: false, boot: false, fea
             pool.status.state = _value.replace(/\[TAB1\]/g, " ").replace(/^(?: )+state:/g, "").trim();
             _value = "";
 
-            pool.status.output += `<tr><td><strong>State:</strong> ` + (pool.status.state ? `<span class="` + FnStoragePoolHealthIcon({ health: pool.status.state }) + `"></span> ` + pool.status.state : ``) + `</td></tr>`;
+            pool.status.output += `<tr><td><strong>狀態:</strong> ` + (pool.status.state ? `<span class="` + FnStoragePoolHealthIcon({ health: pool.status.state }) + `"></span> ` + pool.status.state : ``) + `</td></tr>`;
         }
         if (/^status:/g.test(_value)) {
             pool.status.status = _value.replace(/\[TAB1\]/g, " ").replace(/^status:/g, "").trim();
@@ -10107,7 +10107,7 @@ function FnStatusGetCommand(pool = { name, id, autotrim: false, boot: false, fea
                 pool.status.resilver.started = true;
             }
 
-            pool.status.output += `<tr><td><strong>Status:</strong> ` + pool.status.status + `</td></tr>`;
+            pool.status.output += `<tr><td><strong>狀態說明:</strong> ` + pool.status.status + `</td></tr>`;
         }
         if (/^action:/g.test(_value)) {
             pool.status.action = _value.replace(/\[TAB1\]/g, " ").replace(/^action:/g, "").trim();
@@ -10115,7 +10115,7 @@ function FnStatusGetCommand(pool = { name, id, autotrim: false, boot: false, fea
             _value = "";
 
             if (/Upgrade the pool|zpool upgrade/gi.test(pool.status.action) && !pool.boot) { //Hide upgrade message for boot pool. Upgrading version may cause an unbootable system
-                pool.status.output += `<tr><td><strong>Action:</strong> ` + pool.status.action + `</td></tr>`;
+                pool.status.output += `<tr><td><strong>動作:</strong> ` + pool.status.action + `</td></tr>`;
             }
         }
         if (/^(?: )+see:/g.test(_value)) {
@@ -10142,7 +10142,7 @@ function FnStatusGetCommand(pool = { name, id, autotrim: false, boot: false, fea
                 pool.status.resilver.started = true;
             }
 
-            pool.status.output += `<tr><td><strong>Scan:</strong> ` + pool.status.scan + `</td></tr>`;
+            pool.status.output += `<tr><td><strong>掃描:</strong> ` + pool.status.scan + `</td></tr>`;
         }
         if (/^remove:/g.test(_value)) {
             pool.status.remove = _value.replace(/\[TAB1\]/g, " ").replace(/^remove:/g, "").trim();
@@ -10161,7 +10161,7 @@ function FnStatusGetCommand(pool = { name, id, autotrim: false, boot: false, fea
             pool.status.errors = _value.replace(/\[TAB1\]/g, " ").replace(/^errors:/g, "").trim();
             _value = "";
 
-            pool.status.output += `<tr><td><strong>Errors:</strong> ` + pool.status.errors + `</td></tr>`;
+            pool.status.output += `<tr><td><strong>錯誤:</strong> ` + pool.status.errors + `</td></tr>`;
         }
         if (/\[TAB1\]NAME/g.test(_value)) { //Config header row
             _value = _value.split("upath").slice(1).join("."); //Remove config header row (and any previous text if exists)
@@ -10467,145 +10467,145 @@ function FnStatusGetCommand(pool = { name, id, autotrim: false, boot: false, fea
 
         //Clear storage pool errors
         if (!pool.readonly && pool.status.config.tier.level == 0 && pool.status.config.tier.count == 1 && _value[0] == pool.name) {
-            pool.status.config.actionsmenu.items.storagepool.push(`<li><a id="btn-storagepool-status-clear-` + _index + `-` + pool.id + `" class="privileged` + (!zfsmanager.user.admin ? " disabled" : "") + `" data-toggle="modal" href="#modal-storagepool-status-clear-` + _index + `-` + pool.id + `" tabindex="-1">Clear Storage Pool Errors</a></li>`);
+            pool.status.config.actionsmenu.items.storagepool.push(`<li><a id="btn-storagepool-status-clear-` + _index + `-` + pool.id + `" class="privileged` + (!zfsmanager.user.admin ? " disabled" : "") + `" data-toggle="modal" href="#modal-storagepool-status-clear-` + _index + `-` + pool.id + `" tabindex="-1">清除儲存池錯誤</a></li>`);
 
             pool.status.config.actionsmenu.register.storagepool.clear = true;
         }
 
         //Resilver Storage Pool
         if (!pool.readonly && pool.status.config.tier.level == 0 && pool.status.config.tier.count == 1 && _value[0] == pool.name && pool.feature.resilver_defer) {
-            pool.status.config.actionsmenu.items.storagepool.push(`<li><a id="btn-storagepool-status-resilver-` + _index + `-` + pool.id + `" class="privileged` + (!zfsmanager.user.admin ? " disabled" : "") + `" data-toggle="modal" href="#modal-storagepool-status-resilver-` + _index + `-` + pool.id + `" tabindex="-1">Resilver Storage Pool</a></li>`);
+            pool.status.config.actionsmenu.items.storagepool.push(`<li><a id="btn-storagepool-status-resilver-` + _index + `-` + pool.id + `" class="privileged` + (!zfsmanager.user.admin ? " disabled" : "") + `" data-toggle="modal" href="#modal-storagepool-status-resilver-` + _index + `-` + pool.id + `" tabindex="-1">重新銀化儲存池</a></li>`);
 
             pool.status.config.actionsmenu.register.storagepool.resilver = true;
         }
 
         //Start Storage Pool Scrub
         if (!pool.readonly && pool.status.config.tier.level == 0 && pool.status.config.tier.count == 1 && _value[0] == pool.name && !pool.status.scrub.started && !pool.status.scrub.paused) {
-            pool.status.config.actionsmenu.items.storagepool.push(`<li><a id="btn-storagepool-status-scrub-start-` + _index + `-` + pool.id + `" class="privileged` + (!zfsmanager.user.admin ? " disabled" : "") + `" data-toggle="modal" href="#modal-storagepool-status-scrub-start-` + _index + `-` + pool.id + `" tabindex="-1">Scrub Storage Pool</a></li>`);
+            pool.status.config.actionsmenu.items.storagepool.push(`<li><a id="btn-storagepool-status-scrub-start-` + _index + `-` + pool.id + `" class="privileged` + (!zfsmanager.user.admin ? " disabled" : "") + `" data-toggle="modal" href="#modal-storagepool-status-scrub-start-` + _index + `-` + pool.id + `" tabindex="-1">Scrub 儲存池</a></li>`);
 
             pool.status.config.actionsmenu.register.storagepool.scrub.start = true;
         }
 
         //Resume Storage Pool Scrub
         if (!pool.readonly && pool.status.config.tier.level == 0 && pool.status.config.tier.count == 1 && _value[0] == pool.name && pool.status.scrub.paused) {
-            pool.status.config.actionsmenu.items.storagepool.push(`<li><a id="btn-storagepool-status-scrub-resume-` + _index + `-` + pool.id + `" class="privileged` + (!zfsmanager.user.admin ? " disabled" : "") + `" data-toggle="modal" href="#modal-storagepool-status-scrub-resume-` + _index + `-` + pool.id + `" tabindex="-1">Resume Storage Pool Scrub</a></li>`);
+            pool.status.config.actionsmenu.items.storagepool.push(`<li><a id="btn-storagepool-status-scrub-resume-` + _index + `-` + pool.id + `" class="privileged` + (!zfsmanager.user.admin ? " disabled" : "") + `" data-toggle="modal" href="#modal-storagepool-status-scrub-resume-` + _index + `-` + pool.id + `" tabindex="-1">繼續儲存池Scrub操作</a></li>`);
 
             pool.status.config.actionsmenu.register.storagepool.scrub.resume = true;
         }
 
         //Pause Storage Pool Scrub
         if (!pool.readonly && pool.status.config.tier.level == 0 && pool.status.config.tier.count == 1 && _value[0] == pool.name && pool.status.scrub.started) {
-            pool.status.config.actionsmenu.items.storagepool.push(`<li><a id="btn-storagepool-status-scrub-pause-` + _index + `-` + pool.id + `" class="privileged` + (!zfsmanager.user.admin ? " disabled" : "") + `" data-toggle="modal" href="#modal-storagepool-status-scrub-pause-` + _index + `-` + pool.id + `" tabindex="-1">Pause Storage Pool Scrub</a></li>`);
+            pool.status.config.actionsmenu.items.storagepool.push(`<li><a id="btn-storagepool-status-scrub-pause-` + _index + `-` + pool.id + `" class="privileged` + (!zfsmanager.user.admin ? " disabled" : "") + `" data-toggle="modal" href="#modal-storagepool-status-scrub-pause-` + _index + `-` + pool.id + `" tabindex="-1">暫停儲存池Scrub操作</a></li>`);
 
             pool.status.config.actionsmenu.register.storagepool.scrub.pause = true;
         }
 
         //Stop Storage Pool Scrub
         if (!pool.readonly && pool.status.config.tier.level == 0 && pool.status.config.tier.count == 1 && _value[0] == pool.name && (pool.status.scrub.started || pool.status.scrub.paused)) {
-            pool.status.config.actionsmenu.items.storagepool.push(`<li><a id="btn-storagepool-status-scrub-stop-` + _index + `-` + pool.id + `" class="privileged` + (!zfsmanager.user.admin ? " disabled" : "") + `" data-toggle="modal" href="#modal-storagepool-status-scrub-stop-` + _index + `-` + pool.id + `" tabindex="-1">Stop Storage Pool Scrub</a></li>`);
+            pool.status.config.actionsmenu.items.storagepool.push(`<li><a id="btn-storagepool-status-scrub-stop-` + _index + `-` + pool.id + `" class="privileged` + (!zfsmanager.user.admin ? " disabled" : "") + `" data-toggle="modal" href="#modal-storagepool-status-scrub-stop-` + _index + `-` + pool.id + `" tabindex="-1">終止儲存池Scrub操作</a></li>`);
 
             pool.status.config.actionsmenu.register.storagepool.scrub.stop = true;
         }
 
         //TRIM Storage Pool
         if (!pool.readonly && pool.status.config.tier.level == 0 && pool.status.config.tier.count == 1 && _value[0] == pool.name && !pool.status.trim.started && !pool.status.trim.suspended) {
-            pool.status.config.actionsmenu.items.storagepool.push(`<li><a id="btn-storagepool-status-trim-start-` + _index + `-` + pool.id + `" class="privileged` + (!zfsmanager.user.admin ? " disabled" : "") + `" data-toggle="modal" href="#modal-storagepool-status-trim-start-` + _index + `-` + pool.id + `" tabindex="-1">TRIM Storage Pool</a></li>`);
+            pool.status.config.actionsmenu.items.storagepool.push(`<li><a id="btn-storagepool-status-trim-start-` + _index + `-` + pool.id + `" class="privileged` + (!zfsmanager.user.admin ? " disabled" : "") + `" data-toggle="modal" href="#modal-storagepool-status-trim-start-` + _index + `-` + pool.id + `" tabindex="-1">TRIM儲存池</a></li>`);
 
             pool.status.config.actionsmenu.register.storagepool.trim.start = true;
         }
 
-        //Resume Storage Pool TRIM
-        if (!pool.readonly && pool.status.config.tier.level == 0 && pool.status.config.tier.count == 1 && _value[0] == pool.name && pool.status.trim.suspended) {
-            pool.status.config.actionsmenu.items.storagepool.push(`<li><a id="btn-storagepool-status-trim-resume-` + _index + `-` + pool.id + `" class="privileged` + (!zfsmanager.user.admin ? " disabled" : "") + `" href="#" tabindex="-1">Resume Storage Pool TRIM</a></li>`);
+//恢復儲存池 TRIM
+if (!pool.readonly && pool.status.config.tier.level == 0 && pool.status.config.tier.count == 1 && _value[0] == pool.name && pool.status.trim.suspended) {
+    pool.status.config.actionsmenu.items.storagepool.push(`<li><a id="btn-storagepool-status-trim-resume-` + _index + `-` + pool.id + `" class="privileged` + (!zfsmanager.user.admin ? " disabled" : "") + `" href="#" tabindex="-1">恢復儲存池 TRIM</a></li>`);
 
-            pool.status.config.actionsmenu.register.storagepool.trim.resume = true;
-        }
+    pool.status.config.actionsmenu.register.storagepool.trim.resume = true;
+}
 
-        //Suspend Storage Pool TRIM
-        if (!pool.readonly && pool.status.config.tier.level == 0 && pool.status.config.tier.count == 1 && _value[0] == pool.name && pool.status.trim.started) {
-            pool.status.config.actionsmenu.items.storagepool.push(`<li><a id="btn-storagepool-status-trim-suspend-` + _index + `-` + pool.id + `" class="privileged` + (!zfsmanager.user.admin ? " disabled" : "") + `" href="#" tabindex="-1">Suspend Storage Pool TRIM</a></li>`);
+//暫停儲存池 TRIM
+if (!pool.readonly && pool.status.config.tier.level == 0 && pool.status.config.tier.count == 1 && _value[0] == pool.name && pool.status.trim.started) {
+    pool.status.config.actionsmenu.items.storagepool.push(`<li><a id="btn-storagepool-status-trim-suspend-` + _index + `-` + pool.id + `" class="privileged` + (!zfsmanager.user.admin ? " disabled" : "") + `" href="#" tabindex="-1">暫停儲存池 TRIM</a></li>`);
 
-            pool.status.config.actionsmenu.register.storagepool.trim.suspend = true;
-        }
+    pool.status.config.actionsmenu.register.storagepool.trim.suspend = true;
+}
 
-        //Cancel Storage Pool TRIM
-        if (!pool.readonly && pool.status.config.tier.level == 0 && pool.status.config.tier.count == 1 && _value[0] == pool.name && (pool.status.trim.started || pool.status.trim.suspended)) {
-            pool.status.config.actionsmenu.items.storagepool.push(`<li><a id="btn-storagepool-status-trim-cancel-` + _index + `-` + pool.id + `" class="privileged` + (!zfsmanager.user.admin ? " disabled" : "") + `" href="#" tabindex="-1">Cancel Storage Pool TRIM</a></li>`);
+//取消儲存池 TRIM
+if (!pool.readonly && pool.status.config.tier.level == 0 && pool.status.config.tier.count == 1 && _value[0] == pool.name && (pool.status.trim.started || pool.status.trim.suspended)) {
+    pool.status.config.actionsmenu.items.storagepool.push(`<li><a id="btn-storagepool-status-trim-cancel-` + _index + `-` + pool.id + `" class="privileged` + (!zfsmanager.user.admin ? " disabled" : "") + `" href="#" tabindex="-1">取消儲存池 TRIM</a></li>`);
 
-            pool.status.config.actionsmenu.register.storagepool.trim.cancel = true;
-        }
+    pool.status.config.actionsmenu.register.storagepool.trim.cancel = true;
+}
 
-        //Upgrade Storage Pool
-        if (!pool.readonly && pool.status.config.tier.level == 0 && pool.status.config.tier.count == 1 && _value[0] == pool.name && pool.status.upgrade) {
-            pool.status.config.actionsmenu.items.storagepool.push(`<li><a id="btn-storagepool-status-upgrade-` + _index + `-` + pool.id + `" class="privileged` + (!zfsmanager.user.admin ? " disabled" : "") + `" data-toggle="modal" href="#modal-storagepool-status-upgrade-` + _index + `-` + pool.id + `" tabindex="-1">Upgrade Storage Pool</a></li>`);
+//升級儲存池
+if (!pool.readonly && pool.status.config.tier.level == 0 && pool.status.config.tier.count == 1 && _value[0] == pool.name && pool.status.upgrade) {
+    pool.status.config.actionsmenu.items.storagepool.push(`<li><a id="btn-storagepool-status-upgrade-` + _index + `-` + pool.id + `" class="privileged` + (!zfsmanager.user.admin ? " disabled" : "") + `" data-toggle="modal" href="#modal-storagepool-status-upgrade-` + _index + `-` + pool.id + `" tabindex="-1">升級儲存池</a></li>`);
 
-            pool.status.config.actionsmenu.register.storagepool.upgrade = true;
-        }
+    pool.status.config.actionsmenu.register.storagepool.upgrade = true;
+}
 
-        //Regenerate Storage Pool GUID
-        if (!pool.readonly && pool.status.config.tier.level == 0 && pool.status.config.tier.count == 1 && _value[0] == pool.name) {
-            pool.status.config.actionsmenu.items.storagepool.push(`<li><a id="btn-storagepool-status-regenerateguid-` + _index + `-` + pool.id + `" class="privileged` + (!zfsmanager.user.admin ? " disabled" : "") + `" data-toggle="modal" href="#modal-storagepool-status-regenerateguid-` + _index + `-` + pool.id + `" tabindex="-1">Regenerate Storage Pool GUID</a></li>`);
+//重新生成儲存池 GUID
+if (!pool.readonly && pool.status.config.tier.level == 0 && pool.status.config.tier.count == 1 && _value[0] == pool.name) {
+    pool.status.config.actionsmenu.items.storagepool.push(`<li><a id="btn-storagepool-status-regenerateguid-` + _index + `-` + pool.id + `" class="privileged` + (!zfsmanager.user.admin ? " disabled" : "") + `" data-toggle="modal" href="#modal-storagepool-status-regenerateguid-` + _index + `-` + pool.id + `" tabindex="-1">重新生成儲存池 GUID</a></li>`);
 
-            pool.status.config.actionsmenu.register.storagepool.regenerateguid = true;
-        }
+    pool.status.config.actionsmenu.register.storagepool.regenerateguid = true;
+}
 
-        //Clear Virtual Device Errors
-        if (!pool.readonly && pool.status.config.tier.level > 0 && !pool.status.config.disk) {
-            pool.status.config.actionsmenu.items.virtualdevice.push(`<li><a id="btn-storagepool-status-virtualdevice-clear-` + _index + `-` + pool.id + `" class="privileged` + (!zfsmanager.user.admin ? " disabled" : "") + `" data-toggle="modal" href="#modal-storagepool-status-virtualdevice-clear-` + _index + `-` + pool.id + `" tabindex="-1">Clear Virtual Device Errors</a></li>`);
+//清除虛擬設備錯誤
+if (!pool.readonly && pool.status.config.tier.level > 0 && !pool.status.config.disk) {
+    pool.status.config.actionsmenu.items.virtualdevice.push(`<li><a id="btn-storagepool-status-virtualdevice-clear-` + _index + `-` + pool.id + `" class="privileged` + (!zfsmanager.user.admin ? " disabled" : "") + `" data-toggle="modal" href="#modal-storagepool-status-virtualdevice-clear-` + _index + `-` + pool.id + `" tabindex="-1">清除虛擬設備錯誤</a></li>`);
 
-            pool.status.config.actionsmenu.register.virtualdevice.clear = true;
-        }
+    pool.status.config.actionsmenu.register.virtualdevice.clear = true;
+}
 
-        //Add Virtual Device
-        if (!pool.readonly && pool.status.config.tier.level == 0 && pool.status.config.tier.count == 1 && _value[0] == pool.name) {
-            pool.status.config.actionsmenu.items.virtualdevice.push(`<li><a id="btn-storagepool-status-virtualdevice-add-` + _index + `-` + pool.id + `" class="privileged` + (!zfsmanager.user.admin ? " disabled" : "") + `" data-toggle="modal" href="#modal-storagepool-status-virtualdevice-add-` + _index + `-` + pool.id + `" tabindex="-1">Add Virtual Device</a></li>`);
+//新增虛擬設備
+if (!pool.readonly && pool.status.config.tier.level == 0 && pool.status.config.tier.count == 1 && _value[0] == pool.name) {
+    pool.status.config.actionsmenu.items.virtualdevice.push(`<li><a id="btn-storagepool-status-virtualdevice-add-` + _index + `-` + pool.id + `" class="privileged` + (!zfsmanager.user.admin ? " disabled" : "") + `" data-toggle="modal" href="#modal-storagepool-status-virtualdevice-add-` + _index + `-` + pool.id + `" tabindex="-1">新增虛擬設備</a></li>`);
 
-            pool.status.config.actionsmenu.register.virtualdevice.add = true;
-        }
+    pool.status.config.actionsmenu.register.virtualdevice.add = true;
+}
 
-        //Remove Virtual Device
-        if (!pool.readonly && pool.status.config.tier.level == 1 && !pool.status.config.tier.replacing && (pool.feature.device_removal || pool.status.config.tier.spares)) {
-            pool.status.config.actionsmenu.items.virtualdevice.push(`<li><a id="btn-storagepool-status-virtualdevice-remove-` + _index + `-` + pool.id + `" class="privileged` + (!zfsmanager.user.admin ? " disabled" : "") + (pool.status.config.tier.pool ? " pool-virtualdevice" : "") + `" data-toggle="modal" href="#modal-storagepool-status-virtualdevice-remove-` + _index + `-` + pool.id + `" tabindex="-1">Remove Virtual Device</a></li>`);
+//移除虛擬設備
+if (!pool.readonly && pool.status.config.tier.level == 1 && !pool.status.config.tier.replacing && (pool.feature.device_removal || pool.status.config.tier.spares)) {
+    pool.status.config.actionsmenu.items.virtualdevice.push(`<li><a id="btn-storagepool-status-virtualdevice-remove-` + _index + `-` + pool.id + `" class="privileged` + (!zfsmanager.user.admin ? " disabled" : "") + (pool.status.config.tier.pool ? " pool-virtualdevice" : "") + `" data-toggle="modal" href="#modal-storagepool-status-virtualdevice-remove-` + _index + `-` + pool.id + `" tabindex="-1">移除虛擬設備</a></li>`);
 
-            pool.status.config.actionsmenu.register.virtualdevice.remove = true;
-        }
+    pool.status.config.actionsmenu.register.virtualdevice.remove = true;
+}
 
-        //Clear Disk Errors
-        if (!pool.readonly && pool.status.config.tier.level > 0 && !pool.status.config.tier.spares && pool.status.config.disk) {
-            pool.status.config.actionsmenu.items.disk.push(`<li><a id="btn-storagepool-status-disk-clear-` + _index + `-` + pool.id + `" class="privileged` + (!zfsmanager.user.admin ? " disabled" : "") + `" data-toggle="modal" href="#modal-storagepool-status-disk-clear-` + _index + `-` + pool.id + `" tabindex="-1">Clear Disk Errors</a></li>`);
+//清除磁碟錯誤
+if (!pool.readonly && pool.status.config.tier.level > 0 && !pool.status.config.tier.spares && pool.status.config.disk) {
+    pool.status.config.actionsmenu.items.disk.push(`<li><a id="btn-storagepool-status-disk-clear-` + _index + `-` + pool.id + `" class="privileged` + (!zfsmanager.user.admin ? " disabled" : "") + `" data-toggle="modal" href="#modal-storagepool-status-disk-clear-` + _index + `-` + pool.id + `" tabindex="-1">清除磁碟錯誤</a></li>`);
 
-            pool.status.config.actionsmenu.register.disk.clear = true;
-        }
+    pool.status.config.actionsmenu.register.disk.clear = true;
+}
 
-        //Attach Disk: Disk and Mirror virtual devices only
-        if (!pool.readonly && pool.status.config.tier.level == 1 && !pool.status.config.tier.cache && !pool.status.config.tier.spares && (/^mirror-/g.test(_value[0]) || pool.status.config.disk)) {
-            pool.status.config.actionsmenu.items.disk.push(`<li><a id="btn-storagepool-status-disk-attach-` + _index + `-` + pool.id + `" class="privileged` + (!zfsmanager.user.admin ? " disabled" : "") + `" data-toggle="modal" href="#modal-storagepool-status-disk-attach-` + _index + `-` + pool.id + `" tabindex="-1">Attach Disk</a></li>`);
+//附加磁碟：僅磁碟和鏡像虛擬設備
+if (!pool.readonly && pool.status.config.tier.level == 1 && !pool.status.config.tier.cache && !pool.status.config.tier.spares && (/^mirror-/g.test(_value[0]) || pool.status.config.disk)) {
+    pool.status.config.actionsmenu.items.disk.push(`<li><a id="btn-storagepool-status-disk-attach-` + _index + `-` + pool.id + `" class="privileged` + (!zfsmanager.user.admin ? " disabled" : "") + `" data-toggle="modal" href="#modal-storagepool-status-disk-attach-` + _index + `-` + pool.id + `" tabindex="-1">附加磁碟</a></li>`);
 
-            pool.status.config.actionsmenu.register.disk.attach = true;
-        }
+    pool.status.config.actionsmenu.register.disk.attach = true;
+}
 
-        //Detach Disk: Disk and Mirror virtual devices only
-        if (!pool.readonly && (pool.status.config.tier.level == 2 && /^spare-/g.test(_value[0]) == false || pool.status.config.tier.level == 3) && /^mirror-/g.test(pool.status.config.tier.nametier1) && pool.status.config.disk) {
-            pool.status.config.actionsmenu.items.disk.push(`<li><a id="btn-storagepool-status-disk-detach-` + _index + `-` + pool.id + `" class="privileged` + (!zfsmanager.user.admin ? " disabled" : "") + `" data-toggle="modal" href="#modal-storagepool-status-disk-detach-` + _index + `-` + pool.id + `" tabindex="-1">Detach Disk</a></li>`);
+//分離磁碟：僅磁碟和鏡像虛擬設備
+if (!pool.readonly && (pool.status.config.tier.level == 2 && /^spare-/g.test(_value[0]) == false || pool.status.config.tier.level == 3) && /^mirror-/g.test(pool.status.config.tier.nametier1) && pool.status.config.disk) {
+    pool.status.config.actionsmenu.items.disk.push(`<li><a id="btn-storagepool-status-disk-detach-` + _index + `-` + pool.id + `" class="privileged` + (!zfsmanager.user.admin ? " disabled" : "") + `" data-toggle="modal" href="#modal-storagepool-status-disk-detach-` + _index + `-` + pool.id + `" tabindex="-1">分離磁碟</a></li>`);
 
-            pool.status.config.actionsmenu.register.disk.detach = true;
-        }
+    pool.status.config.actionsmenu.register.disk.detach = true;
+}
 
-        if (!pool.readonly && pool.status.config.tier.level > 0 && pool.status.config.disk) {
-            //Online Disk / Offline Disk
-            if (_value[1] == "OFFLINE" || _value[1] == "UNAVAIL" || _value[1] == "FAULTED") {
-                pool.status.config.actionsmenu.items.disk.push(`<li><a id="btn-storagepool-status-disk-online-` + _index + `-` + pool.id + `" class="privileged` + (!zfsmanager.user.admin ? " disabled" : "") + `" data-toggle="modal" href="#modal-storagepool-status-disk-online-` + _index + `-` + pool.id + `" tabindex="-1">Online Disk</a></li>`);
+if (!pool.readonly && pool.status.config.tier.level > 0 && pool.status.config.disk) {
+    //在線磁碟 / 離線磁碟
+    if (_value[1] == "OFFLINE" || _value[1] == "UNAVAIL" || _value[1] == "FAULTED") {
+        pool.status.config.actionsmenu.items.disk.push(`<li><a id="btn-storagepool-status-disk-online-` + _index + `-` + pool.id + `" class="privileged` + (!zfsmanager.user.admin ? " disabled" : "") + `" data-toggle="modal" href="#modal-storagepool-status-disk-online-` + _index + `-` + pool.id + `" tabindex="-1">在線磁碟</a></li>`);
 
-                pool.status.config.actionsmenu.register.disk.online = true;
-            } else if ((_value[1] == "ONLINE" || _value[1] == "DEGRADED") && (pool.status.config.tier.level > 1 || pool.status.config.tier.level == 1 && (pool.status.config.tier.cache || pool.status.config.tier.logs))) { //Do not show offline disk if virtual device is Disk in Pool and Dedup
-                pool.status.config.actionsmenu.items.disk.push(`<li><a id="btn-storagepool-status-disk-offline-` + _index + `-` + pool.id + `" class="privileged` + (!zfsmanager.user.admin ? " disabled" : "") + (pool.status.config.tier.pool ? " pool-disk" : (pool.status.config.tier.dedup ? " pool-dedup-disk" : "")) + `" data-toggle="modal" href="#modal-storagepool-status-disk-offline-` + _index + `-` + pool.id + `" tabindex="-1">Offline Disk</a></li>`);
+        pool.status.config.actionsmenu.register.disk.online = true;
+    } else if ((_value[1] == "ONLINE" || _value[1] == "DEGRADED") && (pool.status.config.tier.level > 1 || pool.status.config.tier.level == 1 && (pool.status.config.tier.cache || pool.status.config.tier.logs))) { //當虛擬設備是磁碟在池中並且重複資料刪除時不顯示離線磁碟
+        pool.status.config.actionsmenu.items.disk.push(`<li><a id="btn-storagepool-status-disk-offline-` + _index + `-` + pool.id + `" class="privileged` + (!zfsmanager.user.admin ? " disabled" : "") + (pool.status.config.tier.pool ? " pool-disk" : (pool.status.config.tier.dedup ? " pool-dedup-disk" : "")) + `" data-toggle="modal" href="#modal-storagepool-status-disk-offline-` + _index + `-` + pool.id + `" tabindex="-1">離線磁碟</a></li>`);
 
-                pool.status.config.actionsmenu.register.disk.offline = true;
-            }
+        pool.status.config.actionsmenu.register.disk.offline = true;
+    }
 
             //Replace Disk
             if (!pool.status.config.tier.spares) {
-                pool.status.config.actionsmenu.items.disk.push(`<li><a id="btn-storagepool-status-disk-replace-` + _index + `-` + pool.id + `" class="privileged` + (!zfsmanager.user.admin ? " disabled" : "") + `" data-toggle="modal" href="#modal-storagepool-status-disk-replace-` + _index + `-` + pool.id + `" tabindex="-1">Replace Disk</a></li>`);
+                pool.status.config.actionsmenu.items.disk.push(`<li><a id="btn-storagepool-status-disk-replace-` + _index + `-` + pool.id + `" class="privileged` + (!zfsmanager.user.admin ? " disabled" : "") + `" data-toggle="modal" href="#modal-storagepool-status-disk-replace-` + _index + `-` + pool.id + `" tabindex="-1">取代磁碟</a></li>`);
 
                 pool.status.config.actionsmenu.register.disk.replace = true;
             }
